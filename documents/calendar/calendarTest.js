@@ -2,6 +2,9 @@ const weeks = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', 
 const date = new Date()
 let year = date.getFullYear()
 let month = date.getMonth() + 1
+let today = date.getDate();
+
+let type = '';
 
 const flammable = '<p id = "flammable">可燃ごみ</p>';
 const house = '<p id = "house">家庭ごみ</p>';
@@ -10,6 +13,8 @@ const plastic = '<p id = "plastic">プラごみ</p>';
 const canBottle = '<p id = "canBottle">缶・ビン</p>';
 const battery = '<p id = "battery">乾電池類</p>';
 const paper = '<p id = "paper">紙ごみ</p>';
+
+
 
 
 function showCalendar(year, month) {
@@ -83,7 +88,7 @@ function createCalendar(year, month) {
 
     return calendarHtml
 }
-
+const kyou = 'today : ' + month + '/' + today + '=' + typeGarbage(year,month);
 function moveCalendar(e) {
     document.querySelector('#calendar').innerHTML = ''
 
@@ -112,3 +117,27 @@ document.querySelector('#prev').addEventListener('click', moveCalendar)
 document.querySelector('#next').addEventListener('click', moveCalendar)
 
 showCalendar(year, month)
+
+function typeGarbage(year, month) {
+    const startDate = new Date(year, month - 1, 1) // 月の最初の日を取得
+    const endDate = new Date(year, month, 0) // 月の最後の日を取得
+    const endDayCount = endDate.getDate() // 月の末日
+    const lastMonthEndDate = new Date(year, month - 1, 0) // 前月の最後の日の情報
+    const lastMonthendDayCount = lastMonthEndDate.getDate() // 前月の末日
+    const startDay = startDate.getDay() // 月の最初の日の曜日を取得
+    let dayCount = 1 // 日にちのカウント
+    if (today % 7 + 1 === 1) {
+        type += '燃えるゴミ'
+    } else if (today % 7 + 1 === 2) {
+        type += 'プラゴミ'
+    } else if (today % 7 + 1 === 4) {
+        type += 'いっぱい'
+    } else if (today % 7 + 1 === 55 && Math.ceil(today / 7) === 1) {
+        type += '紙'
+    } else {
+        type += '紙ごみ'
+    }
+    dayCount++
+    console.log(type)
+    return type
+}
