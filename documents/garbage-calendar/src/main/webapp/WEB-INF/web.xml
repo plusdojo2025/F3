@@ -1,0 +1,17 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>calendar</servlet-name>
+        <servlet-class>servlet.CalendarServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>calendar</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
