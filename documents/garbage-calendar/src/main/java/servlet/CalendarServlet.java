@@ -20,14 +20,16 @@ import model.GarbageRule;
 
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // デフォルトの年と月（現在）
         int year = LocalDate.now().getYear();
         int month = LocalDate.now().getMonthValue();
 
-        // パラメータから年・月指定があれば使用
+        // パラメータに年・月が指定されていれば使用
         if (request.getParameter("year") != null) {
             year = Integer.parseInt(request.getParameter("year"));
         }
@@ -35,12 +37,12 @@ public class CalendarServlet extends HttpServlet {
             month = Integer.parseInt(request.getParameter("month"));
         }
 
-        // 月初の曜日と月の日数
+        // 月初日とその曜日（0:日曜〜6:土曜）および月末日
         LocalDate firstDate = LocalDate.of(year, month, 1);
-        int firstDayOfWeek = firstDate.getDayOfWeek().getValue() % 7; // 日曜=0
+        int firstDayOfWeek = firstDate.getDayOfWeek().getValue() % 7; // Javaは月曜=1なので、日曜=0 に合わせる
         int daysInMonth = firstDate.lengthOfMonth();
 
-        // ごみ収集ルール取得
+        // ごみ収集ルールをデータベースから取得
         GarbageRuleDAO dao = new GarbageRuleDAO();
         List<GarbageRule> rules;
         try {
@@ -49,9 +51,10 @@ public class CalendarServlet extends HttpServlet {
             throw new ServletException("ルールの取得に失敗しました", e);
         }
 
-        // カレンダー上に収集情報を載せる Map<LocalDate, List<String>>
+        // 日付ごとのごみ収集内容を格納する Map
         Map<LocalDate, List<String>> scheduleMap = new HashMap<>();
 
+        // 月の日数分ループして該当ルールに一致すればMapに追加
         for (int day = 1; day <= daysInMonth; day++) {
             LocalDate date = LocalDate.of(year, month, day);
             for (GarbageRule rule : rules) {
@@ -62,47 +65,50 @@ public class CalendarServlet extends HttpServlet {
             }
         }
 
-        // JSP に渡す
+        // JSP に渡すデータをセット
         request.setAttribute("year", year);
         request.setAttribute("month", month);
         request.setAttribute("firstDayOfWeek", firstDayOfWeek);
         request.setAttribute("daysInMonth", daysInMonth);
         request.setAttribute("scheduleMap", scheduleMap);
 
+        // JSP へフォワード
         request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
     }
 
+    /**
+     * 指定日がごみ収集日かどうかを判定
+     */
     private boolean isCollectDay(LocalDate date, GarbageRule rule) {
         String r = rule.getRule();
 
-        // 毎週〇曜日
+        // 【1】「毎週〇曜日」のルール
         if (r.startsWith("毎週")) {
-            String jaDay = r.substring(2, 3);
+            String jaDay = r.substring(2, 3);  // 曜日文字を抽出
             return date.getDayOfWeek() == convertJapaneseDayOfWeek(jaDay);
         }
 
-        // 第n〇曜日
+        // 【2】「第n〇曜日」のルール（例：第2水曜）
         if (r.startsWith("第")) {
-            int weekNum = Character.getNumericValue(r.charAt(1));
-            String jaDay = r.substring(2, 3);
+            int weekNum = Character.getNumericValue(r.charAt(1));  // 何週目か
+            String jaDay = r.substring(2, 3);                      // 曜日
             if (date.getDayOfWeek() == convertJapaneseDayOfWeek(jaDay)) {
                 int weekOfMonth = (date.getDayOfMonth() - 1) / 7 + 1;
                 return weekOfMonth == weekNum;
             }
         }
 
-        // 隔週〇曜日（開始月を基準に隔週カウント）
+        // 【3】「隔週〇曜日」のルール（基準月の1日から週数カウント）
         if (r.startsWith("隔週")) {
             String jaDay = r.substring(2, 3);
             if (date.getDayOfWeek() != convertJapaneseDayOfWeek(jaDay)) return false;
 
-            // 開始日からの週数が偶数の週に収集
             LocalDate baseDate = LocalDate.of(date.getYear(), rule.getStartMonth(), 1);
             long weeksBetween = ChronoUnit.WEEKS.between(baseDate, date);
-            return weeksBetween % 2 == 0;
+            return weeksBetween % 2 == 0; // 偶数週のみ収集
         }
-        
-     // ：曜日ローテーション（例: 火曜:プラ→資源→なし）
+
+        // 【4】ローテーションルール（例: 火曜:プラ→資源→なし）
         if (r.matches("^[日月火水木金土]曜:.*")) {
             String[] parts = r.split(":");
             String jaDay = parts[0].substring(0, 1);
@@ -110,30 +116,33 @@ public class CalendarServlet extends HttpServlet {
 
             if (date.getDayOfWeek() != targetDay) return false;
 
-            String[] pattern = parts[1].split("→");
+            String[] pattern = parts[1].split("→"); // ローテーションパターン
             LocalDate baseDate = LocalDate.of(date.getYear(), rule.getStartMonth(), 1);
             long weeks = ChronoUnit.WEEKS.between(baseDate, date);
             int index = (int)(weeks % pattern.length);
             String currentType = pattern[index];
 
-            // 「なし」週は何も表示しないようにする
+            // 「なし」の週は表示しない
             if ("なし".equals(currentType)) return false;
-            
+
+            // 現在の収集種別がこのruleのtypeと一致する場合だけ表示
             return rule.getType().equals(currentType);
         }
 
-
-        // intervalMonths による収集（月単位の繰り返し）
+        // 【5】nか月ごとの収集（毎月1日で間隔指定）
         if (rule.getIntervalMonths() > 0) {
             int current = date.getYear() * 12 + date.getMonthValue();
             int start = date.getYear() * 12 + rule.getStartMonth();
             return date.getDayOfMonth() == 1 && (current - start) % rule.getIntervalMonths() == 0;
         }
 
+        // 上記に該当しない場合は収集日ではない
         return false;
     }
 
-
+    /**
+     * 日本語の曜日文字（例: "月"）を DayOfWeek に変換
+     */
     private DayOfWeek convertJapaneseDayOfWeek(String ja) {
         switch (ja) {
             case "日": return DayOfWeek.SUNDAY;
