@@ -35,7 +35,7 @@ public class CalendarJoinDAO {
 	        regionRs.close();
 	        regionSt.close();
 
-	        // region_date, types を取得
+	        // region_date と types を取得
 	        String sql = """
 	            SELECT region_date, types
 	            FROM garbage_type
@@ -46,7 +46,6 @@ public class CalendarJoinDAO {
 	        st = conn.prepareStatement(sql);
 	        st.setInt(1, userId);
 	        rs = st.executeQuery();
-
 	        while (rs.next()) {
 	            Date date = rs.getDate("region_date");
 	            String type = rs.getString("types");
@@ -55,22 +54,28 @@ public class CalendarJoinDAO {
 	        rs.close();
 	        st.close();
 
-	        // current を取得
-	        Date current = null;
+	        // calendar にある current をすべて取得
 	        PreparedStatement currentSt = conn.prepareStatement("SELECT current FROM calendar WHERE user_id = ?");
 	        currentSt.setInt(1, userId);
 	        ResultSet currentRs = currentSt.executeQuery();
-	        if (currentRs.next()) {
-	            current = currentRs.getDate("current");
+	        while (currentRs.next()) {
+	            Date checkedDate = currentRs.getDate("current");
+
+	            // すでに region_date にある → "チェック済み" を先頭に追加
+	            if (resultMap.containsKey(checkedDate)) {
+	                List<String> list = resultMap.get(checkedDate);
+	                if (!list.contains("チェック済み")) {
+	                    list.add(0, "チェック済み");
+	                }
+	            } else {
+	                // 存在しない → "チェック済み" のみの新しいエントリを追加
+	                List<String> list = new ArrayList<>();
+	                list.add("チェック済み");
+	                resultMap.put(checkedDate, list);
+	            }
 	        }
 	        currentRs.close();
 	        currentSt.close();
-
-	        // current に一致する日付の List<String> の先頭に "チェック済み" を追加
-	        if (current != null && resultMap.containsKey(current)) {
-	            List<String> list = resultMap.get(current);
-	            list.add(0, "チェック済み");
-	        }
 
 	    } finally {
 	        if (rs != null) rs.close();
@@ -80,5 +85,6 @@ public class CalendarJoinDAO {
 
 	    return resultMap;
 	}
+
 
 }
