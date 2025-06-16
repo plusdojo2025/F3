@@ -44,9 +44,6 @@ public class Garbage_type implements Serializable{
 	public void setTypes(String types) {
 		this.types = types;
 	}
-
-	
-	
 }
 
 
