@@ -27,7 +27,7 @@ public class RegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// ログインページにフォワードする
+
 		UsersDAO uDao = new UsersDAO();
         List<Region> regions = uDao.getRegions();
 
