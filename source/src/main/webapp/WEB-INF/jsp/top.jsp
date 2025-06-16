@@ -7,7 +7,7 @@
 <title>ポイポイ｜トップ</title>
 </head>
 <body>
-<button onclick="location.href='./index.html'">ログイン</button>
-<button onclick="location.href='./index.html'">新規登録</button>
+<button onclick="location.href='/F3/LoginServlet'">ログイン</button>
+<button onclick="location.href='/F3/RegistServlet'">新規登録</button>
 </body>
 </html>
