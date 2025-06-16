@@ -8,12 +8,7 @@ public class MypageJoin implements Serializable{
 	private String mail;
 	private String icon_name;
 	private int icon_id;
-	public int getPoint() {
-		return point;
-	}
-	public void setPoint(int point) {
-		this.point = point;
-	}
+	
 	public MypageJoin(int point, String degree_name, String user_name, String region_name, String mail,
 			String icon_name, int icon_id) {
 		super();
@@ -34,6 +29,12 @@ public class MypageJoin implements Serializable{
 		this.mail = "";
 		this.icon_name = "";
 		this.icon_id = 0;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	public String getDegree_name() {
 		return degree_name;

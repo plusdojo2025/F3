@@ -3,12 +3,17 @@ import java.io.Serializable;
 public class Icon implements Serializable{
 	private int icon_id;
 	private String icon_name;
-	private String price;
+	private int price;
 	// 
-	public Icon(int icon_id,String icon_name,String price) {
+	public Icon(int icon_id,String icon_name,int price) {
 		setIcon_id(icon_id);
 		setIcon_name(icon_name);
 		setPrice(price);
+	}
+	public Icon() {
+		setIcon_id(0);
+		setIcon_name("");
+		setPrice(0);
 	}
 	public int getIcon_id() {
 		return icon_id;
@@ -22,10 +27,10 @@ public class Icon implements Serializable{
 	public void setIcon_name(String icon_name) {
 		this.icon_name = icon_name;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 }
