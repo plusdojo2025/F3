@@ -15,8 +15,8 @@
 <hr>
 <form method="POST" action="/F3/RegistServlet">
 ユーザー名<input type="text" name="name_input"><br>
-パスワード<input type="password" name="pw_input"><br>
-パスワード（2回目）<input type="password" name="pw_re_input"><br>
+パスワード<input type="password" id="pw_input" name="pw_input"><br>
+パスワード（2回目）<input type="password" id="pw_re_input" name="pw_re_input"><br>
 <label for="region">居住地域</label>
     <select name="region_input" id="region_input">
         <% for (Region region : regions) { %>
@@ -25,6 +25,8 @@
     </select><br>
 メールアドレス<input type="text" name="mail_input"><br>
 <input type="submit" name="insert_btn" value="ログイン">
+<p id="error_msg" class="font-red"></p>
 </form>
+<script src="/F3/js/regist.js"></script>
 </body>
 </html>
