@@ -12,8 +12,8 @@
 
 <c:forEach var="e" items="${IconList}" >
 	<form method="POST" action="/webappAns/UpdateDeleteServlet">
-	id<input type="text" name="number" value="${e.Icon_id}">
-	name<input type="text" name="company" value="${e.Icon_name}"><br>
+	id<input type="text" name="number" value="${e.icon_id}">
+	name<input type="text" name="company" value="${e.icon_name}"><br>
 	price<input type="text" name="department" value="${e.price}"><br>
 	<input type="submit" name="submit" value="更新">
 	</form>
