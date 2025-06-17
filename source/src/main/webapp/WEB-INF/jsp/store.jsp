@@ -11,10 +11,10 @@
 <hr>
 
 <c:forEach var="e" items="${IconList}" >
-	<form method="POST" action="/webappAns/UpdateDeleteServlet">
-	id<input type="text" name="number" value="${e.icon_id}">
-	<img src="img/${e.icon_name}" alt="サンプル">
-	price<input type="text" name="department" value="${e.price}"><br>
+	<form method="POST" action="/F3/StoreServlet">
+	※実際は見えないid<input type="text" name="icon_id" value="${e.icon_id}">
+	<img src="img/${e.icon_name}" width="270" height="150" alt="サンプル">
+	price<input type="text" name="price" value="${e.price}"><br>
 	<input type="submit" name="submit" value="交換">
 	</form>
 	<hr>

@@ -41,11 +41,12 @@ public class MypageJoinDAO {
 					throw new Exception("データベース接続に失敗しました。");
 				}
 
-				st = conn.prepareStatement("SELECT point,degree_name,user_name,region_id,region_name,mail,icon_name,icon_id from (((users JOIN degree ON degree_id = degree_id) JOIN icon ON icon_id = icon_id) JOIN region ON region_id) WHERE mail = ?");
-				st.setString(1,mail);
+				st = conn.prepareStatement("SELECT U.user_id,point,D.degree_name,U.user_name,R.region_id,R.region_name,U.mail,I.icon_name,I.icon_id from ((((users U JOIN degree D ON U.degree_id = D.degree_id) JOIN icon I ON U.icon_id = I.icon_id) JOIN region R ON U.region_id=R.region_id)JOIN scorepoint S ON U.user_id=S.user_id) WHERE U.mail ='taro@example.com';");
+				//st.setString(1,mail);
 				rs = st.executeQuery();
 				//データ格納
-				userinf = new MypageJoin(rs.getInt("point"),rs.getString("degree_name"),rs.getString("user_name"),rs.getInt("regoin_id"),rs.getString("region_name"),rs.getString("mail"),rs.getString("icon_name"),rs.getInt("icon_id"));
+				rs.next();
+				userinf = new MypageJoin(rs.getInt("user_id"),rs.getInt("point"),rs.getString("degree_name"),rs.getString("user_name"),rs.getInt("region_id"),rs.getString("region_name"),rs.getString("mail"),rs.getString("icon_name"),rs.getInt("icon_id"));
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +74,7 @@ public class MypageJoinDAO {
 				throw new Exception("データベース接続に失敗しました。");
 			}
 			
-			PreparedStatement pStmt = conn.prepareStatement("UPDATE users (region_id,icon_id,user_name,mail) SET (?,?,?,?)");
+			PreparedStatement pStmt = conn.prepareStatement("UPDATE users SET region_id = ?, icon_id = ?, user_name = ?,mail = ? WHERE user_id = ?;");
 			
 			//region_id
 			pStmt.setInt(1, user.getRegion_id());
@@ -87,6 +88,8 @@ public class MypageJoinDAO {
 			//mail
 			pStmt.setString(4, user.getMail());
 			
+			//条件uid
+			pStmt.setInt(5,user.getUser_id());
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
@@ -113,10 +116,10 @@ public class MypageJoinDAO {
 	
 	
 	
-	//アイコン一覧取得メソッド
-	private static final String SELECT_ICONS = "SELECT * FROM icon";
+	//保持アイコン一覧取得メソッド-----要修正
+	private static final String SELECT_ICONS = "SELECT C.icon_id,C.icon_name FROM icon C JOIN iconstatus L ON C.icon_id=L.icon_id WHERE L.user_id=?";
 	
-	public List<Icon> getIcons(){
+	public List<Icon> getIcons(int id){
 		List<Icon> icon = new ArrayList<>();
 		Connection conn = null;
 		try {
@@ -127,9 +130,10 @@ public class MypageJoinDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			PreparedStatement stmt = conn.prepareStatement(SELECT_ICONS);
+			stmt.setInt(1,id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				icon.add(new Icon(rs.getInt("icon_id"), rs.getString("icon_name"),rs.getInt("price")));
+				icon.add(new Icon(rs.getInt("icon_id"), rs.getString("icon_name"),0));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

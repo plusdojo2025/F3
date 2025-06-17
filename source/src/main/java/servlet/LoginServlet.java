@@ -51,13 +51,13 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", new LoginUsers(mail));
 
 			// メニューサーブレットにリダイレクトする
-			// response.sendRedirect("/webappAns/MenuServlet");
+			response.sendRedirect("/F3/HomeServlet");
 			System.out.println("ログイン成功");
 		} else { // ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			System.out.println("ログイン失敗");
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
