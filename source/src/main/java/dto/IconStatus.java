@@ -9,6 +9,10 @@ public class IconStatus implements Serializable{
 		setUser_id(user_id);
 		setIcon_id(icon_id);
 	}
+	public IconStatus() {
+		setUser_id(0);
+		setIcon_id(0);
+	}
 	//ゲッターセッター
 	public int getUser_id() {
 		return user_id;

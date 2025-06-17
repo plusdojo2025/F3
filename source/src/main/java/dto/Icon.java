@@ -6,10 +6,17 @@ public class Icon implements Serializable{
 	private int price;
 	// 
 	public Icon(int icon_id,String icon_name,int price) {
+
 		super();
 		this.icon_id = icon_id;
 		this.icon_name = icon_name;
 		this.price = price;
+
+	}
+	public Icon() {
+		setIcon_id(0);
+		setIcon_name("");
+		setPrice(0);
 	}
 	public int getIcon_id() {
 		return icon_id;
