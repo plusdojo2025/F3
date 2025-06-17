@@ -41,11 +41,12 @@ public class MypageJoinDAO {
 					throw new Exception("データベース接続に失敗しました。");
 				}
 
-				st = conn.prepareStatement("SELECT point,degree_name,user_name,region_id,region_name,mail,icon_name,icon_id from (((users JOIN degree ON degree_id = degree_id) JOIN icon ON icon_id = icon_id) JOIN region ON region_id) WHERE mail = ?");
-				st.setString(1,mail);
+				st = conn.prepareStatement("SELECT point,D.degree_name,U.user_name,R.region_id,R.region_name,U.mail,I.icon_name,I.icon_id from ((((users U JOIN degree D ON U.degree_id = D.degree_id) JOIN icon I ON U.icon_id = I.icon_id) JOIN region R ON U.region_id=R.region_id)JOIN scorepoint S ON U.user_id=S.user_id) WHERE U.mail ='taro@example.com';");
+				//st.setString(1,mail);
 				rs = st.executeQuery();
 				//データ格納
-				userinf = new MypageJoin(rs.getInt("point"),rs.getString("degree_name"),rs.getString("user_name"),rs.getInt("regoin_id"),rs.getString("region_name"),rs.getString("mail"),rs.getString("icon_name"),rs.getInt("icon_id"));
+				rs.next();
+				userinf = new MypageJoin(rs.getInt("point"),rs.getString("degree_name"),rs.getString("user_name"),rs.getInt("region_id"),rs.getString("region_name"),rs.getString("mail"),rs.getString("icon_name"),rs.getInt("icon_id"));
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +74,7 @@ public class MypageJoinDAO {
 				throw new Exception("データベース接続に失敗しました。");
 			}
 			
-			PreparedStatement pStmt = conn.prepareStatement("UPDATE users (region_id,icon_id,user_name,mail) SET (?,?,?,?)");
+			PreparedStatement pStmt = conn.prepareStatement("UPDATE users SET region_id = ?, icon_id = ?, user_name = ?,mail = ? WHERE user_id = 1;");
 			
 			//region_id
 			pStmt.setInt(1, user.getRegion_id());

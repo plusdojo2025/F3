@@ -76,11 +76,13 @@ public class MypageServlet extends HttpServlet {
 		user.setRegion_id(region_id);
 		user.setUser_name(name);
 		MypageJoinDAO users = new MypageJoinDAO();
-		if(users.mypageUpdate(user)) {
-			//response.sendRedirect("/servlet/MypageServlet");
-			System.out.println("更新成功");
-		}else {
-			System.out.println("更新失敗");
+		if (users.mypageUpdate(user)) {
+		    System.out.println("更新成功");
+		    String contextPath = request.getContextPath();
+		    response.sendRedirect(contextPath + "/MypageServlet");
+		} else {
+		    System.out.println("更新失敗");
+		    // 必要であればエラー画面や元の画面に戻す処理を書く
 		}
 		
 	}
