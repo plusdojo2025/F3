@@ -1,41 +1,65 @@
 package servlet;
 
+import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import dao.CalendarJoinDAO;
+import dto.CalendarJoin;
 
-public class CalendarServlet {
-    public static void main(String[] args) {
+@WebServlet("/CalendarServlet")
+public class CalendarServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
         try {
-            CalendarJoinDAO dao = new CalendarJoinDAO();
-
-            // 任意の user_id（例: 1）
             int userId = 1;
+            CalendarJoinDAO dao = new CalendarJoinDAO();
+            Map<Date, List<CalendarJoin>> calendarData = dao.getCalendarJoinMapByUserId(userId);
+            Map<Date, List<CalendarJoin>> sortedMap = new TreeMap<>(calendarData);
 
-            // DAOから Map<Date, List<String>> を取得（チェック済み対応）
-            Map<Date, List<String>> calendarData = dao.getGarbageTypesByUserId(userId);
+            Map<String, Map<String, Object>> viewMap = new LinkedHashMap<>();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-            // TreeMapでソートして出力
-            Map<Date, List<String>> sortedMap = new TreeMap<>(calendarData);
-
-            for (Map.Entry<Date, List<String>> entry : sortedMap.entrySet()) {
+            for (Map.Entry<Date, List<CalendarJoin>> entry : sortedMap.entrySet()) {
                 Date date = entry.getKey();
-                List<String> types = entry.getValue();
+                String dateStr = sdf.format(date);
+                List<CalendarJoin> beans = entry.getValue();
 
-                System.out.println("📅 日付: " + date);
-
-                for (int i = 0; i < types.size(); i++) {
-                    String label = (i == 0 && "チェック済み".equals(types.get(0))) ? "✅ " : "  - ";
-                    System.out.println(label + types.get(i));
+                boolean isChecked = !beans.isEmpty() && "チェック済み".equals(beans.get(0).getTypes());
+                List<String> types = new ArrayList<>();
+                for (int i = isChecked ? 1 : 0; i < beans.size(); i++) {
+                    types.add(beans.get(i).getTypes());
                 }
+
+                Map<String, Object> cell = new HashMap<>();
+                cell.put("isChecked", isChecked);
+                cell.put("types", types);
+                viewMap.put(dateStr, cell);
             }
+
+            request.setAttribute("calendarViewMap", viewMap);
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("カレンダー情報の取得に失敗しました。");
+            request.setAttribute("error", "カレンダー情報の取得に失敗しました。");
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
+        dispatcher.forward(request, response);
     }
 }

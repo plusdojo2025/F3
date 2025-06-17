@@ -10,10 +10,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dto.CalendarJoin;
+
 public class CalendarJoinDAO {
 
-	public Map<Date, List<String>> getGarbageTypesByUserId(int userId) throws Exception {
-	    Map<Date, List<String>> resultMap = new HashMap<>();
+	public Map<Date, List<CalendarJoin>> getCalendarJoinMapByUserId(int userId) throws Exception {
+	    Map<Date, List<CalendarJoin>> resultMap = new HashMap<>();
 	    Connection conn = null;
 	    PreparedStatement st = null;
 	    ResultSet rs = null;
@@ -35,7 +37,7 @@ public class CalendarJoinDAO {
 	        regionRs.close();
 	        regionSt.close();
 
-	        // region_date, types を取得
+	        // region_date と types を取得
 	        String sql = """
 	            SELECT region_date, types
 	            FROM garbage_type
@@ -46,31 +48,36 @@ public class CalendarJoinDAO {
 	        st = conn.prepareStatement(sql);
 	        st.setInt(1, userId);
 	        rs = st.executeQuery();
-
 	        while (rs.next()) {
-	            Date date = rs.getDate("region_date");
-	            String type = rs.getString("types");
-	            resultMap.computeIfAbsent(date, k -> new ArrayList<>()).add(type);
+	            Date regionDate = rs.getDate("region_date");
+	            String types = rs.getString("types");
+
+	            CalendarJoin bean = new CalendarJoin();
+	            bean.setRegion_date(regionDate);
+	            bean.setTypes(types);
+
+	            resultMap.computeIfAbsent(regionDate, k -> new ArrayList<>()).add(bean);
 	        }
 	        rs.close();
 	        st.close();
 
-	        // current を取得
-	        Date current = null;
+	        // チェック済み日付を取得して反映
 	        PreparedStatement currentSt = conn.prepareStatement("SELECT current FROM calendar WHERE user_id = ?");
 	        currentSt.setInt(1, userId);
 	        ResultSet currentRs = currentSt.executeQuery();
-	        if (currentRs.next()) {
-	            current = currentRs.getDate("current");
+
+	        while (currentRs.next()) {
+	            Date checkedDate = currentRs.getDate("current");
+
+	            CalendarJoin bean = new CalendarJoin();
+	            bean.setCurrent(checkedDate);  // これは region_date と同じでよい
+	            bean.setTypes("チェック済み");
+
+	            resultMap.computeIfAbsent(checkedDate, k -> new ArrayList<>()).add(0, bean);  // 先頭に追加
 	        }
+
 	        currentRs.close();
 	        currentSt.close();
-
-	        // current に一致する日付の List<String> の先頭に "チェック済み" を追加
-	        if (current != null && resultMap.containsKey(current)) {
-	            List<String> list = resultMap.get(current);
-	            list.add(0, "チェック済み");
-	        }
 
 	    } finally {
 	        if (rs != null) rs.close();
@@ -80,5 +87,7 @@ public class CalendarJoinDAO {
 
 	    return resultMap;
 	}
+
+
 
 }
