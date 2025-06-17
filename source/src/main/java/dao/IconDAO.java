@@ -10,6 +10,7 @@ import java.util.List;
 
 import dto.Icon;
 
+//	ストア一覧表示処理
 public class IconDAO {
     public List<Icon> getAllIcon() {
     	Connection conn = null;
@@ -41,5 +42,5 @@ public class IconDAO {
         return iconList;
     }
 }
-
+//ストア一覧表示処理終わり
 

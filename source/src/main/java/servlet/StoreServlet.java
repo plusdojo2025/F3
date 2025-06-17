@@ -11,12 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.IconDAO;
+import dao.StoreJoinDAO;
 import dto.Icon;
+import dto.StoreJoin;
 
 @WebServlet("/StoreServlet")
 public class StoreServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    //ページ遷移・画面表示
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -38,4 +41,36 @@ public class StoreServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/store.jsp");
         dispatcher.forward(request, response);
     }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/F3/LoginServlet");
+//			return;
+//		}
+
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String icon_idStr = request.getParameter("icon_id");
+		int icon_id = Integer.parseInt(icon_idStr);// 数値型に変換					/* アイコンID */
+		String price = request.getParameter("price");				/* 価格 */
+
+		
+		// ポイントの更新＆保持アイコン登録処理を行う
+		StoreJoinDAO sjDAO = new StoreJoinDAO();
+		sjDAO.insert(new StoreJoin(0, icon_id,"",0,0)); 
+			
+
+		// 検索結果をリクエストスコープに格納する
+		//request.setAttribute("cardList", cardList);
+		
+		
+
+
+//		// 結果ページにフォワードする
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search_result.jsp");
+//		dispatcher.forward(request, response);
+	}
 }
