@@ -4,41 +4,57 @@
 <head>
     <title>ごみカレンダー</title>
     <style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        width: 14.28%;
-        height: 100px;
-        vertical-align: top;
-        border: 1px solid #999;
-        padding: 6px;
-        font-size: 13px;
-    }
-    th {
-        background-color: #f0f0f0;
-    }
-    .checked {
-        background-color: #e0f7fa;
-        font-weight: bold;
-    }
-</style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            width: 14.28%;
+            height: 100px;
+            vertical-align: top;
+            border: 1px solid #999;
+            padding: 6px;
+            font-size: 13px;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .checked {
+            background-color: #e0f7fa;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h2>📅 2025年6月のごみ出し予定</h2>
+	<div>
+        <c:choose>
+            <c:when test="${code == '1'}">
+                <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2><a href="CalendarServlet">次</a>
+            </c:when>
+            <c:when test="${code == '2'}">
+                <a href="CalendarServlet">前</a><h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
+            </c:when>
+            <c:otherwise>
+                <a href="CalendarServlet?code=1">前</a><h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2><a href="CalendarServlet?code=2">次</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+    
     <table>
         <tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
+
         <c:set var="day" value="1" />
         <c:forEach var="week" begin="1" end="6">
             <tr>
                 <c:forEach var="d" begin="1" end="7">
                     <c:choose>
-                        <c:when test="${week == 1 && d < 7 && d < 7 && d < calendarStartDay}">
+                        <c:when test="${week == 1 && d < calendarStartDay}">
                             <td></td>
                         </c:when>
-                        <c:when test="${day <= 30}">
-                            <c:set var="dateKey" value="2025-06-${day lt 10 ? '0' : ''}${day}" />
+                        <c:when test="${day <= daysInMonth}">
+                            <c:set var="dayStr" value="${day lt 10 ? '0' : ''}${day}" />
+                            <c:set var="monthStr" value="${displayMonth lt 10 ? '0' : ''}${displayMonth}" />
+                            <c:set var="dateKey" value="${displayYear}-${monthStr}-${dayStr}" />
                             <c:set var="cell" value="${calendarViewMap[dateKey]}" />
                             <td class="${cell.isChecked ? 'checked' : ''}">
                                 <strong>${day}</strong><br/>
