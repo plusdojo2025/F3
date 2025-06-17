@@ -26,32 +26,56 @@
   background: #fff;
   padding: 20px;
   border-radius: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 </style>
 
 </head>
 <body>
+<!-- 更新の成功/失敗のアラート -->
+<c:if test="${success == 'true'}">
+  <script>
+    alert('更新が完了しました');
+  </script>
+</c:if>
+<c:if test="${success == 'false'}">
+  <script>
+    alert('更新に失敗しました');
+  </script>
+</c:if>
 
 <!-- モーダル -->
 <div id="modalOverlay" class="modal-overlay">
   <div class="modal">
     <h3>画像を選択してください</h3>
+    <div class="image-list">
     <% for (Icon icon : icons) { %>
     <img src="img/<%= icon.getIcon_name()%>" class="image-option" data-id="<%= icon.getIcon_id() %>">
     <% } %>
     <br><br>
+    </div>
     <button onclick="closeModal()">キャンセル</button>
   </div>
 </div>
+
 <c:set var="e" value="${mypage}" />
+
 称号:${e.degree_name}
 <br>
 ポイント:${e.point}
 <br>
 <form method="POST" action="/F3/MypageServlet">
-
+<!-- 隠しユーザーID -->
+<input type="hidden" name="user_id" value="${e.user_id}">
 アイコン<br>
-<img src="img/${e.icon_name}" alt="サンプル">
+<img id="previewIcon" src="img/${e.icon_name}" alt="サンプル">
 <button type="button" onclick="openModal()">画像を選ぶ</button>
 <input type="hidden" name="icon_id" id="selectedIconId"value="${e.icon_id}">
 <br><br>

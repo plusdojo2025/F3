@@ -37,52 +37,64 @@ public class MypageServlet extends HttpServlet {
 //			response.sendRedirect("/F3/LoginServlet");
 //			return;
 //		}
-		
+		String success = (String) session.getAttribute("success");
+		if (success != null) {
+		    request.setAttribute("success", success);
+		    session.removeAttribute("success");
+		}
 		//地域一覧格納
 		MypageJoinDAO uDao = new MypageJoinDAO();
         List<Region> regions = uDao.getRegions();
         request.setAttribute("regions", regions);
         
-        //所持アイコン一覧取得
-        List<Icon> icon = uDao.getIcons();
-        request.setAttribute("icon", icon);
-        
         //マイページ情報取得
         LoginUsers user = (LoginUsers)session.getAttribute("id");
-        MypageJoin mypage = uDao.mypageSelect("taro@example.com");
+        MypageJoin mypage = uDao.mypageSelect("taro@example.com");//仮で入力中
         request.setAttribute("mypage",mypage);
+        
+      //所持アイコン一覧取得
+        List<Icon> icon = uDao.getIcons(mypage.getUser_id());
+        
+        request.setAttribute("icon", icon);
+        
+        
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
 		dispatcher.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 //		if (session.getAttribute("id") == null) {
 //			response.sendRedirect("/F3/LoginServlet");
 //			return;
 //		}
 		
-		request.setCharacterEncoding("UTF-8");
 		//リクエストスコープ取得
+		int user_id = Integer.parseInt(request.getParameter("user_id"));
 		int region_id = Integer.parseInt(request.getParameter("region_id"));
 		int icon_id = Integer.parseInt(request.getParameter("icon_id"));
 		String name = request.getParameter("name");
 		String mail = request.getParameter("mail");
 		
+		
 		Users user = new Users();
+		user.setUser_id(user_id);
 		user.setIcon_id(icon_id);
 		user.setMail(mail);
 		user.setRegion_id(region_id);
 		user.setUser_name(name);
 		MypageJoinDAO users = new MypageJoinDAO();
+		String contextPath = request.getContextPath();
 		if (users.mypageUpdate(user)) {
 		    System.out.println("更新成功");
-		    String contextPath = request.getContextPath();
+		    session.setAttribute("success", "true");
 		    response.sendRedirect(contextPath + "/MypageServlet");
 		} else {
 		    System.out.println("更新失敗");
-		    // 必要であればエラー画面や元の画面に戻す処理を書く
+		    session.setAttribute("success", "false");
+		    response.sendRedirect(contextPath + "/MypageServlet");
 		}
 		
 	}
