@@ -12,17 +12,16 @@
 
 <c:forEach var="e" items="${IconList}" >
 	<form method="POST" action="/webappAns/UpdateDeleteServlet">
-	id<input type="text" name="number" value="${e.Icon_id}">
-	name<input type="text" name="company" value="${e.Icon_name}"><br>
+	id<input type="text" name="number" value="${e.icon_id}">
+	<img src="img/${e.icon_name}" alt="サンプル">
 	price<input type="text" name="department" value="${e.price}"><br>
-	<input type="submit" name="submit" value="更新">
+	<input type="submit" name="submit" value="交換">
 	</form>
 	<hr>
 </c:forEach>
 <c:if test="${empty IconList}">
 <p>指定された条件に一致するデータはありません。</p>
 </c:if>
-<a href="/webappAns/MenuServlet">メニューへ戻る</a>
 
 </body>
 </html>

@@ -17,7 +17,7 @@ public class UsersDAO {
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webcontent?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			return conn;
@@ -71,7 +71,7 @@ public class UsersDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webcontent?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -124,7 +124,7 @@ public class UsersDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webcontent?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			conn.setAutoCommit(false);
@@ -247,7 +247,7 @@ public class UsersDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webcontent?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			PreparedStatement stmt = conn.prepareStatement(SELECT_REGIONS);
