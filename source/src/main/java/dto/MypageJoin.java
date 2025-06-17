@@ -4,17 +4,19 @@ public class MypageJoin implements Serializable{
 	private int point;
 	private String degree_name;
 	private String user_name;
+	private int region_id;
 	private String region_name;
 	private String mail;
 	private String icon_name;
 	private int icon_id;
 	
-	public MypageJoin(int point, String degree_name, String user_name, String region_name, String mail,
+	public MypageJoin(int point, String degree_name, String user_name, int region_id,String region_name, String mail,
 			String icon_name, int icon_id) {
 		super();
 		this.point = point;
 		this.degree_name = degree_name;
 		this.user_name = user_name;
+		this.region_id = region_id;
 		this.region_name = region_name;
 		this.mail = mail;
 		this.icon_name = icon_name;
@@ -71,6 +73,12 @@ public class MypageJoin implements Serializable{
 	}
 	public void setIcon_id(int icon_id) {
 		this.icon_id = icon_id;
+	}
+	public int getRegion_id() {
+		return region_id;
+	}
+	public void setRegion_id(int region_id) {
+		this.region_id = region_id;
 	}
 	
 }
