@@ -11,17 +11,21 @@ import java.util.List;
 import dto.Icon;
 
 public class IconDAO {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/WebContent";
-    private static final String USER = "root";
-    private static final String PASS = "password";
-    
     public List<Icon> getAllIcon() {
+    	Connection conn = null;
         List<Icon> iconList = new ArrayList<>();
-        String sql = "SELECT icon_id, icon_name, price FROM icons";
+        String sql = "SELECT icon_id, icon_name, price FROM icon;";
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        try  {
+        	// JDBCドライバを読み込む
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
              PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 Icon icon = new Icon(rs.getInt("icon_id"), rs.getString("icon_name"), rs.getInt("price"));
@@ -29,7 +33,10 @@ public class IconDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			iconList = null;
+		}
 
         return iconList;
     }

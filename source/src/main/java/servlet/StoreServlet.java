@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.IconDAO;
 import dto.Icon;
 
-@WebServlet("/StoreServletServlet")
+@WebServlet("/StoreServlet")
 public class StoreServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
