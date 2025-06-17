@@ -1,0 +1,16 @@
+.flame {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;  /* ← 幅を広げたい値に変更 */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flame-img {
+  width: 100%;       /* 親（.flame）の幅に合わせる */
+  height: auto;
+  display: block;
+}

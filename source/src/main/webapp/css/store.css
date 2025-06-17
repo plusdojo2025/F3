@@ -1,0 +1,175 @@
+/* flameラッパー：中央寄せ */
+.flame-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1px 0;
+}
+
+/* flame本体：背景画像を使って高さ可変にする */
+.flame {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  background-image: url("C:/Users/user/Documents/グループ開発/開発素材/flame_store.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 70px 40px 80px; /* 背景の上下左右に余白を確保 */
+  box-sizing: border-box;
+}
+
+/* store_item は絶対位置ではなく通常フロー内で配置 */
+.store_item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* アイテム1個分 */
+.item-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.item-box img {
+  width: 80%;
+  height: auto;
+  margin-bottom: 2px;
+}
+
+.price {
+  width: 80%;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #080808;
+  border: 3px solid #080808;
+  border-radius: 6px;
+  padding: 4px 0;
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 個別色指定 */
+.price-50 {
+  background-color: #ffdddd;
+  color: #a00000;
+  border-color: #a00000;
+}
+.price-100 {
+  background-color: #ddffdd;
+  color: #006600;
+  border-color: #006600;
+}
+.price-150 {
+  background-color: #ddddff;
+  color: #0000a0;
+  border-color: #0000a0;
+}
+.price-300 {
+  background-color: #b87333;  /* 銅色の薄め背景 */
+  color: #4b2e05;             /* 銅色に合う濃い文字色 */
+  border-color: #4b2e05;
+}
+
+.price-500 {
+  background-color: #c0c0c0;  /* 銀色の背景 */
+  color: #444444;             /* 銀に合うダークグレー文字色 */
+  border-color: #444444;
+}
+
+.price-1000 {
+  background-color: #080808;  
+  color: #ffd700;             
+  border-color: #e2a414;
+}
+
+.swap_btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: hsl(166, 87%, 47%);
+  color: white;
+  border: 2px solid #080808;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+  .store_item {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 15px;
+    padding: 8%;
+  }
+
+  .item-box img {
+    width: 85%;
+  }
+
+  .price,
+  .swap_btn {
+    font-size: 14px;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .store_item {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+    padding: 6%;
+    gap: 12px;
+  }
+
+  .item-box img {
+    width: 90%;
+  }
+
+  .price,
+  .swap_btn {
+    font-size: 13px;
+    width: 95%;
+  }
+}
+
+/* ポイント残高 */
+.flame {
+  position: relative;
+
+}
+
+.point-box {
+  position: absolute;
+  top: -30px;    /* 好きな位置に調整 */
+  right: 80px;
+  width: 120px;  /* 画像と文字の表示領域サイズ */
+  text-align: center;
+  pointer-events: none;  /* 必要に応じて */
+}
+
+.point-image {
+  width: 200%;
+  height: auto;
+  display: block;
+}
+
+.point-text {
+  position: absolute;
+  top: 50%;  /* 画像の中央に */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 0, 0);     /* 文字色 */
+  font-weight: bold;
+  
+  pointer-events: none;  /* クリックを画像に通す */
+  white-space: nowrap;
+  font-size: 20px;
+}
