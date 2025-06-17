@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,7 +27,32 @@ public class CalendarServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+    	
+    	String code = request.getParameter("code");
+
+    	Calendar cal = Calendar.getInstance();
+    	cal.setTime(new java.util.Date()); // 今の日付を基に
+    	cal.set(Calendar.DAY_OF_MONTH, 1); // 月初に固定
+
+    	if ("1".equals(code)) {
+    	    cal.add(Calendar.MONTH, -1); // 前月
+    	} else if ("2".equals(code)) {
+    	    cal.add(Calendar.MONTH, 1); // 次月
+    	} // code が null またはその他 → 今月のまま
+
+    	int year = cal.get(Calendar.YEAR);
+    	int month = cal.get(Calendar.MONTH) + 1; // ← これらが必要！
+    	int calendarStartDay = cal.get(Calendar.DAY_OF_WEEK);
+    	int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+    	// カレンダー表示に必要なデータをセット
+    	request.setAttribute("displayYear", year);
+    	request.setAttribute("displayMonth", month);
+    	request.setAttribute("calendarStartDay", calendarStartDay);
+    	request.setAttribute("daysInMonth", daysInMonth);
+    	request.setAttribute("code", code);
         try {
+        	//マジックナンバーです。
             int userId = 1;
             CalendarJoinDAO dao = new CalendarJoinDAO();
             Map<Date, List<CalendarJoin>> calendarData = dao.getCalendarJoinMapByUserId(userId);
