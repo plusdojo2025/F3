@@ -40,4 +40,36 @@ public class HomeServlet extends HttpServlet {
     	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
         dispatcher.forward(request, response);
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	String check_id = request.getParameter("check_id");
+    	String score_str = request.getParameter("score");
+    	String point_str = request.getParameter("point");
+    	int score = Integer.parseInt(score_str);
+    	int point = Integer.parseInt(point_str);
+    	
+    	
+    	System.out.println(check_id);
+    	System.out.println(score);
+    	System.out.println(point);
+    	
+    	if(check_id==null) {
+    		System.out.println("空です。");
+    	}
+    	//ユーザーID仮で1を入れています。
+    	int user_id = 1;
+    	
+    	//日付取得
+    	Calendar cal = Calendar.getInstance();
+    	cal.setTime(new java.util.Date());
+    	java.sql.Date today = new java.sql.Date(cal.getTimeInMillis());
+    	
+    	//dao処理
+    	HomeJoinDAO dao = new HomeJoinDAO();
+    	boolean check = dao.insertCal(user_id, today, score, point);
+    	if(check) {
+    	    System.out.println("カレンダー登録成功！");
+    	    response.sendRedirect("HomeServlet");  // ←これで doGet() に自然遷移
+    	}
+    } 
 }

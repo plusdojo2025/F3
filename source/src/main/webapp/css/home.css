@@ -14,3 +14,37 @@
   height: auto;
   display: block;
 }
+/*トゥムル、ホーム画面を表示するために使ったcss */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+  .modal-content {
+    background: white;
+    padding: 20px;
+    margin: 100px auto;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .close-button {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #444;
+}
+.close-button:hover {
+  color: #e74c3c; /* 赤に変化 */
+}
+.modal-content {
+  position: relative; /* ↑ ボタン配置のために必要 */
+}
+/*トゥムル終わり*/

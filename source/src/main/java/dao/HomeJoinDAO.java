@@ -100,5 +100,65 @@ public class HomeJoinDAO {
 		}
 		return home;
 		
-	}	
+	}
+	public static Connection getConnection() throws Exception {
+		Connection conn = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+			return conn;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public boolean insertCal(int user_id, Date current, int score, int point) {
+		Connection conn = null;
+		PreparedStatement st = null;
+		boolean checkInsert = false;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			String sql1 = "insert into calendar values(?, ?)";
+			
+			rs = st.executeQuery();
+			st.setInt(1, user_id);
+			st.setDate(2, current);
+			int check = st.executeUpdate();
+			String sql2 = """					
+							UPDATE scorePoint
+							SET score = ?
+							WHERE USER_ID=?;
+						""";			
+			st = conn.prepareStatement(sql2);
+			st.setInt(1, user_id);
+			st.setInt(2, score);
+			
+			
+			
+			String sql3 = """					
+					UPDATE scorePoint
+					SET point = ?
+					WHERE USER_ID=?;
+				""";
+			st = conn.prepareStatement(sql1);
+			st.setInt(1, user_id);
+			st.setInt(2, point);
+			
+			
+			
+			
+			if(check>0) {
+				checkInsert = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return checkInsert;
+	}
+	public boolean updaPointScore(int score, int point) {
+		return false;
+	}
 }
