@@ -7,7 +7,6 @@
 <%@ page import="dto.Region"%>
 <%
     List<Region> regions = (List<Region>) request.getAttribute("regions");
-List<Region> regions = (List<Region>) request.getAttribute("regions");
 %>
 <!DOCTYPE html>
 <html>
@@ -61,7 +60,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 	</div>
 	
 	<div class="flame">
-		<img src="img/flame_regist.png"
+		<img src="<c:url value='/img/flame_regist.png'/>"
 			class="flame-img" />
 				
 			<div class="form-wrapper" >

@@ -21,7 +21,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
-			src="img/logo.png"></a>
+			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
 	<!-- index.html -->
@@ -80,6 +80,6 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 					value="送信">
 			</form>
 		</div>
-	</div>
+	</div>	
 </body>
 </html>
