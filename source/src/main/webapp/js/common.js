@@ -32,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburgerIcon.src = hamburgerImgPath;
     }
   });
-<<<<<<< Updated upstream
+
 });
-=======
-});
->>>>>>> Stashed changes
+

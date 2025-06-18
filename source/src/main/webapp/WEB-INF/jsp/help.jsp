@@ -64,7 +64,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
     
 <div class="flame">
   <img src="img/flame_help.png"class="flame-img" />
-=======
+
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
 				<li class="nav__item"><a
@@ -116,7 +116,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
         <textarea name="inquiry" class="Form-Item-Input2"></textarea>
       </div>
       <input type="submit" name="sendinquiry" class="submit_btn" value="送信">
-=======
+
 		<div class="form-wrapper">
 
 			<a href=${region[0].link}><input type="submit" name="link"
@@ -124,16 +124,13 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 				type="submit" name="pointinfo" class="pointinfo help-button"
 				value="ポイントについて"> <input type="submit" name="subject"
 				class="subject help-button" value="お問い合わせ">
->>>>>>> Stashed changes
 
-
-<<<<<<< Updated upstream
 <script>
 
 
 
 </script>
-=======
+
 			<!-- モーダルポップアップ -->
 			<div id="popup" class="popup">
 				<div class="popup-content">
@@ -158,6 +155,5 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 		</div>
 	</div>
 
->>>>>>> Stashed changes
 </body>
 </html>

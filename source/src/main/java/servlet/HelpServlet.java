@@ -25,13 +25,12 @@ public class HelpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<<<<<<< Updated upstream
-=======
+
 		HelpJoinDAO hDAO = new HelpJoinDAO();
 		List<Region> region = hDAO.getGarbageLink(1);
 		request.setAttribute("region", region);
 		System.out.println(region);
->>>>>>> Stashed changes
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/help.jsp");
 		dispatcher.forward(request, response);
 	}
