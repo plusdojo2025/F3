@@ -165,8 +165,8 @@ public class UsersDAO {
 			String sql = "SELECT user_id FROM Users WHERE mail=? AND password=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, users.getMail());
-			pStmt.setString(2, users.getPassword());
-			System.out.println(pStmt);
+			pStmt.setString(2, createHashPass(users.getPassword()));
+			System.out.println("sql" + pStmt);
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

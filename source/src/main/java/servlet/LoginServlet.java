@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("id", uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
+			System.out.println(uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/F3/HomeServlet");
 			System.out.println("ログイン成功");
