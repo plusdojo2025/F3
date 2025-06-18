@@ -33,15 +33,21 @@ public class StoreServlet extends HttpServlet {
         // DAOを使用してデータベースの情報を取得
         IconDAO IconDAO = new IconDAO();
         List<Icon> IconList = IconDAO.getAllIcon();
+        
+        StoreJoinDAO sjDAO = new StoreJoinDAO();
+        int point = sjDAO.getpoint(new StoreJoin(0, 0,"",0,0));
+ 
 
         // JSPに渡す
         request.setAttribute("IconList", IconList);
+        request.setAttribute("point", point);
+        
 
         // ストアページへフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/store.jsp");
         dispatcher.forward(request, response);
     }
-    
+  //ページ遷移・画面表示終わり
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
@@ -55,12 +61,13 @@ public class StoreServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String icon_idStr = request.getParameter("icon_id");
 		int icon_id = Integer.parseInt(icon_idStr);// 数値型に変換					/* アイコンID */
-		String price = request.getParameter("price");				/* 価格 */
+		String priceStr = request.getParameter("price");
+		int price = Integer.parseInt(priceStr);/* 価格 */
 
 		
 		// ポイントの更新＆保持アイコン登録処理を行う
 		StoreJoinDAO sjDAO = new StoreJoinDAO();
-		sjDAO.insert(new StoreJoin(0, icon_id,"",0,0)); 
+		boolean result = sjDAO.update(new StoreJoin(0, icon_id,"",price,0)); 
 			
 
 		// 検索結果をリクエストスコープに格納する

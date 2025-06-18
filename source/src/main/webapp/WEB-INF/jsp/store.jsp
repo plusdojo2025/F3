@@ -11,6 +11,7 @@
 <hr>
 
 <c:forEach var="e" items="${IconList}" >
+<input type="text" name="icon_id" value="${point}">
 	<form method="POST" action="/F3/StoreServlet">
 	※実際は見えないid<input type="text" name="icon_id" value="${e.icon_id}">
 	<img src="img/${e.icon_name}" width="270" height="150" alt="サンプル">
