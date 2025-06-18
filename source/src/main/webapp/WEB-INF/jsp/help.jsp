@@ -21,7 +21,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
-			src="img/logo.png"></a>
+			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
 	<!-- index.html -->
@@ -52,7 +52,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	</div>
 
 	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img" />
+		<img src="<c:url value='/img/flame_help.png'/>" class="flame-img" />
 		<div class="form-wrapper">
 			<a href=${region[0].link}$><input type="submit" name="link"
 				class="link help-button" value="ゴミの出し方について"></a> <input
@@ -63,7 +63,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 			<div id="popup" class="popup">
 				<div class="popup-content">
 					<span class="popup-close" id="popup-close">&times;</span> <img
-						src="img/point_info.png" alt="ポイント情報" class="popup-image">
+						src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
 				</div>
 			</div>
 			<!-- 入力欄 -->
@@ -80,6 +80,6 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 					value="送信">
 			</form>
 		</div>
-	</div>
+	</div>	
 </body>
 </html>
