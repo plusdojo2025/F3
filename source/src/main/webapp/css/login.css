@@ -10,7 +10,7 @@
   width: 80%;             /* ✅ 親に合わせて伸縮する */
   height: auto;
   display: block;
-  margin: 0 auto;          /* ✅ 念のため中央寄せ（ただしdisplay: blockで効果あり） */
+  margin: 0 auto;      
 }
 
 .form-wrapper {

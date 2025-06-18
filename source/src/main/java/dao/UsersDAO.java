@@ -1,5 +1,7 @@
 package dao;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -112,7 +114,7 @@ public class UsersDAO {
 			String sql = "SELECT count(*) FROM Users WHERE mail=? AND password=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, users.getMail());
-			pStmt.setString(2, users.getPassword());
+			pStmt.setString(2, createHashPass(users.getPassword()));
 			System.out.println(pStmt);
 
 			// SELECT文を実行し、結果表を取得する
@@ -145,7 +147,7 @@ public class UsersDAO {
 		// 結果を返す
 		return loginResult;
 	}
-	
+
 	public int getUserId(Users users) {
 		Connection conn = null;
 		int user_id = 0;
@@ -218,14 +220,6 @@ public class UsersDAO {
 			PreparedStatement uStmt = conn.prepareStatement(uSql);
 			// // SQL文を完成させる
 
-			/*
-			 * String hashPw = users.getPassword(); byte[] cipher_byte; for (int i = 0; i <
-			 * 10; i++) { MessageDigest md = MessageDigest.getInstance("SHA-256");
-			 * md.update(hashPw.getBytes()); cipher_byte = md.digest(); StringBuilder sb =
-			 * new StringBuilder(2 * cipher_byte.length); for (byte b : cipher_byte) {
-			 * sb.append(String.format("%02x", b & 0xff)); } hashPw = sb.toString();
-			 * System.out.println(i); System.out.println(hashPw); }
-			 */
 			if (users.getRegion_id() != 0) {
 				uStmt.setInt(1, users.getRegion_id());
 			} else {
@@ -244,7 +238,8 @@ public class UsersDAO {
 				uStmt.setString(4, "");
 			}
 			if (users.getPassword() != "") {
-				uStmt.setString(5, users.getPassword());
+				System.out.println(createHashPass(users.getPassword()));
+				uStmt.setString(5, createHashPass(users.getPassword()));
 			} else {
 				uStmt.setString(5, "");
 			}
@@ -263,7 +258,7 @@ public class UsersDAO {
 			String selectSql = "SELECT user_id FROM Users WHERE mail=? AND password=?";
 			PreparedStatement selectStmt = conn.prepareStatement(selectSql);
 			selectStmt.setString(1, users.getMail());
-			selectStmt.setString(2, users.getPassword());
+			selectStmt.setString(2, createHashPass(users.getPassword()));
 			System.out.println(selectStmt);
 
 			// SELECT文を実行し、結果表を取得する
@@ -274,10 +269,10 @@ public class UsersDAO {
 			rs.next();
 			int user_id = rs.getInt("user_id");
 			System.out.println("user_id : " + user_id);
-			
+
 			String pSql = "insert into scorepoint (user_id) values (?)";
 			PreparedStatement pStmt = conn.prepareStatement(pSql);
-			
+
 			if (users.getUser_id() != 0) {
 				pStmt.setInt(1, 0);
 				System.out.println("ue");
@@ -343,5 +338,28 @@ public class UsersDAO {
 			e.printStackTrace();
 		}
 		return regions;
+	}
+	
+	private String createHashPass(String password) {
+		String hashPass = null;
+		byte[] cipher_byte;
+		for (int i = 0; i < 10; i++) {
+			MessageDigest md;
+			try {
+				md = MessageDigest.getInstance("SHA-256");
+			md.update(password.getBytes());
+			cipher_byte = md.digest();
+			StringBuilder sb = new StringBuilder(2 * cipher_byte.length);
+			for (byte b : cipher_byte) {
+				sb.append(String.format("%02x", b & 0xff));
+			}
+			hashPass = sb.toString();
+			return hashPass;
+			} catch (NoSuchAlgorithmException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+		}
+		return hashPass;
 	}
 }
