@@ -60,6 +60,7 @@ public class CalendarServlet extends HttpServlet {
     	request.setAttribute("code", code);
     	//セッション送る
     	session.setAttribute("id", userId); // userId は int 型
+    	
         try {
 
             CalendarJoinDAO dao = new CalendarJoinDAO();
