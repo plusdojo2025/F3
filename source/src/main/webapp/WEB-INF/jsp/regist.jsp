@@ -1,21 +1,19 @@
-<<<<<<< Updated upstream
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="dto.Region" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="dto.Region"%>
->>>>>>> Stashed changes
 <%
+    List<Region> regions = (List<Region>) request.getAttribute("regions");
 List<Region> regions = (List<Region>) request.getAttribute("regions");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<title>ポイポイ｜新規登録</title>
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>ポイポイ</title>
 <link rel="stylesheet"
@@ -26,7 +24,6 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 <script src="/F3/js/common.js"></script>
 </head>
 <body>
-<<<<<<< Updated upstream
 <h1>新規登録</h1>
 <hr>
 <form name="registForm" method="POST" action="/F3/RegistServlet" onsubmit="return validateForm()">
@@ -35,14 +32,15 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 パスワード（2回目）<input type="password" id="pw_re_input" name="pw_re_input"><br>
 <label for="region">居住地域</label>
     <select name="region_input" id="region_input">
-    <c:forEach var="region" items="${regions}">
-        <option value="${region.region_id}">${region.region_name}</option>
-    </c:forEach>
-</select><br>
+        <% for (Region region : regions) { %>
+            <option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
+        <% } %>
+    </select><br>
 メールアドレス<input type="text" name="mail_input"><br>
 <input type="submit" name="insert_btn" value="登録">
+<p id="error_msg" class="font-red"></p>
+
 </form>
-=======
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
@@ -51,29 +49,28 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img id="hamburger-icon"
-				src="img/hamburger_open.png">
+			<img id="hamburger-icon" src="img/hamburger_open.png">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\home.html" class="nav__link"
+					href="<c:url value='/HomeServlet' />" class="nav__link"
 					name="home_link">ホーム</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\mypage.html" class="nav__link"
+					href="<c:url value='/MypageServlet' />" class="nav__link"
 					name="mypege_link">マイページ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\calender.html"
+					href="<c:url value='/CalendarServlet'/>"
 					class="nav__link" name="calender_link">カレンダー</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\store.html" class="nav__link"
+					href="<c:url value='/StoreServlet'/>" class="nav__link"
 					name="store_link">ストア</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\help.html" class="nav__link"
+					href="<c:url value='/HelpServlet'/>" class="nav__link"
 					name="help_link">へルプ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\top.html" class="nav__link"
+					href="<c:url value='/LogoutServlet'/>" class="nav__link"
 					name="logout_btn">ログアウト</a></li>
 			</ul>
 		</nav>
@@ -190,6 +187,5 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 
 
 
->>>>>>> Stashed changes
 </body>
 </html>
