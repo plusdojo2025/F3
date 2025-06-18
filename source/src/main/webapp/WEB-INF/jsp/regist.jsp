@@ -13,7 +13,6 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ポイポイ｜新規登録</title>
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>ポイポイ</title>
 <link rel="stylesheet"
@@ -24,21 +23,6 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 <script src="/F3/js/common.js"></script>
 </head>
 <body>
-<h1>新規登録</h1>
-<hr>
-<form name="registForm" method="POST" action="/F3/RegistServlet" onsubmit="return validateForm()">
-ユーザー名<input type="text" name="name_input" id="name_input"><br>
-パスワード<input type="password" id="pw_input" name="pw_input"><br>
-パスワード（2回目）<input type="password" id="pw_re_input" name="pw_re_input"><br>
-<label for="region">居住地域</label>
-    <select name="region_input" id="region_input">
-        <% for (Region region : regions) { %>
-            <option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
-        <% } %>
-    </select><br>
-メールアドレス<input type="text" name="mail_input"><br>
-<input type="submit" name="insert_btn" value="登録">
-<p id="error_msg" class="font-red"></p>
 
 </form>
 	<!-- ヘッダーここから -->
@@ -79,18 +63,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 	<div class="flame">
 		<img src="img/flame_regist.png"
 			class="flame-img" />
-	
-			<label for="region">居住地域</label> <select name="region_input"
-				id="region_input">
-				<%
-				for (Region region : regions) {
-				%>
-				<option value="<%=region.getRegion_id()%>"><%=region.getRegion_name()%></option>
-				<%
-				}
-				%>
-		
-			
+				
 			<div class="form-wrapper" >
 				<form class="Form" id="registForm" name="registForm" method="POST" action="/F3/RegistServlet"
 			onsubmit="return validateForm()" >
@@ -174,6 +147,16 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 							<option value="">-----</option>
 						</select>
 					</div>
+					
+						<label for="region">居住地域</label> <select name="region_input"
+				id="region_input">
+				<%
+				for (Region region : regions) {
+				%>
+				<option value="<%=region.getRegion_id()%>"><%=region.getRegion_name()%></option>
+				<%
+				}
+				%>
 					<div class="Form-Item">
 						<p class="Form-Item-Label">メールアドレス</p>
 						<input type="email" name="mail_input" class="Form-Item-Input">
