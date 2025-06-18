@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="dto.Region" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     List<Region> regions = (List<Region>) request.getAttribute("regions");
 %>
@@ -20,13 +21,12 @@
 パスワード（2回目）<input type="password" id="pw_re_input" name="pw_re_input"><br>
 <label for="region">居住地域</label>
     <select name="region_input" id="region_input">
-        <% for (Region region : regions) { %>
-            <option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
-        <% } %>
-    </select><br>
+    <c:forEach var="region" items="${regions}">
+        <option value="${region.region_id}">${region.region_name}</option>
+    </c:forEach>
+</select><br>
 メールアドレス<input type="text" name="mail_input"><br>
 <input type="submit" name="insert_btn" value="登録">
-<p id="error_msg" class="font-red"></p>
 </form>
 </body>
 </html>
