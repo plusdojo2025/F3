@@ -52,7 +52,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	</div>
 
 	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img" />
+		<img src="<c:url value='/img/flame_help.png'/>" class="flame-img" />
 		<div class="form-wrapper">
 			<a href=${region[0].link}$><input type="submit" name="link"
 				class="link help-button" value="ゴミの出し方について"></a> <input
