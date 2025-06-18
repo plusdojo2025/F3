@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CalendarJoinDAO;
 import dto.CalendarJoin;
@@ -27,6 +28,11 @@ public class CalendarServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+    	
+    	//セッションを取得
+    	HttpSession session = request.getSession();
+        int userId = (int) session.getAttribute("id");
+        System.out.println("user_id="+userId);
     	
     	String code = request.getParameter("code");
 
@@ -51,9 +57,10 @@ public class CalendarServlet extends HttpServlet {
     	request.setAttribute("calendarStartDay", calendarStartDay);
     	request.setAttribute("daysInMonth", daysInMonth);
     	request.setAttribute("code", code);
+    	//セッション送る
+    	session.setAttribute("id", userId);
         try {
-        	//マジックナンバーです。
-            int userId = 1;
+
             CalendarJoinDAO dao = new CalendarJoinDAO();
             Map<Date, List<CalendarJoin>> calendarData = dao.getCalendarJoinMapByUserId(userId);
             Map<Date, List<CalendarJoin>> sortedMap = new TreeMap<>(calendarData);
