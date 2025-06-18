@@ -28,7 +28,7 @@ public class MypageJoinDAO {
 		}
 	}
 	//ユーザー情報を取得するメソッド
-	public MypageJoin mypageSelect(String mail){
+	public MypageJoin mypageSelect(int id){
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -41,8 +41,8 @@ public class MypageJoinDAO {
 					throw new Exception("データベース接続に失敗しました。");
 				}
 
-				st = conn.prepareStatement("SELECT U.user_id,point,D.degree_name,U.user_name,R.region_id,R.region_name,U.mail,I.icon_name,I.icon_id from ((((users U JOIN degree D ON U.degree_id = D.degree_id) JOIN icon I ON U.icon_id = I.icon_id) JOIN region R ON U.region_id=R.region_id)JOIN scorepoint S ON U.user_id=S.user_id) WHERE U.mail ='taro@example.com';");
-				//st.setString(1,mail);
+				st = conn.prepareStatement("SELECT U.user_id,point,D.degree_name,U.user_name,R.region_id,R.region_name,U.mail,I.icon_name,I.icon_id from ((((users U JOIN degree D ON U.degree_id = D.degree_id) JOIN icon I ON U.icon_id = I.icon_id) JOIN region R ON U.region_id=R.region_id)JOIN scorepoint S ON U.user_id=S.user_id) WHERE U.user_id = ?;");
+				st.setInt(1,id);
 				rs = st.executeQuery();
 				//データ格納
 				rs.next();
