@@ -16,8 +16,6 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 <link rel="stylesheet" href="css/help.css">
 <script src="/F3/js/help.js"></script>
 <script src="/F3/js/common.js"></script>
-
-
 </head>
 <body>
 	<!-- ヘッダーここから -->
@@ -33,7 +31,6 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 			<img id="hamburger-icon" src="img/hamburger_open.png">
 		</button>
 
-
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
 				<li class="nav__item"><a
@@ -43,7 +40,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 					href="<c:url value='/MypageServlet' />" class="nav__link"
 					name="mypege_link">マイページ</a></li>
 				<li class="nav__item"><a
-					href="<c:url value='/CalenderServlet'/>"
+					href="<c:url value='/CalendarServlet'/>"
 					class="nav__link" name="calender_link">カレンダー</a></li>
 				<li class="nav__item"><a
 					href="<c:url value='/StoreServlet'/>" class="nav__link"
@@ -52,14 +49,14 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 					href="<c:url value='/HelpServlet'/>" class="nav__link"
 					name="help_link">へルプ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\top.html" class="nav__link"
+					href="<c:url value='/LogoutServlet'/>" class="nav__link"
 					name="logout_btn">ログアウト</a></li>
 			</ul>
 		</nav>
 	</div>
 
 	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img" /> <a
+		<img src="img/flame_help.png" class="flame-img"/><a
 			href=${region[0].link}$><input type="submit" name="link"
 			class="link help-button" value="ゴミの出し方について"></a> <input
 			type="submit" name="pointinfo" class="pointinfo help-button"
