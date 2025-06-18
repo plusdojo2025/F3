@@ -106,7 +106,7 @@
 <!-- ユーザー名 -->
 <div class="Form-Item">
 <p class="Form-Item-Label">ユーザー名</p>
-<input type="text" name="name_input" class="Form-Item-Input" value="${e.user_name}"><br>
+<input type="text" name="name_input" class="Form-Item-Input" value="${e.user_name}" required><br>
 </div>
 
 <!-- 地域 -->
@@ -122,7 +122,7 @@
 <!-- メール -->
 <div class="Form-Item">
 	<p class="Form-Item-Label">メールアドレス</p>
-	<input type="email" name="mail_input" class="Form-Item-Input" value="${e.mail}">
+	<input type="email" name="mail_input" class="Form-Item-Input" value="${e.mail}" required>
 </div>
 
 <input type="submit" name="update_btn" class="update_btn" value="更新">

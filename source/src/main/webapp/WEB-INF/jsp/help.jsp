@@ -21,7 +21,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
-			src="img/logo.png"></a>
+			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
 	<!-- index.html -->
@@ -33,53 +33,53 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
-				<li class="nav__item"><a
-					href="<c:url value='/HomeServlet' />" class="nav__link"
-					name="home_link">ホーム</a></li>
+				<li class="nav__item"><a href="<c:url value='/HomeServlet' />"
+					class="nav__link" name="home_link">ホーム</a></li>
 				<li class="nav__item"><a
 					href="<c:url value='/MypageServlet' />" class="nav__link"
 					name="mypege_link">マイページ</a></li>
 				<li class="nav__item"><a
-					href="<c:url value='/CalendarServlet'/>"
-					class="nav__link" name="calender_link">カレンダー</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/StoreServlet'/>" class="nav__link"
-					name="store_link">ストア</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/HelpServlet'/>" class="nav__link"
-					name="help_link">へルプ</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/LogoutServlet'/>" class="nav__link"
-					name="logout_btn">ログアウト</a></li>
+					href="<c:url value='/CalendarServlet'/>" class="nav__link"
+					name="calender_link">カレンダー</a></li>
+				<li class="nav__item"><a href="<c:url value='/StoreServlet'/>"
+					class="nav__link" name="store_link">ストア</a></li>
+				<li class="nav__item"><a href="<c:url value='/HelpServlet'/>"
+					class="nav__link" name="help_link">へルプ</a></li>
+				<li class="nav__item"><a href="<c:url value='/LogoutServlet'/>"
+					class="nav__link" name="logout_btn">ログアウト</a></li>
 			</ul>
 		</nav>
 	</div>
 
 	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img"/><a
-			href=${region[0].link}$><input type="submit" name="link"
-			class="link help-button" value="ゴミの出し方について"></a> <input
-			type="submit" name="pointinfo" class="pointinfo help-button"
-			value="ポイントについて"> <input type="submit" name="subject"
-			class="subject help-button" value="お問い合わせ">
-
-		<!-- モーダルポップアップ -->
-		<div id="popup" class="popup">
-			<div class="popup-content">
-				<span class="popup-close" id="popup-close">&times;</span> <img
-					src="img/point_info.png" alt="ポイント情報" class="popup-image">
+		<img src="<c:url value='/img/flame_help.png'/>" class="flame-img" />
+		<div class="form-wrapper">
+			<a href=${region[0].link}$><input type="submit" name="link"
+				class="link help-button" value="ゴミの出し方について"></a> <input
+				type="submit" name="pointinfo" class="pointinfo help-button"
+				value="ポイントについて"> <input type="submit" name="subject"
+				class="subject help-button" value="お問い合わせ">
+			<!-- モーダルポップアップ -->
+			<div id="popup" class="popup">
+				<div class="popup-content">
+					<span class="popup-close" id="popup-close">&times;</span> <img
+						src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
+				</div>
 			</div>
+			<!-- 入力欄 -->
+			<form class="Form">
+				<div class="Form-Item">
+					<p class="Form-Item-Label">件名</p>
+					<input type="text" name="title" class="Form-Item-Input">
+				</div>
+				<div class="Form-Item">
+					<p class="Form-Item-Label">内容</p>
+					<textarea name="inquiry" class="Form-Item-Input2"></textarea>
+				</div>
+				<input type="submit" name="sendinquiry" class="submit_btn"
+					value="送信">
+			</form>
 		</div>
-		<!-- 入力欄 -->
-		<form class="Form">
-			<div class="Form-Item">
-				<p class="Form-Item-Label">件名</p>
-				<input type="text" name="title" class="Form-Item-Input">
-			</div>
-			<div class="Form-Item">
-				<p class="Form-Item-Label">内容</p>
-				<textarea name="inquiry" class="Form-Item-Input2"></textarea>
-			</div>
-			<input type="submit" name="sendinquiry" class="submit_btn" value="送信">
+	</div>	
 </body>
 </html>
