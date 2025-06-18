@@ -33,23 +33,23 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 			<img id="hamburger-icon" src="img/hamburger_open.png">
 		</button>
 
-		<<<<<<< Updated upstream
+
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\home.html" class="nav__link"
+					href="<c:url value='/HomeServlet' />" class="nav__link"
 					name="home_link">ホーム</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\mypage.html" class="nav__link"
+					href="<c:url value='/MypageServlet' />" class="nav__link"
 					name="mypege_link">マイページ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\calender.html"
+					href="<c:url value='/CalenderServlet'/>"
 					class="nav__link" name="calender_link">カレンダー</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\store.html" class="nav__link"
+					href="<c:url value='/StoreServlet'/>" class="nav__link"
 					name="store_link">ストア</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\help.html" class="nav__link"
+					href="<c:url value='/HelpServlet'/>" class="nav__link"
 					name="help_link">へルプ</a></li>
 				<li class="nav__item"><a
 					href="C:\Users\user\Documents\グループ開発\top.html" class="nav__link"
@@ -59,37 +59,9 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	</div>
 
 	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img" />
-
-		<nav id="nav-menu" class="nav" aria-hidden="true">
-			<ul class="nav__list">
-				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\home.html" class="nav__link"
-					name="home_link">ホーム</a></li>
-				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\mypage.html" class="nav__link"
-					name="mypege_link">マイページ</a></li>
-				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\calender.html"
-					class="nav__link" name="calender_link">カレンダー</a></li>
-				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\store.html" class="nav__link"
-					name="store_link">ストア</a></li>
-				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\help.html" class="nav__link"
-					name="help_link">へルプ</a></li>
-				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\top.html" class="nav__link"
-					name="logout_btn">ログアウト</a></li>
-			</ul>
-		</nav>
-	</div>
-
-
-	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img" /> <<<<<<< Updated
-		upstream <a href=${region[0].link}$><input type="submit"
-			name="link" class="link help-button" value="ゴミの出し方について"></a> <input
+		<img src="img/flame_help.png" class="flame-img" /> <a
+			href=${region[0].link}$><input type="submit" name="link"
+			class="link help-button" value="ゴミの出し方について"></a> <input
 			type="submit" name="pointinfo" class="pointinfo help-button"
 			value="ポイントについて"> <input type="submit" name="subject"
 			class="subject help-button" value="お問い合わせ">
@@ -112,42 +84,5 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 				<textarea name="inquiry" class="Form-Item-Input2"></textarea>
 			</div>
 			<input type="submit" name="sendinquiry" class="submit_btn" value="送信">
-
-			<div class="form-wrapper">
-
-				<a href=${region[0].link}><input type="submit" name="link"
-					class="link help-button" value="ゴミの出し方について"></a> <input
-					type="submit" name="pointinfo" class="pointinfo help-button"
-					value="ポイントについて"> <input type="submit" name="subject"
-					class="subject help-button" value="お問い合わせ">
-
-				<script>
-					
-				</script>
-
-				<!-- モーダルポップアップ -->
-				<div id="popup" class="popup">
-					<div class="popup-content">
-						<span class="popup-close" id="popup-close">&times;</span> <img
-							src="img/point_info.png" alt="ポイント情報" class="popup-image">
-					</div>
-				</div>
-				<!-- 入力欄 -->
-				<form class="Form">
-					<div class="Form-Item">
-						<p class="Form-Item-Label">件名</p>
-						<input type="text" name="title" class="Form-Item-Input">
-					</div>
-					<div class="Form-Item">
-						<p class="Form-Item-Label">内容</p>
-						<textarea name="inquiry" class="Form-Item-Input2"></textarea>
-					</div>
-					<input type="submit" name="sendinquiry" class="submit_btn"
-						value="送信">
-
-				</form>
-			</div>
-	</div>
-
 </body>
 </html>
