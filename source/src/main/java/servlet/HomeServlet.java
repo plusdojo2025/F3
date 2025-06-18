@@ -83,13 +83,13 @@ public class HomeServlet extends HttpServlet {
     	//dao処理
     	HomeJoinDAO dao = new HomeJoinDAO();
     	boolean check = dao.insertCal(userId, today, score, point);    	
-		if((score%10)==9) {
+
         	UsersDAO dao1 = new UsersDAO();
         	boolean inseDeg = dao1.UpDegree(userId);
         	if(inseDeg) {
         		System.out.println("称号アップ");
         	}
-    		}
+    		
     	
     	if(check) {
     	    System.out.println("カレンダー登録成功！");
