@@ -25,22 +25,22 @@
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\home.html" class="nav__link"
+					href="<c:url value='/HomeServlet' />" class="nav__link"
 					name="home_link">ホーム</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\mypage.html" class="nav__link"
+					href="<c:url value='/MypageServlet' />" class="nav__link"
 					name="mypege_link">マイページ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\calender.html"
+					href="<c:url value='/CalendarServlet'/>"
 					class="nav__link" name="calender_link">カレンダー</a></li>
 				<li class="nav__item"><a
-					href="../../../servlet/StoreServlet.java" class="nav__link"
+					href="<c:url value='/StoreServlet'/>" class="nav__link"
 					name="store_link">ストア</a></li>
 				<li class="nav__item"><a
-					href="F3/HelpServlet.java" class="nav__link"
+					href="<c:url value='/HelpServlet'/>" class="nav__link"
 					name="help_link">へルプ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\top.html" class="nav__link"
+					href="<c:url value='/LogoutServlet'/>" class="nav__link"
 					name="logout_btn">ログアウト</a></li>
 			</ul>
 		</nav>

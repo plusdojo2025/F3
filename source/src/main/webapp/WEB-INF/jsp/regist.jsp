@@ -49,29 +49,28 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img id="hamburger-icon"
-				src="img/hamburger_open.png">
+			<img id="hamburger-icon" src="img/hamburger_open.png">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\home.html" class="nav__link"
+					href="<c:url value='/HomeServlet' />" class="nav__link"
 					name="home_link">ホーム</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\mypage.html" class="nav__link"
+					href="<c:url value='/MypageServlet' />" class="nav__link"
 					name="mypege_link">マイページ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\calender.html"
+					href="<c:url value='/CalendarServlet'/>"
 					class="nav__link" name="calender_link">カレンダー</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\store.html" class="nav__link"
+					href="<c:url value='/StoreServlet'/>" class="nav__link"
 					name="store_link">ストア</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\help.html" class="nav__link"
+					href="<c:url value='/HelpServlet'/>" class="nav__link"
 					name="help_link">へルプ</a></li>
 				<li class="nav__item"><a
-					href="C:\Users\user\Documents\グループ開発\top.html" class="nav__link"
+					href="<c:url value='/LogoutServlet'/>" class="nav__link"
 					name="logout_btn">ログアウト</a></li>
 			</ul>
 		</nav>

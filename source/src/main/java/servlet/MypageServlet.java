@@ -33,7 +33,7 @@ public class MypageServlet extends HttpServlet {
 		//セッション取得/ログインへ戻す
 		HttpSession session = request.getSession();
 //		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/F3/LoginServlet");
+//			response.sendRedirect("/LoginServlet");
 //			return;
 //		}
 		String success = (String) session.getAttribute("success");
@@ -48,7 +48,7 @@ public class MypageServlet extends HttpServlet {
         
         //マイページ情報取得
         //int uid = (int)session.getAttribute("id");
-        MypageJoin mypage = uDao.mypageSelect(1);//仮で入力中
+        MypageJoin mypage = uDao.mypageSelect(1);
         request.setAttribute("mypage",mypage);
         
       //所持アイコン一覧取得
