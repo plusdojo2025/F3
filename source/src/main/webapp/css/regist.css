@@ -1,21 +1,21 @@
-
+/* 枠 */
 .flame {
   position: relative;
   width: 100%;
-  max-width: 660px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .flame-img {
-  width: 100%;             /* ✅ 親に合わせて伸縮する */
+  width: 100%;          
   height: auto;
   display: block;
-  margin: 0 auto;          /* ✅ 念のため中央寄せ（ただしdisplay: blockで効果あり） */
+  margin: 0 auto;          
 }
 
 .form-wrapper {
   position: absolute;
-  top: 15%;
+  top: 20%;
   left: 8%;
   width: 85%;
   height: 80%;
@@ -25,6 +25,7 @@
   align-items: center;
 }
 
+/* 入力欄*/
 .Form {
   width: 100%;
   display: flex;

@@ -1,6 +1,7 @@
 /**
  * 
  */
+ 
 'use strict';
 function confirmPassword() {
 	const password = document.getElementById('pw_input').value;
