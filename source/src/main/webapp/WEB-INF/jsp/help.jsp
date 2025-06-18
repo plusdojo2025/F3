@@ -63,7 +63,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 			<div id="popup" class="popup">
 				<div class="popup-content">
 					<span class="popup-close" id="popup-close">&times;</span> <img
-						src="img/point_info.png" alt="ポイント情報" class="popup-image">
+						src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
 				</div>
 			</div>
 			<!-- 入力欄 -->
