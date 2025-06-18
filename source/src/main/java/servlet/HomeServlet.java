@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.HomeJoinDAO;
 import dto.HomeJoin;
@@ -19,7 +20,15 @@ public class HomeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-    	int userId = 1;
+    	//セッションを取得
+    	HttpSession session = request.getSession();
+    	Object obj = session.getAttribute("id");
+    	int userId = (Integer) obj;
+        System.out.println("user_id="+userId);
+        //セッション送る
+    	session.setAttribute("id", userId); // userId は int 型
+        
+        
     	String check = "ホーム画面です！";
     	Calendar cal = Calendar.getInstance();
     	cal.setTime(new java.util.Date());
@@ -42,6 +51,14 @@ public class HomeServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	//セッションを取得
+    	HttpSession session = request.getSession();
+    	Object obj = session.getAttribute("id");
+    	int userId = (Integer) obj;
+        System.out.println("user_id="+userId);
+        //セッション送る
+    	session.setAttribute("id", userId); // userId は int 型
+        
     	String check_id = request.getParameter("check_id");
     	String score_str = request.getParameter("score");
     	String point_str = request.getParameter("point");
@@ -56,8 +73,6 @@ public class HomeServlet extends HttpServlet {
     	if(check_id==null) {
     		System.out.println("空です。");
     	}
-    	//ユーザーID仮で1を入れています。
-    	int user_id = 1;
     	
     	//日付取得
     	Calendar cal = Calendar.getInstance();
@@ -66,7 +81,7 @@ public class HomeServlet extends HttpServlet {
     	
     	//dao処理
     	HomeJoinDAO dao = new HomeJoinDAO();
-    	boolean check = dao.insertCal(user_id, today, score, point);
+    	boolean check = dao.insertCal(userId, today, score, point);
     	if(check) {
     	    System.out.println("カレンダー登録成功！");
     	    response.sendRedirect("HomeServlet");  // ←これで doGet() に自然遷移

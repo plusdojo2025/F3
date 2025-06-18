@@ -1,3 +1,6 @@
+h6{
+	color: blue;
+}
 .flame {
   position: relative;
   width: 100%;
@@ -15,6 +18,32 @@
   display: block;
 }
 /*トゥムル、ホーム画面を表示するために使ったcss */
+	body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f9f9f9;
+        margin: 30px;
+        text-align: center;
+    }
+
+    .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 320px;
+    }
+
+    .card p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .highlight {
+        font-size: 22px;
+        font-weight: bold;
+        color: #0078d7;
+    }
   .modal {
     display: none;
     position: fixed;

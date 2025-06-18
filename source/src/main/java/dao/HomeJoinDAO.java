@@ -115,50 +115,64 @@ public class HomeJoinDAO {
 		}
 	}
 	public boolean insertCal(int user_id, Date current, int score, int point) {
-		Connection conn = null;
-		PreparedStatement st = null;
-		boolean checkInsert = false;
-		ResultSet rs = null;
-		try {
-			conn = getConnection();
-			String sql1 = "insert into calendar values(?, ?)";
-			
-			rs = st.executeQuery();
-			st.setInt(1, user_id);
-			st.setDate(2, current);
-			int check = st.executeUpdate();
-			String sql2 = """					
-							UPDATE scorePoint
-							SET score = ?
-							WHERE USER_ID=?;
-						""";			
-			st = conn.prepareStatement(sql2);
-			st.setInt(1, user_id);
-			st.setInt(2, score);
-			
-			
-			
-			String sql3 = """					
-					UPDATE scorePoint
-					SET point = ?
-					WHERE USER_ID=?;
-				""";
-			st = conn.prepareStatement(sql1);
-			st.setInt(1, user_id);
-			st.setInt(2, point);
-			
-			
-			
-			
-			if(check>0) {
-				checkInsert = true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return checkInsert;
-	}
-	public boolean updaPointScore(int score, int point) {
-		return false;
+	    Connection conn = null;
+	    PreparedStatement st1 = null;
+	    PreparedStatement st2 = null;
+	    PreparedStatement st3 = null;
+	    boolean checkInsert = false;
+
+	    try {
+	        conn = getConnection();
+	        conn.setAutoCommit(false); // 🔸 トランザクション開始
+
+	        // 🔹 INSERT into calendar
+	        String sql1 = "INSERT INTO calendar (user_id, current) VALUES (?, ?)";
+	        st1 = conn.prepareStatement(sql1);
+	        st1.setInt(1, user_id);
+	        st1.setDate(2, current);
+	        int inserted = st1.executeUpdate();
+
+	        // 🔹 UPDATE score
+	        String sql2 = "UPDATE scorePoint SET score = ? WHERE user_id = ?";
+	        st2 = conn.prepareStatement(sql2);
+	        st2.setInt(1, score+1);
+	        st2.setInt(2, user_id);
+	        st2.executeUpdate();
+
+	        // 🔹 UPDATE point
+	        String sql3 = "UPDATE scorePoint SET point = ? WHERE user_id = ?";
+	        st3 = conn.prepareStatement(sql3);
+	        st3.setInt(1, point+1);
+	        st3.setInt(2, user_id);
+	        st3.executeUpdate();
+
+	        conn.commit(); // ✅ すべて成功 → コミット
+	        checkInsert = inserted > 0;
+	        System.out.println("すべて正常に処理されました");
+
+	    } catch (Exception e) {
+	        if (conn != null) {
+	            try {
+	            	//エラーが合ったらrollback
+	                conn.rollback();
+	                System.out.println("エラーが発生したためロールバックしました");
+	            } catch (Exception rbEx) {
+	                rbEx.printStackTrace();
+	            }
+	        }
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (st1 != null) st1.close();
+	            if (st2 != null) st2.close();
+	            if (st3 != null) st3.close();
+	            if (conn != null) conn.setAutoCommit(true);
+	            if (conn != null) conn.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return checkInsert;
 	}
 }

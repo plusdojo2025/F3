@@ -5,11 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>ホーム画面</title>
-<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
 </head>
 <body>
+<h6>ホーム画面</h6>
 <p>チェック済み日：${home.current}</p>
 
+    <div class="card" id="garbage_type">
+        <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
+    </div>
+
+    <div class="card">
+        <p>現在のランクは<br><span class="highlight">${home.degree_name}</span></p>
+    </div>
+
+    <div class="card">
+		<c:set var="nextScore" value="${10 - (home.score % 10)}" />
+		<p>次のランクまで、あと${nextScore}pt</p>
+    </div>
 <!-- JavaScriptで1970-01-01かどうかチェックしてモーダル表示 -->
 <c:set var="currentDate" value="${home.current}" />
 <script>

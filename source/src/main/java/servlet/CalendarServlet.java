@@ -31,7 +31,8 @@ public class CalendarServlet extends HttpServlet {
     	
     	//セッションを取得
     	HttpSession session = request.getSession();
-        int userId = (int) session.getAttribute("id");
+    	Object obj = session.getAttribute("id");
+    	int userId = (Integer) obj;
         System.out.println("user_id="+userId);
     	
     	String code = request.getParameter("code");
@@ -58,7 +59,7 @@ public class CalendarServlet extends HttpServlet {
     	request.setAttribute("daysInMonth", daysInMonth);
     	request.setAttribute("code", code);
     	//セッション送る
-    	session.setAttribute("id", userId);
+    	session.setAttribute("id", userId); // userId は int 型
         try {
 
             CalendarJoinDAO dao = new CalendarJoinDAO();
