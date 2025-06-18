@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
-import dto.LoginUsers;
 import dto.Users;
 
 /**
@@ -48,8 +47,7 @@ public class LoginServlet extends HttpServlet {
 		if (uDao.isLoginOK(new Users(0, 0, 0, 0, "", password, mail))) { // ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUsers(mail));
-
+			session.setAttribute("id", uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/F3/HomeServlet");
 			System.out.println("ログイン成功");

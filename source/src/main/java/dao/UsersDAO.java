@@ -112,6 +112,57 @@ public class UsersDAO {
 		// 結果を返す
 		return loginResult;
 	}
+	
+	public int getUserId(Users users) {
+		Connection conn = null;
+		int user_id = 0;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SELECT文を準備する
+			String sql = "SELECT user_id FROM Users WHERE mail=? AND password=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, users.getMail());
+			pStmt.setString(2, users.getPassword());
+			System.out.println(pStmt);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			System.out.println(rs);
+
+			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			rs.next();
+			if (rs.getInt("user_id") != 0) {
+				user_id = rs.getInt("user_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			user_id = 0;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			user_id = 0;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					user_id = 0;
+				}
+			}
+		}
+
+		// 結果を返す
+		return user_id;
+	}
 
 	public boolean createAccount(Users users) {
 		Connection conn = null;
