@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.MypageJoinDAO;
 import dto.Icon;
-import dto.LoginUsers;
 import dto.MypageJoin;
 import dto.Region;
 import dto.Users;
@@ -48,8 +47,8 @@ public class MypageServlet extends HttpServlet {
         request.setAttribute("regions", regions);
         
         //マイページ情報取得
-        LoginUsers user = (LoginUsers)session.getAttribute("id");
-        MypageJoin mypage = uDao.mypageSelect("taro@example.com");//仮で入力中
+        //int uid = (int)session.getAttribute("id");
+        MypageJoin mypage = uDao.mypageSelect(1);//仮で入力中
         request.setAttribute("mypage",mypage);
         
       //所持アイコン一覧取得
@@ -73,10 +72,10 @@ public class MypageServlet extends HttpServlet {
 		
 		//リクエストスコープ取得
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
-		int region_id = Integer.parseInt(request.getParameter("region_id"));
+		int region_id = Integer.parseInt(request.getParameter("region_input"));
 		int icon_id = Integer.parseInt(request.getParameter("icon_id"));
-		String name = request.getParameter("name");
-		String mail = request.getParameter("mail");
+		String name = request.getParameter("name_input");
+		String mail = request.getParameter("mail_input");
 		
 		
 		Users user = new Users();

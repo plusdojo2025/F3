@@ -8,37 +8,16 @@
 <!DOCTYPE html>
 <html>
 <head> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/mypage.css">
 <script defer src="js/mypage.js"></script>
 <meta charset="UTF-8">
 <title>ポイポイ|マイページ</title>
-<style>
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top:0; left:0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-.image-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-</style>
-
 </head>
+
 <body>
+
 <!-- 更新の成功/失敗のアラート -->
 <c:if test="${success == 'true'}">
   <script>
@@ -65,34 +44,89 @@
   </div>
 </div>
 
-<c:set var="e" value="${mypage}" />
+<!-- ヘッダーここから -->
+<div class="logo">
+    <a href="/HomeServlet"><img src="img/logo.png"></a>
+</div>
 
-称号:${e.degree_name}
-<br>
-ポイント:${e.point}
-<br>
-<form method="POST" action="/F3/MypageServlet">
+<div class="header">
+    <button type="button" class="hamburger" name="humberger_menu" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
+        <img id="hamburger-icon" src="img/hamburger_open.png">
+    </button>
+
+    <nav id="nav-menu" class="nav" aria-hidden="true">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="/HomeServlet" class="nav__link" name="home_link">ホーム</a></li>
+            <li class="nav__item"><a href="/MypageServlet" class="nav__link" name="mypege_link">マイページ</a></li>
+            <li class="nav__item"><a href="/CalenderServlet" class="nav__link" name="calender_link">カレンダー</a></li>
+            <li class="nav__item"><a href="/StoreServlet" class="nav__link" name="store_link">ストア</a></li>
+            <li class="nav__item"><a href="/HeplServlet" class="nav__link" name="help_link">ヘルプ</a></li>
+            <li class="nav__item"><a href="/LogoutServlet" class="nav__link" name="logout_btn">ログアウト</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- フレームとフォーム -->
+<div class="flame">
+    <img class="flame-img" src="img/flame_maypage.png" >
+
+
+
+<!-- 本体 -->
+<c:set var="e" value="${mypage}" />
+<!-- 保持ポイント、称号 -->
+<div class="image-column">
+	<div class="image-wrapper">
+		<div class="image-label">保有pt:${e.point}</div>
+		<img src="img/point_flame_white.png" alt="画像1" class="point">
+	</div>
+	
+	<div class="image-wrapper">
+		<div class="image-label">ランク:${e.degree_name}</div>
+		<img src="img/point_flame_white.png" alt="画像2" class="rank">
+	</div>
+</div>
+
+<!-- フォーム入力 -->
+<div class="form-wrapper">
+<form  class="Form" id="registForm" method="POST" action="/F3/MypageServlet">
+
 <!-- 隠しユーザーID -->
 <input type="hidden" name="user_id" value="${e.user_id}">
-アイコン<br>
-<img id="previewIcon" src="img/${e.icon_name}" alt="サンプル">
-<button type="button" onclick="openModal()">画像を選ぶ</button>
+
+<!-- アイコンエリア -->
+<div class="icon-area">
+
+<img id="previewIcon" class="user-icon" src="img/${e.icon_name}" alt="サンプル">
+<button type="button" id="icon-upload" class="icon-upload" onclick="openModal()">画像を選ぶ</button>
 <input type="hidden" name="icon_id" id="selectedIconId"value="${e.icon_id}">
-<br><br>
+</div>
+
 <!-- ユーザー名 -->
-ユーザー名<br>
-<input type="text" name="name" id="name" placeholder="Name"value="${e.user_name}"><br>
+<div class="Form-Item">
+<p class="Form-Item-Label">ユーザー名</p>
+<input type="text" name="name_input" class="Form-Item-Input" value="${e.user_name}"><br>
+</div>
+
 <!-- 地域 -->
-地域<br>
-<select name="region_id" id="region_id">
-		<option value="${e.region_id}" selected hidden>${e.region_name}</option>
-        <% for (Region region : regions) { %>
-            <option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
-        <% } %>
-</select><br>
+<div class="Form-Item">
+	<p class="Form-Item-Label">居住地域</p>
+		<select  id="regionSelect" name="region_input" class="Form-Item-Input">
+					<option value="${e.region_id}" selected hidden>${e.region_name}</option>
+				<% for (Region region : regions) { %>
+					<option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
+				<% } %>
+		</select>
+</div>
 <!-- メール -->
-メールアドレス<br><input type="email" name="mail" id="mail" value="${e.mail}"><br>
-<input type="submit" name="insert_btn" value="更新">
+<div class="Form-Item">
+	<p class="Form-Item-Label">メールアドレス</p>
+	<input type="email" name="mail_input" class="Form-Item-Input" value="${e.mail}">
+</div>
+
+<input type="submit" name="update_btn" class="update_btn" value="更新">
 </form>
+</div>
+</div>
 </body>
 </html>
