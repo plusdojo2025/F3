@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dto.HomeJoin;
+import dto.Users;
 
 public class HomeJoinDAO {
 
@@ -119,8 +120,9 @@ public class HomeJoinDAO {
 	    PreparedStatement st1 = null;
 	    PreparedStatement st2 = null;
 	    PreparedStatement st3 = null;
+	    PreparedStatement st4 = null;
 	    boolean checkInsert = false;
-
+	    Users users = new Users();
 	    try {
 	        conn = getConnection();
 	        conn.setAutoCommit(false); // 🔸 トランザクション開始
@@ -145,7 +147,7 @@ public class HomeJoinDAO {
 	        st3.setInt(1, point+1);
 	        st3.setInt(2, user_id);
 	        st3.executeUpdate();
-
+	        
 	        conn.commit(); // ✅ すべて成功 → コミット
 	        checkInsert = inserted > 0;
 	        System.out.println("すべて正常に処理されました");

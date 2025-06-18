@@ -63,6 +63,39 @@ public class UsersDAO {
 
 		return usersList;
 	}
+	//トゥムル称号を更新する用
+	public boolean UpDegree(int user_id) {
+	    Connection conn = null;
+	    PreparedStatement st = null;
+	    boolean check = false;
+
+	    try {
+	        conn = getConnection();
+	        if (conn == null) {
+	            throw new Exception("データベース接続に失敗しました。");
+	        }
+
+	        String sql = "UPDATE users SET degree_id = degree_id + 1 WHERE user_id = ?";
+	        st = conn.prepareStatement(sql);
+	        st.setInt(1, user_id);
+
+	        int updated = st.executeUpdate();
+	        check = updated > 0;
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (st != null) st.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return check;
+	}
+
 
 	public boolean isLoginOK(Users users) {
 		Connection conn = null;

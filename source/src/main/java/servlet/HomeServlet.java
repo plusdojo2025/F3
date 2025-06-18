@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.HomeJoinDAO;
+import dao.UsersDAO;
 import dto.HomeJoin;
 
 @WebServlet("/HomeServlet")
@@ -78,13 +79,24 @@ public class HomeServlet extends HttpServlet {
     	Calendar cal = Calendar.getInstance();
     	cal.setTime(new java.util.Date());
     	java.sql.Date today = new java.sql.Date(cal.getTimeInMillis());
-    	
+    	try {   		
     	//dao処理
     	HomeJoinDAO dao = new HomeJoinDAO();
-    	boolean check = dao.insertCal(userId, today, score, point);
+    	boolean check = dao.insertCal(userId, today, score, point);    	
+		if((score%10)==9) {
+        	UsersDAO dao1 = new UsersDAO();
+        	boolean inseDeg = dao1.UpDegree(userId);
+        	if(inseDeg) {
+        		System.out.println("称号アップ");
+        	}
+    		}
+    	
     	if(check) {
     	    System.out.println("カレンダー登録成功！");
     	    response.sendRedirect("HomeServlet");  // ←これで doGet() に自然遷移
+    	}
+    	} catch(Exception e) {
+    		e.printStackTrace();
     	}
     } 
 }
