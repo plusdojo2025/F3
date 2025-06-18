@@ -1,6 +1,7 @@
 package dto;
 import java.io.Serializable;
 public class MypageJoin implements Serializable{
+	private int user_id;
 	private int point;
 	private String degree_name;
 	private String user_name;
@@ -10,9 +11,10 @@ public class MypageJoin implements Serializable{
 	private String icon_name;
 	private int icon_id;
 	
-	public MypageJoin(int point, String degree_name, String user_name, int region_id,String region_name, String mail,
+	public MypageJoin(int user_id,int point, String degree_name, String user_name, int region_id,String region_name, String mail,
 			String icon_name, int icon_id) {
 		super();
+		this.user_id = user_id;
 		this.point = point;
 		this.degree_name = degree_name;
 		this.user_name = user_name;
@@ -24,6 +26,7 @@ public class MypageJoin implements Serializable{
 	}
 	public MypageJoin() {
 		super();
+		this.user_id = 0;
 		this.point = 0;
 		this.degree_name = "";
 		this.user_name = "";
@@ -79,6 +82,12 @@ public class MypageJoin implements Serializable{
 	}
 	public void setRegion_id(int region_id) {
 		this.region_id = region_id;
+	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	
 }

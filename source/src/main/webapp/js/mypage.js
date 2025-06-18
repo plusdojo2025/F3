@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 // モーダルを表示する関数
 function openModal() {
   document.getElementById('modalOverlay').style.display = 'flex';
@@ -16,6 +12,7 @@ function closeModal() {
 document.addEventListener('DOMContentLoaded', function () {
   const images = document.querySelectorAll('.image-option');
   const hiddenInput = document.getElementById('selectedIconId');
+  const previewImg = document.getElementById('previewIcon');
 
   images.forEach(img => {
     img.addEventListener('click', () => {
@@ -23,12 +20,14 @@ document.addEventListener('DOMContentLoaded', function () {
       images.forEach(i => i.classList.remove('selected'));
       img.classList.add('selected');
 
-      // data-id からIDを取得して hidden input に代入
+      // アイコンIDをhiddenにセット
       const iconId = img.dataset.id;
       hiddenInput.value = iconId;
 
-      // デバッグ用：選んだIDを表示
-      alert("選択されたアイコンID: " + iconId);
+      // プレビュー画像を選択画像に変更
+      if (previewImg) {
+        previewImg.src = img.src;
+      }
 
       closeModal();
     });
