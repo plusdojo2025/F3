@@ -79,16 +79,18 @@ public class HomeServlet extends HttpServlet {
     	Calendar cal = Calendar.getInstance();
     	cal.setTime(new java.util.Date());
     	java.sql.Date today = new java.sql.Date(cal.getTimeInMillis());
-    	try {
+    	try {   		
+    	//dao処理
+    	HomeJoinDAO dao = new HomeJoinDAO();
+    	boolean check = dao.insertCal(userId, today, score, point);    	
+		if((score%10)==9) {
         	UsersDAO dao1 = new UsersDAO();
         	boolean inseDeg = dao1.UpDegree(userId);
         	if(inseDeg) {
         		System.out.println("称号アップ");
         	}
-    		
-    	//dao処理
-    	HomeJoinDAO dao = new HomeJoinDAO();
-    	boolean check = dao.insertCal(userId, today, score, point);
+    		}
+    	
     	if(check) {
     	    System.out.println("カレンダー登録成功！");
     	    response.sendRedirect("HomeServlet");  // ←これで doGet() に自然遷移
