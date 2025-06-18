@@ -1,11 +1,9 @@
 /**
  * 
  */
- 
-<<<<<<< Updated upstream
-=======
+
  'use strict';
->>>>>>> Stashed changes
+
  // お問い合わせボタンでフォーム表示
 document.addEventListener('DOMContentLoaded', () => {
   const subjectBtn = document.querySelector('.subject');
