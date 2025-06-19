@@ -18,7 +18,7 @@
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img id="hamburger-icon" src="img/hamburger_open.png">
+			<img id="hamburger-icon" src="<c:url value='/img/hamburger_open.png'/>">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
