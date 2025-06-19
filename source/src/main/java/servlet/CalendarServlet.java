@@ -64,6 +64,10 @@ public class CalendarServlet extends HttpServlet {
         try {
 
             CalendarJoinDAO dao = new CalendarJoinDAO();
+            List<CalendarJoin> links = new ArrayList<>();
+            links = dao.getLink(userId);
+            request.setAttribute("links", links);
+            
             Map<Date, List<CalendarJoin>> calendarData = dao.getCalendarJoinMapByUserId(userId);
             Map<Date, List<CalendarJoin>> sortedMap = new TreeMap<>(calendarData);
 
