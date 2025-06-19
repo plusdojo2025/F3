@@ -49,7 +49,7 @@
 	</div>
 	</div>
 	<div class="flame">
-		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
+		<img src="<c:url value='/img/flame.png'/>" class="flame-img" >
 
 		<div class="form-wrapper">
 			<form class="Form" name="loginForm" method="POST"
