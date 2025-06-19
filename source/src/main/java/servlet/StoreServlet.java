@@ -33,7 +33,7 @@ public class StoreServlet extends HttpServlet {
 			return;
 		}
 		//sessionIdにセッションIDを代入
-        Object userIdObj = session.getAttribute("user_id");
+        Object userIdObj = session.getAttribute("id");
         int sessionId = Integer.parseInt(userIdObj.toString());
         
         // DAOを使用してデータベースの情報を取得
