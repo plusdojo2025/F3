@@ -77,5 +77,8 @@
             </tr>
         </c:forEach>
     </table>
+<c:forEach var="link" items="${links}">
+  <p>${link.link}</p>
+</c:forEach>
 </body>
 </html>
