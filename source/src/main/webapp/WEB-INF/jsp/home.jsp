@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
 <h6>ホーム画面</h6>
 <p>チェック済み日：${home.current}</p>
 <p>${hour}</p>
@@ -24,15 +25,15 @@
 <a href="HomeServlet"></a>
 
 
-    <div class="card" id="garbage_type">
+    <div class="" id="garbage_type"><%--① --%>
         <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
     </div>
 
-    <div class="card">
+    <div class="card"><%--② --%>
         <p>現在のランクは<br><span class="highlight">${home.degree_name}</span></p>
     </div>
 
-    <div class="card">
+    <div class="card"><%--③ --%>
 		<c:set var="nextScore" value="${10 - (home.score % 10)}" />
 		<p>次のランクまで、あと${nextScore}pt</p>
     </div>
