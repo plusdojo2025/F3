@@ -25,15 +25,17 @@ public class StoreJoinDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
-			// SQL文を準備する
+			//保持アイコンに追加するSQL
 			String sql = "INSERT INTO iconstatus (user_id, icon_id) VALUES (1, ?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);//保持アイコンに追加するSQL
-			String sql2 = "UPDATE scorepoint SET point = point - ? WHERE user_id = 1;";
+			//ポイントを減算するSQL
+			String sql2 = "UPDATE scorepoint SET point = point - ? WHERE user_id = ?;";
 			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
-			
-			 String checkSql = "SELECT point FROM scorepoint WHERE user_id = 1;";
+			//ポイントがマイナスになる場合実行しないようにする
+			 String checkSql = "SELECT point FROM scorepoint WHERE user_id = ?;";
 		     PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+		     checkStmt.setInt(1, List.getUser_id());
 		     ResultSet rs = checkStmt.executeQuery();
 		     if (rs.next()) {
 		            int currentPoints = rs.getInt("point");
@@ -45,19 +47,13 @@ public class StoreJoinDAO {
 		            }
 		        }
 			// SQL文を完成させる
-			
 			pStmt.setInt(1, List.getIcon_id());
 			pStmt.executeUpdate();
 			
 			pStmt2.setInt(1,List.getPrice());
-			//pStmt2.setInt(2,List.getUser_id());
+			pStmt2.setInt(2,List.getUser_id());
 			pStmt2.executeUpdate();
-			
-			result = true;
-			// SQL文を実行する
-//			if (pStmt.executeUpdate() == 1) {
-//				result = true;
-//			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

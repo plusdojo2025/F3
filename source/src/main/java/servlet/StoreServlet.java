@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.IconDAO;
 import dao.StoreJoinDAO;
@@ -25,23 +26,27 @@ public class StoreServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // ログインチェック
-//        HttpSession session = request.getSession();
-//        if (session.getAttribute("id") == null) {
-//            response.sendRedirect("/F3/LoginServlet");
-//            return;
-//        }
+    	HttpSession session = request.getSession();
+		String contextPath = request.getContextPath();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect(contextPath + "/LoginServlet");
+			return;
+		}
+		//sessionIdにセッションIDを代入
+        Object userIdObj = session.getAttribute("user_id");
+        int sessionId = Integer.parseInt(userIdObj.toString());
         
-        //Object userIdObj = session.getAttribute("user_id");
-        //int sessionId = Integer.parseInt(userIdObj.toString());
         // DAOを使用してデータベースの情報を取得
         IconDAO IconDAO = new IconDAO();
         List<Icon> IconList = IconDAO.getAllIcon();
+        
         //ポイント取得
         StoreJoinDAO sjDAO = new StoreJoinDAO();
-        int point = sjDAO.getpoint(new StoreJoin(1, 0,"",0,0));
+        int point = sjDAO.getpoint(new StoreJoin(sessionId, 0,"",0,0));
+        
         //所持アイコン一覧取得
         StoreJoinDAO uDao = new StoreJoinDAO();
-        List<IconStatus> icon = uDao.getIcons(1);
+        List<IconStatus> icon = uDao.getIcons(sessionId);
 
         // JSPに渡す
         request.setAttribute("IconList", IconList);
@@ -56,11 +61,11 @@ public class StoreServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/F3/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/F3/LoginServlet");
+			return;
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -75,11 +80,6 @@ public class StoreServlet extends HttpServlet {
 		sjDAO.update(new StoreJoin(0, icon_id,"",price,0)); 
 
 		response.sendRedirect("StoreServlet");
-		// 検索結果をリクエストスコープに格納する
-		
-		
-		// 結果ページにフォワードする
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/store.jsp");
-//		dispatcher.forward(request, response);
+
 	}
 }
