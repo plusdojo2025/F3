@@ -12,15 +12,15 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>ポイポイ</title>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/help.css">
-<script src="/F3/js/help.js"></script>
-<script src="/F3/js/common.js"></script>
+<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+<link rel="stylesheet" href="<c:url value='/css/help.css' />">
+<script src="<c:url value='/js/help.js' />"></script>
+<script src="<c:url value='/js/common.js' />"></script>
 </head>
 <body>
 	<!-- ヘッダーここから -->
 	<div class="logo">
-		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
+		<a href="<c:url value='/HomeServlet' />"><img
 			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
