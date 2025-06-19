@@ -27,12 +27,12 @@
 
         <nav id="nav-menu" class="nav" aria-hidden="true">
             <ul class="nav__list">
-                <li class="nav__item"><a href="/HomeServlet" class="nav__link" name="home_link">ホーム</a></li>
-                <li class="nav__item"><a href="/MypageServlet" class="nav__link" name="mypege_link">マイページ</a></li>
-                <li class="nav__item"><a href="/CalendarServlet" class="nav__link" name="calender_link">カレンダー</a></li>
-                <li class="nav__item"><a href="/StoreServlet" class="nav__link" name="store_link">ストア</a></li>
-                <li class="nav__item"><a href="/HelpServlet" class="nav__link" name="help_link">へルプ</a></li>
-                <li class="nav__item"><a href="/LogoutServlet" class="nav__link" name="logout_btn">ログアウト</a></li>
+                <li class="nav__item"><a href="<c:url value='/HomeServlet' />" class="nav__link" name="home_link">ホーム</a></li>
+	        <li class="nav__item"><a href="<c:url value='/MypageServlet' />" class="nav__link" name="mypege_link">マイページ</a></li>
+	        <li class="nav__item"><a href="<c:url value='/CalendarServlet' />" class="nav__link" name="calender_link">カレンダー</a></li>
+	        <li class="nav__item"><a href="<c:url value='/StoreServlet' />" class="nav__link" name="store_link">ストア</a></li>
+	        <li class="nav__item"><a href="<c:url value='/HeplServlet' />" class="nav__link" name="help_link">ヘルプ</a></li>
+	        <li class="nav__item"><a href="<c:url value='/LogoutServlet' />" class="nav__link" name="logout_btn">ログアウト</a></li>
             </ul>
         </nav>
     </div>
