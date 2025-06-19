@@ -78,6 +78,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 					<p class="Form-Item-Label">居住地域</p>
 					<select id="region_input" name="region_input"
 						class="Form-Item-Input">
+						<option value=0 selected>選択してください</option>
 						<%
 						for (Region region : regions) {
 						%>

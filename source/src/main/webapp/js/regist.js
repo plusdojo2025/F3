@@ -86,7 +86,7 @@ function validateForm() {
 		alert("パスワード入力欄とパスワード再入力欄に同じ文字列が入力されていません。もしくはどちらか一方の入力欄が未入力となっております。");
 		return false;
 	}
-	if (regionId === "1") {
+	if (regionId === "0") {
 		alert("居住地域を入力してください。");
 		return false;
 	}
