@@ -15,7 +15,6 @@ public class StoreJoinDAO {
 	public boolean update(StoreJoin List) {
 		Connection conn = null;
 		boolean result = false;
-		StoreJoin join = new StoreJoin();
 		
 		System.out.println(List.getUser_id());
 		try {
@@ -51,7 +50,6 @@ public class StoreJoinDAO {
 		        }
 			// SQL文を完成させる
 			pStmt.setInt(1, List.getUser_id());
-			System.out.println(List.getUser_id());
 			pStmt.setInt(2, List.getIcon_id());
 			pStmt.executeUpdate();
 			

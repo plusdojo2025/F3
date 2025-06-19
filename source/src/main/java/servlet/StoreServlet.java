@@ -25,21 +25,17 @@ public class StoreServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // ログインチェック
     	HttpSession session = request.getSession();
-    	Object obj = session.getAttribute("id");
-    	int sessionId = (Integer) obj;
-        System.out.println("user_id="+sessionId);
-//        // ログインチェック
-//    	HttpSession session = request.getSession();
-//		String contextPath = request.getContextPath();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect(contextPath + "/LoginServlet");
-//			return;
-//		}
-//		//sessionIdにセッションIDを代入
-//        Object userIdObj = session.getAttribute("id");
-//        int sessionId = Integer.parseInt(userIdObj.toString());
- //       System.out.println("storeser"+sessionId);
+		String contextPath = request.getContextPath();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect(contextPath + "/LoginServlet");
+			return;
+		}
+		//sessionIdにセッションIDを代入
+        Object userIdObj = session.getAttribute("id");
+        int sessionId = Integer.parseInt(userIdObj.toString());
+        
         
         // DAOを使用してデータベースの情報を取得
     	//int sessionId = 5;
