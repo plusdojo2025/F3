@@ -48,7 +48,7 @@
 	</div>
 	
 	<div class="flame">
-		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
+		<img src="<c:url value='/img/flame_help.png'/>" class="flame-img" />
 
 		<div class="form-wrapper">
 			<button onclick="location.href='/F3/LoginServlet'" class="login_btn"
