@@ -69,7 +69,7 @@ function validateForm() {
 		alert("ユーザー名を入力してください。");
 		return false;
 	}
-	if(user.)
+	
 	if (email === "") {
 		alert("メールアドレスを入力してください。");
 		return false;
