@@ -60,20 +60,25 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 				<div class="Form-Item">
 					<p class="Form-Item-Label">ユーザー名</p>
 					<input type="text" name="name_input" class="Form-Item-Input"
-						id="name_input">
+						id="name_input" onKeyup="valiCheck()">
 				</div>
 				<div class="Form-Item">
 					<p class="Form-Item-Label">パスワード</p>
 					<input type="password" name="pw_input" class="Form-Item-Input"
-						id="pw_input">
+						id="pw_input" onKeyup="valiCheck()">
 				</div>
 				<div class="Form-Item">
-					<p class="Form-Item-Label">
+					<p class="Form-Item-Label" onKeyup="valiCheck()">
 						パスワード<br>（2回目）
 					</p>
 					<input type="password" name="pw_re_input" class="Form-Item-Input"
+<<<<<<< HEAD
 						id="pw_re_input">
 				</div>
+=======
+						id="pw_re_input" onKeyup="valiCheck()">
+				</div>			
+>>>>>>> 0714d2820be8b2f66a2b27f39d3c2a28635615c3
 				<!-- ここはプルダウンの選択肢に -->
 				<div class="Form-Item">
 					<p class="Form-Item-Label">居住地域</p>
@@ -89,8 +94,13 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 					</select>
 				</div>
 				<div class="Form-Item">
+<<<<<<< HEAD
 					<p class="Form-Item-Label">メールアドレス</p>
 					<input type="email" name="mail_input" class="Form-Item-Input">
+=======
+						<p class="Form-Item-Label">メールアドレス</p>
+						<input type="email" name="mail_input" class="Form-Item-Input" onKeyup="valiCheck()">
+>>>>>>> 0714d2820be8b2f66a2b27f39d3c2a28635615c3
 				</div>
 				<input type="submit" name="insert_btn" class="insert_btn" value="登録">
 				<p id="error_msg" class="font-red"></p>
