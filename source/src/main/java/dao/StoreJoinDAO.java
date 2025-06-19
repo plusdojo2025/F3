@@ -81,7 +81,7 @@ public class StoreJoinDAO {
 	public int getpoint(StoreJoin List) {
 		Connection conn = null;
         int points = 0;
-        String sql = "SELECT point FROM scorepoint WHERE user_id = 1;";
+        String sql = "SELECT point FROM scorepoint WHERE user_id = ?;";
 
         try  {
         	// JDBCドライバを読み込む
@@ -97,6 +97,7 @@ public class StoreJoinDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 				"root", "password");
              PreparedStatement pstmt = conn.prepareStatement(sql);
+             pstmt.setInt(1, List.getUser_id());
              try (ResultSet rs = pstmt.executeQuery()) {
                  if (rs.next()) {
                      points = rs.getInt("point");

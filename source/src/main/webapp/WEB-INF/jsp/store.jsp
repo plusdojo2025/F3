@@ -27,12 +27,12 @@
 
         <nav id="nav-menu" class="nav" aria-hidden="true">
             <ul class="nav__list">
-                <li class="nav__item"><a href="img\home.html" class="nav__link" name="home_link">ホーム</a></li>
-                <li class="nav__item"><a href="img\mypage.html" class="nav__link" name="mypege_link">マイページ</a></li>
-                <li class="nav__item"><a href="img\calender.html" class="nav__link" name="calender_link">カレンダー</a></li>
-                <li class="nav__item"><a href="img\store.html" class="nav__link" name="store_link">ストア</a></li>
-                <li class="nav__item"><a href="img\help.html" class="nav__link" name="help_link">へルプ</a></li>
-                <li class="nav__item"><a href="img\top.html" class="nav__link" name="logout_btn">ログアウト</a></li>
+                <li class="nav__item"><a href="/HomeServlet" class="nav__link" name="home_link">ホーム</a></li>
+                <li class="nav__item"><a href="/MypageServlet" class="nav__link" name="mypege_link">マイページ</a></li>
+                <li class="nav__item"><a href="/CalendarServlet" class="nav__link" name="calender_link">カレンダー</a></li>
+                <li class="nav__item"><a href="/StoreServlet" class="nav__link" name="store_link">ストア</a></li>
+                <li class="nav__item"><a href="/HelpServlet" class="nav__link" name="help_link">へルプ</a></li>
+                <li class="nav__item"><a href="/LogoutServlet" class="nav__link" name="logout_btn">ログアウト</a></li>
             </ul>
         </nav>
     </div>
@@ -58,7 +58,6 @@
                         <input type="hidden" name="icon_id" value="${e.icon_id}">
                         <input type="hidden" name="price" value="${e.price}">
                         <c:forEach var="x" items="${icon}" >
-                        
 			 		    <!-- ボタン状態を条件で切り替え -->
 				            <c:choose>
 				                <c:when test="${e.icon_id == x.icon_id}">
@@ -73,14 +72,24 @@
     							</c:when>
 				            </c:choose>
         				</c:forEach>
-        				<%
-        				if (isAvailable==false) {
+        				<!-- iconが空のときの処理 -->
+        				<c:if test="${empty icon}">
+							<c:choose>
+				                <c:when test="${e.price > point}">
+        							<% 
+						    		isA = false; //ポイント不足の場合
+									%>
+    							</c:when>
+				            </c:choose>
+						</c:if>
+        					<%
+        						if (isAvailable==false) {
         					%>
-        					    <input type="submit" class="swap_btn"  disabled value="所有済み">
+        					    <input type="submit" class="nswap_btn"  disabled value="所有済み">
         					<%
         					    } else if(isA == false) {
         					%>
-        					    <input type="submit" class="swap_btn" disabled value="ポイント不足">
+        					    <input type="submit" class="nswap_btn" disabled value="ポイント不足">
         					<%
         					    }else{
         					%>
