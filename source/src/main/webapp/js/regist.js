@@ -1,7 +1,7 @@
 /**
  * 
  */
- 
+
 'use strict';
 function confirmPassword() {
 	const password = document.getElementById('pw_input').value;
@@ -31,17 +31,35 @@ function validatePassword() {
 
 function exceed30Name() {
 	var name = document.getElementById("name_input").value;
-	
-	if([...name].length() > 30) {
+
+	if ([...name].length() > 30) {
 		alart("ユーザー名は30文字以下です。");
+	}
+}
+
+function passCheck() {
+	first = document.pass.pass1.value;
+	second = document.pass.pass2.value;
+	if (first == second) {
+		document.registForm.pw_input.style.background = "pink";
+		document.registForm.pwre__input.style.background = "white";
+	} else {
+		document.registForm.pw_input.style.background = "pink";
+		document.registForm.pw_re_input.style.background = "pink";
 	}
 }
 
 function validateForm() {
 	var email = document.forms["registForm"]["mail_input"].value;
 	var password = document.forms["registForm"]["pw_input"].value;
+	var rePassword = document.forms["registForm"]["pw_re_input"].value;
 	var name = document.forms["registForm"]["name_input"].value;
 	var regionId = document.forms["registForm"]["region_input"].value;
+	document.registForm.pw_input.style.background = "pink";
+	if (name === "") {
+		alert("ユーザー名を入力してください。");
+		return false;
+	}
 	if (email === "") {
 		alert("メールアドレスを入力してください。");
 		return false;
@@ -50,14 +68,18 @@ function validateForm() {
 		alert("パスワードを入力してください。");
 		return false;
 	}
-	if (name === "") {
-		alert("ユーザー名を入力してください。");
+	if (password.length < 8) {
+		alert("パスワードは8文字以上必要です。");
+		return false;
+	}
+	if (password !== rePassword) {
+		alert("再入力されたパスワードが正しくありません。");
 		return false;
 	}
 	if (regionId === 1) {
 		alert("居住地域を入力してください。");
 		return false;
 	}
-	alart("aaa");
+	alert(regionId);
 	return true;
 }

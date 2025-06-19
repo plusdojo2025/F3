@@ -56,7 +56,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 
 		<div class="form-wrapper">
 			<form class="Form" id="registForm" name="registForm" method="POST"
-				action="/F3/RegistServlet" onsubmit="return validateForm()">
+				action="/F3/RegistServlet" onsubmit="return validateForm()" onKeyup="valiCheck()">
 				<div class="Form-Item">
 					<p class="Form-Item-Label">ユーザー名</p>
 					<input type="text" name="name_input" class="Form-Item-Input"
