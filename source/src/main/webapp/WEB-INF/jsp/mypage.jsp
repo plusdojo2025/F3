@@ -59,9 +59,9 @@
 	    <ul class="nav__list">
 	        <li class="nav__item"><a href="<c:url value='/HomeServlet' />" class="nav__link" name="home_link">ホーム</a></li>
 	        <li class="nav__item"><a href="<c:url value='/MypageServlet' />" class="nav__link" name="mypege_link">マイページ</a></li>
-	        <li class="nav__item"><a href="<c:url value='/CalenderServlet' />" class="nav__link" name="calender_link">カレンダー</a></li>
+	        <li class="nav__item"><a href="<c:url value='/CalendarServlet' />" class="nav__link" name="calender_link">カレンダー</a></li>
 	        <li class="nav__item"><a href="<c:url value='/StoreServlet' />" class="nav__link" name="store_link">ストア</a></li>
-	        <li class="nav__item"><a href="<c:url value='/HeplServlet' />" class="nav__link" name="help_link">ヘルプ</a></li>
+	        <li class="nav__item"><a href="<c:url value='/HelpServlet' />" class="nav__link" name="help_link">ヘルプ</a></li>
 	        <li class="nav__item"><a href="<c:url value='/LogoutServlet' />" class="nav__link" name="logout_btn">ログアウト</a></li>
 	    </ul>
 	</nav>
@@ -78,12 +78,14 @@
 <!-- 保持ポイント、称号 -->
 <div class="image-column">
 	<div class="image-wrapper">
-		<div class="image-label">保有pt:${e.point}</div>
+		<div class="image-label">保有pt</div><br>
+		<div class ="image-body">${e.point}pt</div>
 		<img src="<c:url value='/img/point_flame_white.png' />" alt="画像1" class="point">
 	</div>
 	
 	<div class="image-wrapper">
-		<div class="image-label">ランク:${e.degree_name}</div>
+		<div class="image-label">ランク</div><br>
+		<div class ="image-body">${e.degree_name}</div>
 		<img src="<c:url value='/img/point_flame_white.png' />" alt="画像2" class="rank">
 	</div>
 </div>
