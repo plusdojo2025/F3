@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,7 @@
 	</div>
 	</div>
 	<div class="flame">
-		<img src="img/frame.png" class="flame-img" />
+		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
 
 		<div class="form-wrapper">
 			<form class="Form" name="loginForm" method="POST"
