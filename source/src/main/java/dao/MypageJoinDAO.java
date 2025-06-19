@@ -125,12 +125,9 @@ public class MypageJoinDAO {
 		List<Icon> icon = new ArrayList<>();
 		Connection conn = null;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
+			
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+			conn = getConnection();
 			PreparedStatement stmt = conn.prepareStatement(SELECT_ICONS);
 			stmt.setInt(1,id);
 			ResultSet rs = stmt.executeQuery();
@@ -151,12 +148,7 @@ public class MypageJoinDAO {
 		Connection conn = null;
 		try {
 			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+			conn = getConnection();
 			PreparedStatement stmt = conn.prepareStatement(SELECT_REGIONS);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
