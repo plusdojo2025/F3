@@ -76,9 +76,12 @@
                 </c:forEach>
             </tr>
         </c:forEach>
-    </table>
+
+</table>
 <c:forEach var="link" items="${links}">
   <p>${link.link}</p>
 </c:forEach>
+    </table>   
+
 </body>
 </html>
