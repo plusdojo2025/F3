@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dto.IconStatus;
 import dto.StoreJoin;
 
 public class StoreJoinDAO {
@@ -22,15 +25,17 @@ public class StoreJoinDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
-			// SQL文を準備する
-			String sql = "INSERT INTO iconstatus (user_id, icon_id) VALUES (2, ?);";
+			//保持アイコンに追加するSQL
+			String sql = "INSERT INTO iconstatus (user_id, icon_id) VALUES (1, ?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);//保持アイコンに追加するSQL
-			String sql2 = "UPDATE scorepoint SET point = point - ? WHERE user_id = 2;";
+			//ポイントを減算するSQL
+			String sql2 = "UPDATE scorepoint SET point = point - ? WHERE user_id = ?;";
 			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
-			
-			 String checkSql = "SELECT point FROM scorepoint WHERE user_id = 2;";
+			//ポイントがマイナスになる場合実行しないようにする
+			 String checkSql = "SELECT point FROM scorepoint WHERE user_id = ?;";
 		     PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+		     checkStmt.setInt(1, List.getUser_id());
 		     ResultSet rs = checkStmt.executeQuery();
 		     if (rs.next()) {
 		            int currentPoints = rs.getInt("point");
@@ -42,19 +47,13 @@ public class StoreJoinDAO {
 		            }
 		        }
 			// SQL文を完成させる
-			
 			pStmt.setInt(1, List.getIcon_id());
 			pStmt.executeUpdate();
 			
 			pStmt2.setInt(1,List.getPrice());
-			//pStmt2.setInt(2,List.getUser_id());
+			pStmt2.setInt(2,List.getUser_id());
 			pStmt2.executeUpdate();
-			
-			result = true;
-			// SQL文を実行する
-//			if (pStmt.executeUpdate() == 1) {
-//				result = true;
-//			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -74,10 +73,11 @@ public class StoreJoinDAO {
 		return result;
 	}
 	
+	//ポイント表示処理
 	public int getpoint(StoreJoin List) {
 		Connection conn = null;
         int points = 0;
-        String sql = "SELECT point FROM scorepoint WHERE user_id = 2;";
+        String sql = "SELECT point FROM scorepoint WHERE user_id = ?;";
 
         try  {
         	// JDBCドライバを読み込む
@@ -93,6 +93,7 @@ public class StoreJoinDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 				"root", "password");
              PreparedStatement pstmt = conn.prepareStatement(sql);
+             pstmt.setInt(1, List.getUser_id());
              try (ResultSet rs = pstmt.executeQuery()) {
                  if (rs.next()) {
                      points = rs.getInt("point");
@@ -112,4 +113,34 @@ public class StoreJoinDAO {
          }
         return points;
 	}
+	
+	//保持アイコン一覧取得メソッド
+		public List<IconStatus> getIcons(int id){
+			List<IconStatus> iconid = new ArrayList<>();
+			Connection conn = null;
+			String sql = "SELECT user_id, icon_id FROM iconstatus WHERE user_id=?";
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+						"root", "password");
+				
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				stmt.setInt(1,id);
+				ResultSet rs = stmt.executeQuery();
+				
+				while (rs.next()) {
+	                IconStatus icon = new IconStatus(rs.getInt("user_id"), rs.getInt("icon_id"));
+	                iconid.add(icon);
+	            }
+			}catch (SQLException e) {
+	            e.printStackTrace();
+	        }catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				iconid = null;
+			}
+			return iconid;
+		}
 }

@@ -6,12 +6,14 @@ public class IconStatus implements Serializable{
 	private int icon_id;
 	//コンストラクタ
 	public IconStatus(int user_id,int icon_id) {
-		setUser_id(user_id);
-		setIcon_id(icon_id);
+		super();
+		this.user_id = user_id;
+		this.icon_id = icon_id;
 	}
 	public IconStatus() {
-		setUser_id(0);
-		setIcon_id(0);
+		super();
+		this.user_id = 0;
+		this.icon_id = 0;
 	}
 	//ゲッターセッター
 	public int getUser_id() {

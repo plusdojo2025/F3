@@ -32,10 +32,11 @@ public class MypageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//セッション取得/ログインへ戻す
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/LoginServlet");
-//			return;
-//		}
+		String contextPath = request.getContextPath();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect(contextPath + "/LoginServlet");
+			return;
+		}
 		String success = (String) session.getAttribute("success");
 		if (success != null) {
 		    request.setAttribute("success", success);
@@ -47,8 +48,8 @@ public class MypageServlet extends HttpServlet {
         request.setAttribute("regions", regions);
         
         //マイページ情報取得
-        //int uid = (int)session.getAttribute("id");
-        MypageJoin mypage = uDao.mypageSelect(1);
+        int uid = (int)session.getAttribute("id");
+        MypageJoin mypage = uDao.mypageSelect(uid);
         request.setAttribute("mypage",mypage);
         
       //所持アイコン一覧取得
@@ -64,11 +65,12 @@ public class MypageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		String contextPath = request.getContextPath();
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/F3/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect(contextPath + "/LoginServlet");
+			return;
+		}
 		
 		//リクエストスコープ取得
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
@@ -85,7 +87,6 @@ public class MypageServlet extends HttpServlet {
 		user.setRegion_id(region_id);
 		user.setUser_name(name);
 		MypageJoinDAO users = new MypageJoinDAO();
-		String contextPath = request.getContextPath();
 		if (users.mypageUpdate(user)) {
 		    System.out.println("更新成功");
 		    session.setAttribute("success", "true");

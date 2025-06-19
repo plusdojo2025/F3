@@ -16,6 +16,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 <link rel="stylesheet" href="<c:url value='/css/help.css' />">
 <script src="<c:url value='/js/help.js' />"></script>
 <script src="<c:url value='/js/common.js' />"></script>
+<div class="bg_pattern Paper"></div>
 </head>
 <body>
 	<!-- ヘッダーここから -->

@@ -216,7 +216,7 @@ public class UsersDAO {
 			conn.setAutoCommit(false);
 
 			// INSERT文を準備する
-			String uSql = "insert into users (region_id, icon_id, degree_id, user_name, password, mail) values (?, ?, ?, ?, ?, ?)";
+			String uSql = "INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement uStmt = conn.prepareStatement(uSql);
 			// // SQL文を完成させる
 
@@ -270,7 +270,7 @@ public class UsersDAO {
 			int user_id = rs.getInt("user_id");
 			System.out.println("user_id : " + user_id);
 
-			String pSql = "insert into scorepoint (user_id) values (?)";
+			String pSql = "INSERT INTO scorepoint (user_id) VALUES (?)";
 			PreparedStatement pStmt = conn.prepareStatement(pSql);
 
 			if (users.getUser_id() != 0) {
