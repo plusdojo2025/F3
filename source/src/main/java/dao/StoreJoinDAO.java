@@ -26,7 +26,7 @@ public class StoreJoinDAO {
 					"root", "password");
 
 			//保持アイコンに追加するSQL
-			String sql = "INSERT INTO iconstatus (user_id, icon_id) VALUES (1, ?);";
+			String sql = "INSERT INTO iconstatus (user_id, icon_id) VALUES (?, ?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);//保持アイコンに追加するSQL
 			//ポイントを減算するSQL
 			String sql2 = "UPDATE scorepoint SET point = point - ? WHERE user_id = ?;";
@@ -47,7 +47,8 @@ public class StoreJoinDAO {
 		            }
 		        }
 			// SQL文を完成させる
-			pStmt.setInt(1, List.getIcon_id());
+			pStmt.setInt(1, List.getUser_id());
+			pStmt.setInt(2, List.getIcon_id());
 			pStmt.executeUpdate();
 			
 			pStmt2.setInt(1,List.getPrice());
