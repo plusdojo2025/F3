@@ -74,7 +74,7 @@ public class MypageJoinDAO {
 				throw new Exception("データベース接続に失敗しました。");
 			}
 			
-			PreparedStatement pStmt = conn.prepareStatement("UPDATE users SET region_id = ?, icon_id = ?, user_name = ?,mail = ? WHERE user_id = ?;");
+			PreparedStatement pStmt = conn.prepareStatement("UPDATE users SET region_id = ?, icon_id = ?, user_name = ?,mail = ? WHERE user_id = ?");
 			
 			//region_id
 			pStmt.setInt(1, user.getRegion_id());
@@ -88,8 +88,10 @@ public class MypageJoinDAO {
 			//mail
 			pStmt.setString(4, user.getMail());
 			
-			//条件uid
+			//条件(uid)
 			pStmt.setInt(5,user.getUser_id());
+			
+			
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
