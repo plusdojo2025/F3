@@ -100,6 +100,18 @@
   white-space: nowrap;
 }
 
+.nswap_btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: hsl(192, 0%, 47%);
+  color: white;
+  border: 2px solid #080808;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
 
 /* レスポンシブ対応 */
 @media screen and (max-width: 768px) {
@@ -164,8 +176,8 @@
 .point-text {
   position: absolute;
   top: 50%;  /* 画像の中央に */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 25%;
+  transform: translateY(-50%);  /* 垂直方向だけ中央に */;
   color: rgb(0, 0, 0);     /* 文字色 */
   font-weight: bold;
   
