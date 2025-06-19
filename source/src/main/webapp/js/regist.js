@@ -37,16 +37,17 @@ function exceed30Name() {
 	}
 }
 
-function passCheck() {
-	first = document.pass.pass1.value;
-	second = document.pass.pass2.value;
-	if (first == second) {
-		document.registForm.pw_input.style.background = "pink";
-		document.registForm.pwre__input.style.background = "white";
-	} else {
-		document.registForm.pw_input.style.background = "pink";
-		document.registForm.pw_re_input.style.background = "pink";
-	}
+function valiCheck() {
+	var password = document.getElementById("pw_input").value;
+    var rePassword = document.getElementById("pw_re_input").value;
+
+    if (password === rePassword) {
+        document.getElementById("pw_input").style.background = "white";
+        document.getElementById("pw_re_input").style.background = "white";
+    } else {
+        document.getElementById("pw_input").style.background = "pink";
+        document.getElementById("pw_re_input").style.background = "pink";
+    }
 }
 
 function validateForm() {
@@ -76,7 +77,7 @@ function validateForm() {
 		alert("再入力されたパスワードが正しくありません。");
 		return false;
 	}
-	if (regionId === 1) {
+	if (regionId === "1") {
 		alert("居住地域を入力してください。");
 		return false;
 	}
