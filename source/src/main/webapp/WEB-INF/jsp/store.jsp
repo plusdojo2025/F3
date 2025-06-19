@@ -41,7 +41,7 @@
 <div class="flame-wrapper">
         <div class="flame">
           <div class="point-box">
-           <img src="img\point_flame.png" alt="重ね画像" class="point-image" name="point">
+           <img src="<c:url value='/img/point_flame.png'/>" alt="重ね画像" class="point-image" name="point">
             <span class="point-text">保有pt:${point}</span>
           </div>
             <div class="store_item">
