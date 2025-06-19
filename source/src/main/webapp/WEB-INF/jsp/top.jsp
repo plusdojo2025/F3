@@ -14,7 +14,7 @@
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
-			src="img/logo.png"></a>
+			src="<c:url value='/img/flame.png'/>"></a>
 	</div>
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
