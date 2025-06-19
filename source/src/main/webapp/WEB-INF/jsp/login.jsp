@@ -14,7 +14,7 @@
 <body>
 	<!-- ヘッダーここから -->
 	<div class="logo">
-		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
+		<a href="<c:url value='/HomeServlet' />"></a><img
 			src="img/logo.png"></a>
 	</div>
 	<div class="header">
