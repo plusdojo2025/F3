@@ -67,10 +67,10 @@ public class MypageServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String contextPath = request.getContextPath();
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect(ContextPath + "/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect(contextPath + "/LoginServlet");
+			return;
+		}
 		
 		//リクエストスコープ取得
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
