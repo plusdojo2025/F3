@@ -73,9 +73,9 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 					</p>
 					<input type="password" name="pw_re_input" class="Form-Item-Input"
 						id="pw_re_input">
-				</div>			
+				</div>
 				<!-- ここはプルダウンの選択肢に -->
-	 			<div class="Form-Item">
+				<div class="Form-Item">
 					<p class="Form-Item-Label">居住地域</p>
 					<select id="region_input" name="region_input"
 						class="Form-Item-Input">
@@ -89,11 +89,11 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 					</select>
 				</div>
 				<div class="Form-Item">
-						<p class="Form-Item-Label">メールアドレス</p>
-						<input type="email" name="mail_input" class="Form-Item-Input">
+					<p class="Form-Item-Label">メールアドレス</p>
+					<input type="email" name="mail_input" class="Form-Item-Input">
 				</div>
 				<input type="submit" name="insert_btn" class="insert_btn" value="登録">
-					<p id="error_msg" class="font-red"></p>
+				<p id="error_msg" class="font-red"></p>
 			</form>
 		</div>
 	</div>
