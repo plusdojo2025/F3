@@ -26,6 +26,7 @@
     </style>
 </head>
 <body>
+	<%@ include file="../../common.jsp" %> <!-- ✅ 共通ヘッダーを読み込む -->
 	<div>
         <c:choose>
             <c:when test="${code == '1'}">
