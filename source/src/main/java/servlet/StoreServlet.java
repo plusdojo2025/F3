@@ -25,18 +25,24 @@ public class StoreServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // ログインチェック
     	HttpSession session = request.getSession();
-		String contextPath = request.getContextPath();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect(contextPath + "/LoginServlet");
-			return;
-		}
-		//sessionIdにセッションIDを代入
-        Object userIdObj = session.getAttribute("id");
-        int sessionId = Integer.parseInt(userIdObj.toString());
+    	Object obj = session.getAttribute("id");
+    	int sessionId = (Integer) obj;
+        System.out.println("user_id="+sessionId);
+//        // ログインチェック
+//    	HttpSession session = request.getSession();
+//		String contextPath = request.getContextPath();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect(contextPath + "/LoginServlet");
+//			return;
+//		}
+//		//sessionIdにセッションIDを代入
+//        Object userIdObj = session.getAttribute("id");
+//        int sessionId = Integer.parseInt(userIdObj.toString());
+ //       System.out.println("storeser"+sessionId);
         
         // DAOを使用してデータベースの情報を取得
+    	//int sessionId = 5;
         IconDAO IconDAO = new IconDAO();
         List<Icon> IconList = IconDAO.getAllIcon();
         
@@ -61,7 +67,10 @@ public class StoreServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
+    	HttpSession session = request.getSession();
+    	Object obj = session.getAttribute("id");
+    	int sessionId = (Integer) obj;
+        System.out.println("user_id="+sessionId);
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/F3/LoginServlet");
 			return;
@@ -77,7 +86,7 @@ public class StoreServlet extends HttpServlet {
 		
 		// ポイントの更新＆保持アイコン登録処理を行う
 		StoreJoinDAO sjDAO = new StoreJoinDAO();
-		sjDAO.update(new StoreJoin(0, icon_id,"",price,0)); 
+		sjDAO.update(new StoreJoin(sessionId, icon_id,"",price,0)); 
 
 		response.sendRedirect("StoreServlet");
 

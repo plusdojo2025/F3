@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<script src="/F3/js/calendar.js"></script>
+<script src="/F3/js/common.js"></script>
 <html>
 <head>
     <title>ごみカレンダー</title>
@@ -26,6 +29,7 @@
     </style>
 </head>
 <body>
+	<%@ include file="../../common.jsp" %> <!-- ✅ 共通ヘッダーを読み込む -->
 	<div>
         <c:choose>
             <c:when test="${code == '1'}">

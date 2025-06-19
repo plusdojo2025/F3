@@ -15,7 +15,9 @@ public class StoreJoinDAO {
 	public boolean update(StoreJoin List) {
 		Connection conn = null;
 		boolean result = false;
-
+		StoreJoin join = new StoreJoin();
+		
+		System.out.println(List.getUser_id());
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,6 +38,7 @@ public class StoreJoinDAO {
 			 String checkSql = "SELECT point FROM scorepoint WHERE user_id = ?;";
 		     PreparedStatement checkStmt = conn.prepareStatement(checkSql);
 		     checkStmt.setInt(1, List.getUser_id());
+		     System.out.println(checkStmt.executeQuery());
 		     ResultSet rs = checkStmt.executeQuery();
 		     if (rs.next()) {
 		            int currentPoints = rs.getInt("point");
@@ -48,6 +51,7 @@ public class StoreJoinDAO {
 		        }
 			// SQL文を完成させる
 			pStmt.setInt(1, List.getUser_id());
+			System.out.println(List.getUser_id());
 			pStmt.setInt(2, List.getIcon_id());
 			pStmt.executeUpdate();
 			
