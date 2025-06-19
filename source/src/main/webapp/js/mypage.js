@@ -66,3 +66,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+//バリデーションチェック
+document.getElementById('registForm').addEventListener('submit', function(e) {
+  const errors = [];
+
+  // ユーザー名のチェック
+  const nameInput = document.querySelector('input[name="name_input"]');
+  const name = nameInput.value.trim();
+
+  
+  const nameRegex = /^[\w!@#\$%\^&\*\(\)\-=\+_\[\]\{\},\.]{1,30}$/;
+
+  if (name === '') {
+    errors.push("・ユーザー名は必須です");
+  } else if (!nameRegex.test(name)) {
+    errors.push("・ユーザー名は全半角英数字と記号のみ、30文字以内で入力してください");
+  }
+
+  // メールのチェック
+  const emailInput = document.querySelector('input[name="mail_input"]');
+  const email = emailInput.value.trim();
+
+  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email === '') {
+    errors.push("・メールアドレスは必須です");
+  } else if (!emailRegex.test(email)) {
+    errors.push("・正しいメールアドレスの形式で入力してください");
+  }
+
+  
+  if (errors.length > 0) {
+    alert("以下の内容を確認してください：\n" + errors.join("\n"));
+    e.preventDefault();
+  }
+});

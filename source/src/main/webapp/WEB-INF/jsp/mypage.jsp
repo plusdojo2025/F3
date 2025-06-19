@@ -9,9 +9,9 @@
 <html>
 <head> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/mypage.css">
-<script defer src="js/mypage.js"></script>
+<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+<link rel="stylesheet" href="<c:url value='/css/mypage.css' />">
+<script defer src="<c:url value='/js/mypage.js' />"></script>
 <meta charset="UTF-8">
 <title>ポイポイ|マイページ</title>
 </head>
@@ -35,9 +35,9 @@
   <div class="modal">
     <h3>画像を選択してください</h3>
     <div class="image-list">
-    <% for (Icon icon : icons) { %>
-    <img src="img/<%= icon.getIcon_name()%>" class="image-option" data-id="<%= icon.getIcon_id() %>">
-    <% } %>
+    <c:forEach var="icon" items="${icon}">
+    	<img src="<c:url value='/img/${icon.icon_name}' />" class="image-option" data-id="${icon.icon_id}" />
+	</c:forEach>
     <br><br>
     </div>
     <button onclick="closeModal()">キャンセル</button>
@@ -46,13 +46,13 @@
 
 <!-- ヘッダーここから -->
 <div class="logo">
-    <a href="<c:url value='/HomeServlet' />"><img src="img/logo.png"></a>
+    <a href="<c:url value='/HomeServlet' />"><img src="<c:url value='/img/logo.png' />"></a>
 </div>
 
 
 <div class="header">
     <button type="button" class="hamburger" name="humberger_menu" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
-        <img id="hamburger-icon" src="img/hamburger_open.png">
+        <img id="hamburger-icon" src="<c:url value='/img/hamburger_open.png' />">
     </button>
 
     <nav id="nav-menu" class="nav" aria-hidden="true">
@@ -69,7 +69,7 @@
 
 <!-- フレームとフォーム -->
 <div class="flame">
-    <img class="flame-img" src="img/flame_maypage.png" >
+    <img class="flame-img" src="<c:url value='/img/flame_maypage.png' />" >
 
 
 
@@ -79,12 +79,12 @@
 <div class="image-column">
 	<div class="image-wrapper">
 		<div class="image-label">保有pt:${e.point}</div>
-		<img src="img/point_flame_white.png" alt="画像1" class="point">
+		<img src="<c:url value='/img/point_flame_white.png' />" alt="画像1" class="point">
 	</div>
 	
 	<div class="image-wrapper">
 		<div class="image-label">ランク:${e.degree_name}</div>
-		<img src="img/point_flame_white.png" alt="画像2" class="rank">
+		<img src="<c:url value='/img/point_flame_white.png' />" alt="画像2" class="rank">
 	</div>
 </div>
 
@@ -98,7 +98,7 @@
 <!-- アイコンエリア -->
 <div class="icon-area">
 
-<img id="previewIcon" class="user-icon" src="img/${e.icon_name}" alt="サンプル">
+<img id="previewIcon" class="user-icon" src="<c:url value='/img/${e.icon_name}' />" alt="サンプル">
 <button type="button" id="icon-upload" class="icon-upload" onclick="openModal()">画像を選ぶ</button>
 <input type="hidden" name="icon_id" id="selectedIconId"value="${e.icon_id}">
 </div>
