@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
@@ -29,7 +30,14 @@ public class HomeServlet extends HttpServlet {
         //セッション送る
     	session.setAttribute("id", userId); // userId は int 型
         
-        
+    	//時間を送るため
+    	LocalTime now = LocalTime.now();
+        int hour = now.getHour();
+        System.out.println(hour);
+    	
+        request.setAttribute("hour", hour);
+    	
+    	
     	String check = "ホーム画面です！";
     	Calendar cal = Calendar.getInstance();
     	cal.setTime(new java.util.Date());
@@ -83,13 +91,14 @@ public class HomeServlet extends HttpServlet {
     	//dao処理
     	HomeJoinDAO dao = new HomeJoinDAO();
     	boolean check = dao.insertCal(userId, today, score, point);    	
-		if((score%10)==9) {
+
+    	if((score%10)==9) {
         	UsersDAO dao1 = new UsersDAO();
         	boolean inseDeg = dao1.UpDegree(userId);
         	if(inseDeg) {
         		System.out.println("称号アップ");
         	}
-    		}
+    	}
     	
     	if(check) {
     	    System.out.println("カレンダー登録成功！");

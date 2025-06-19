@@ -12,15 +12,15 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>ポイポイ</title>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/help.css">
-<script src="/F3/js/help.js"></script>
-<script src="/F3/js/common.js"></script>
+<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+<link rel="stylesheet" href="<c:url value='/css/help.css' />">
+<script src="<c:url value='/js/help.js' />"></script>
+<script src="<c:url value='/js/common.js' />"></script>
 </head>
 <body>
 	<!-- ヘッダーここから -->
 	<div class="logo">
-		<a href="C:\Users\user\Documents\グループ開発\home.html"><img
+		<a href="<c:url value='/HomeServlet' />"><img
 			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
@@ -52,7 +52,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	</div>
 
 	<div class="flame">
-		<img src="img/flame_help.png" class="flame-img" />
+		<img src="<c:url value='/img/flame_help.png'/>" class="flame-img" />
 		<div class="form-wrapper">
 			<a href=${region[0].link}$><input type="submit" name="link"
 				class="link help-button" value="ゴミの出し方について"></a> <input
@@ -63,7 +63,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 			<div id="popup" class="popup">
 				<div class="popup-content">
 					<span class="popup-close" id="popup-close">&times;</span> <img
-						src="img/point_info.png" alt="ポイント情報" class="popup-image">
+						src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
 				</div>
 			</div>
 			<!-- 入力欄 -->

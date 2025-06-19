@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>ポイポイ</title>
 <link rel="stylesheet" href="<c:url value='/css/common.css' />">
-<link rel="stylesheet" href="<c:url value='/css/top.css' />">
 <script src="<c:url value='/js/common.js' />"></script>
 </head>
 <body>
@@ -46,15 +45,6 @@
 		</nav>
 	</div>
 	
-	<div class="flame">
-		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
-
-		<div class="form-wrapper">
-			<button onclick="location.href='/F3/LoginServlet'" class="login_btn"
-				name="login_btn">ログイン</button>
-			<button onclick="location.href='/F3/RegistServlet'" name="regist_btn"
-				class="regist_btn">新規登録</button>
-		</div>
-	</div>
+	
 </body>
 </html>

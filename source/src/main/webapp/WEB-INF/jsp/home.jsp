@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <body>
 <h6>ホーム画面</h6>
 <p>チェック済み日：${home.current}</p>
+<p>${hour}</p>
 
     <div class="card" id="garbage_type">
         <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
@@ -27,6 +29,7 @@
 <c:set var="currentDate" value="${home.current}" />
 <script>
   const currentDate = "${home.current}";
+  const hour = parseInt("${fn:trim(hour)}", 10);// ← 文字列として埋め込まれても整数にする
 </script>
 <script src="${pageContext.request.contextPath}/js/home.js"></script>
 
