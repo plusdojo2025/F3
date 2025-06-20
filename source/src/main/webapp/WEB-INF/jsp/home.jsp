@@ -15,7 +15,7 @@
       height: auto;
     }
   </style>
-  <script src="${pageContext.request.contextPath}/js/home.js"></script>
+<!--  <script src="${pageContext.request.contextPath}/js/home.js"></script> -->
 </head>
 
 <body>
@@ -23,8 +23,7 @@
 <div class="flame">
 <img src="${pageContext.request.contextPath}/img/home_flame.png" ></div>
 <h6>ホーム画面</h6>
-<div class="rectangle"></div>
-<div class="rectangle2"></div>
+
 <p>チェック済み日：${home.current}</p>
 <p>${hour}</p>
 <a href="CalendarServlet"></a>
@@ -32,7 +31,12 @@
 
 
     <div class="" id="garbage_type"><%--① --%>
+    <div class="rectangle"></div>
+<div class="rectangle2">
         <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
+        <div id="weekday" id ="week"></div>
+        <p id="today">20日<p>
+        </div>
     </div>
 
     <div class="card"><%--② --%>
@@ -47,9 +51,10 @@
 <c:set var="currentDate" value="${home.current}" />
 <script>
   const currentDate = "${home.current}";
+  const type = "<c:out value='${home.types}' default='' />";
 </script>
 
-<script src="js/home.js"></script>
+<script src="${pageContext.request.contextPath}/js/home.js"></script>
 
 
 

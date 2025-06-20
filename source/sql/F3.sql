@@ -1,5 +1,5 @@
 /*もともとF3がある場合*/
-drop database F3;
+DROP DATABASE IF EXISTS F3;
 /*DB作成*/
 CREATE DATABASE F3;
 USE F3;
