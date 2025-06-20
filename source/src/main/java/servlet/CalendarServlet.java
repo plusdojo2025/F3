@@ -35,6 +35,11 @@ public class CalendarServlet extends HttpServlet {
     	int userId = (Integer) obj;
         System.out.println("user_id="+userId);
     	
+        if(session == null || session.getAttribute("user")==null) {
+        	response.sendRedirect("LoginServlet");
+        	return;
+        }
+        
     	String code = request.getParameter("code");
 
     	Calendar cal = Calendar.getInstance();
