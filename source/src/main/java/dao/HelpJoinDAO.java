@@ -24,7 +24,7 @@ public class HelpJoinDAO {
 		}
 	}
 
-	String sql = "select link FROM region WHERE region_id = (SELECT region_id FROM users WHERE user_id = ?)";
+	String sql = "SELECT link FROM region WHERE region_id = (SELECT region_id FROM users WHERE user_id = ?)";
 	int user = 1;
 
 	public List<Region> getGarbageLink(int userId) {
