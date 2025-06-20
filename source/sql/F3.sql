@@ -93,11 +93,11 @@ CREATE TABLE degree (
 
 /*users*/
 INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VALUES
- (1,1,1,'dojouser1','#SEplus2025SEplus','dojouser1@plusdojo.jp'),
- (2,1,1,'dojouser2','#SEplus2025SEplus','dojouser2@plusdojo.jp'),
- (3,1,1,'dojouser3','#SEplus2025SEplus','dojouser3@plusdojo.jp'),
- (4,1,1,'dojouser4','#SEplus2025SEplus','dojouser4@plusdojo.jp'),
- (5,1,5,'dojouser5','#SEplus2025SEplus','dojouser5@plusdojo.jp');
+ (1,1,1,'dojouser1','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser1@plusdojo.jp'),
+ (2,1,1,'dojouser2','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser2@plusdojo.jp'),
+ (3,1,1,'dojouser3','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser3@plusdojo.jp'),
+ (4,1,1,'dojouser4','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser4@plusdojo.jp'),
+ (5,1,1,'dojouser5','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser5@plusdojo.jp');
 
 
 
