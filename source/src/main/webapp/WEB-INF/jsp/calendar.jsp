@@ -85,7 +85,7 @@
 
             <div style="margin-top: 20px;">
                 <c:forEach var="link" items="${links}">
-                    <a href="${link.link}">泉</a>
+                    <a href="${link.link}">自治体リンク✙</a>
                 </c:forEach>
             </div>
         </div>
