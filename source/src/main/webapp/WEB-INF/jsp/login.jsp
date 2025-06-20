@@ -7,21 +7,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>ポイポイ｜ログイン</title>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/login.css">
-<script src="/F3/js/login.js"></script>
-<script src="/F3/js/common.js"></script>
+<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+<link rel="stylesheet" href="<c:url value='/css/login.css' />">
+<script defer src="<c:url value='/js/login.js' />"></script>
+<script src="<c:url value='/js/common.js' />"></script>
+
+
 </head>
 <body>
 	<!-- ヘッダーここから -->
 	<div class="logo">
-		<a href="<c:url value='/HomeServlet' />"></a><img
+		<a href="<c:url value='/HomeServlet' />"><img
 			src="img/logo.png"></a>
 	</div>
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img id="hamburger-icon" src="img/hamburger_open.png">
+			<img src="<c:url value='/img/logo.png' />">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
@@ -47,13 +49,13 @@
 			</ul>
 		</nav>
 	</div>
-	</div>
+	
 	<div class="flame">
 		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
 
 		<div class="form-wrapper">
 			<form class="Form" name="loginForm" method="POST"
-				action="/F3/LoginServlet" onsubmit="return validateForm()">
+				action="action="<c:url value='/LoginServlet' /> onsubmit="return validateForm()">
 				<div class="Form-Item">
 					<p class="Form-Item-Label">メールアドレス</p>
 					<input type="text" name="email_input" id="email"

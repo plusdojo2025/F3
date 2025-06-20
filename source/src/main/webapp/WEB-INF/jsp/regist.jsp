@@ -19,7 +19,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 </head>
 <body>
 
-	</form>
+	
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="<c:url value='/HomeServlet' />"><img
@@ -28,7 +28,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img id="hamburger-icon" src="img/hamburger_open.png">
+			<img id="hamburger-icon" src="<c:url value='/img/hamburger_open.png' />">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
@@ -56,7 +56,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 
 		<div class="form-wrapper">
 			<form class="Form" id="registForm" name="registForm" method="POST"
-				action="/F3/RegistServlet" onsubmit="return validateForm()">
+				action="<c:url value='/RegistServlet' />" onsubmit="return validateForm()">
 				<div class="Form-Item">
 					<p class="Form-Item-Label">ユーザー名</p>
 					<input type="text" name="name_input" class="Form-Item-Input"

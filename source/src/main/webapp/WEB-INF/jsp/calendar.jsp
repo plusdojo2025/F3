@@ -5,6 +5,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
     <title>ごみカレンダー</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
@@ -20,10 +21,10 @@
                 <c:choose>
                     <c:when test="${code == '1'}">
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
-                        <a href="CalendarServlet">次</a>
+                        <a href="<c:url value='/CalendarServlet?code=1' />">前</a>
                     </c:when>
                     <c:when test="${code == '2'}">
-                        <a href="CalendarServlet">前</a>
+                        <a href="<c:url value='/CalendarServlet?code=2' />">次</a>
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
                     </c:when>
                     <c:otherwise>
