@@ -40,13 +40,13 @@
     </div>
 
     <div class="card"><%--② --%>
-        <p>現在のランクは<br><span class="highlight">${home.degree_name}</span></p>
-    </div>
+        <div class="circle"><p>現在のランクは<br><span class="highlight2">${home.degree_name}</span></p>
+    </div></div>
 
-    <div class="card"><%--③ --%>
+    <div class="rounded-rectangle"><div class="card"><%--③ --%>
 		<c:set var="nextScore" value="${10 - (home.score % 10)}" />
 		<p>次のランクまで、あと${nextScore}pt</p>
-    </div>
+    </div></div>
 <!-- JavaScriptで1970-01-01かどうかチェックしてモーダル表示 -->
 <c:set var="currentDate" value="${home.current}" />
 <script>

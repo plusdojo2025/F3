@@ -30,12 +30,9 @@ body {
 }
 
 .card {
-	background-color: #ffffff;
-	border-radius: 12px;
+
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	margin: 20px auto;
-	max-width: 320px;
+
 }
 
 .card p {
@@ -108,7 +105,7 @@ body {
 .rectangle2 {
 	width: 288px;
 	height: 288px;
-	background-color:red;
+	background-color: red;
 	position: absolute;
 	left: 306px;
 	top: 406px;
@@ -152,30 +149,22 @@ body {
 	font-size: 100px;
 }
 
-.sunday_back {
-	background-color: red;
-}
-
-.monday_back {
-	background-color: blue;
-}
-
-.tuesday_back {
+.circle {
+	position: absolute;
+	top : 400px;
+	right: 300px; 
+	width: 270px;
+	height: 270px;
 	background-color: green;
+	border-radius: 50%;
+	top: 400px;
 }
 
-.wednesday_back {
-	background-color: orange;
-}
-
-.thursday_back {
-	background-color: purple;
-}
-
-.friday_back {
-	background-color: teal;
-}
-
-.saturday_back {
-	background-color: brown;
-}
+.rounded-rectangle {
+      position: absolute;
+      top: 700px; /* 円の下に配置（円のtop + 高さ + 余白） */
+      right: 260px;
+      width: 350px;
+      height: 80px;
+      border-radius: 15px;
+    }
