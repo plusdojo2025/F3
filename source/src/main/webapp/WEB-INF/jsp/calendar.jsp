@@ -9,6 +9,7 @@
     <title>ごみカレンダー</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+    
 </head>
 
 <body>
@@ -17,7 +18,7 @@
     <!-- ↓ カレンダー全体を中央に配置するためのラッパー -->
     <div class="main-wrapper">
         <div class="calendar-container">
-            <div>
+            <div class="calendar-header">
                 <c:choose>
                     <c:when test="${code == '1'}">
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
@@ -47,7 +48,7 @@
                 </c:choose>
             </div>
 
-            <table>
+            <table border="1">
                 <tr>
                     <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
                 </tr>
