@@ -6,6 +6,8 @@
 <head>
   <meta charset="UTF-8">
   <title>ホーム画面</title>
+  <link rel="stylesheet" href="<c:url value='/css/common.css' />">
+  <link rel="stylesheet" href="<c:url value='/css/regist.css' />">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
   <style>
     img#trash_icon {
@@ -17,8 +19,12 @@
 </head>
 
 <body>
-
+<%@ include file="/common.jsp" %>
+<div class="flame">
+<img src="${pageContext.request.contextPath}/img/home_flame.png" ></div>
 <h6>ホーム画面</h6>
+<div class="rectangle"></div>
+<div class="rectangle2"></div>
 <p>チェック済み日：${home.current}</p>
 <p>${hour}</p>
 <a href="CalendarServlet"></a>
