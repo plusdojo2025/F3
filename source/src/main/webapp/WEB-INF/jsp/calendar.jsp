@@ -5,7 +5,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ごみカレンダー</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
