@@ -69,7 +69,10 @@ function validateForm() {
 		alert("ユーザー名を入力してください。");
 		return false;
 	}
-	
+	if (30 < name.length) {
+		alert("ユーザー名は30文字以下です。");
+		return false;
+	}
 	if (email === "") {
 		alert("メールアドレスを入力してください。");
 		return false;
