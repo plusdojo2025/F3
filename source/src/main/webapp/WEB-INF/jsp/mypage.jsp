@@ -115,10 +115,13 @@
 <div class="Form-Item">
 	<p class="Form-Item-Label">居住地域</p>
 		<select  id="regionSelect" name="region_input"  class="Form-Item-Input">
-					<option value="${e.region_id}" selected hidden>${e.region_name}</option>
-				<% for (Region region : regions) { %>
-					<option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
-				<% } %>
+					<!-- 最初の hidden & selected オプション -->
+<option value="${e.region_id}" selected hidden>${e.region_name}</option>
+
+<!-- 残りの選択肢リスト -->
+<c:forEach var="region" items="${regions}">
+  <option value="${region.region_id}">${region.region_name}</option>
+</c:forEach>
 		</select>
 </div>
 <!-- メール -->
