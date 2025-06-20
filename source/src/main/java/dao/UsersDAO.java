@@ -111,7 +111,7 @@ public class UsersDAO {
 					"root", "password");
 
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM Users WHERE mail=? AND password=?";
+			String sql = "SELECT count(*) FROM users WHERE mail=? AND password=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, users.getMail());
 			pStmt.setString(2, createHashPass(users.getPassword()));
@@ -162,7 +162,7 @@ public class UsersDAO {
 					"root", "password");
 
 			// SELECT文を準備する
-			String sql = "SELECT user_id FROM Users WHERE mail=? AND password=?";
+			String sql = "SELECT user_id FROM users WHERE mail=? AND password=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, users.getMail());
 			pStmt.setString(2, createHashPass(users.getPassword()));
@@ -255,7 +255,7 @@ public class UsersDAO {
 			}
 
 			// SELECT文を準備する
-			String selectSql = "SELECT user_id FROM Users WHERE mail=? AND password=?";
+			String selectSql = "SELECT user_id FROM users WHERE mail=? AND password=?";
 			PreparedStatement selectStmt = conn.prepareStatement(selectSql);
 			selectStmt.setString(1, users.getMail());
 			selectStmt.setString(2, createHashPass(users.getPassword()));
@@ -270,7 +270,7 @@ public class UsersDAO {
 			int user_id = rs.getInt("user_id");
 			System.out.println("user_id : " + user_id);
 
-			String pSql = "INSERT INTO scorepoint (user_id) VALUES (?)";
+			String pSql = "INSERT INTO scorePoint (user_id) VALUES (?)";
 			PreparedStatement pStmt = conn.prepareStatement(pSql);
 
 			if (users.getUser_id() != 0) {
