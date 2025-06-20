@@ -90,6 +90,4 @@ function validateForm() {
 		alert("居住地域を入力してください。");
 		return false;
 	}
-	alert(regionId);
-	return true;
 }

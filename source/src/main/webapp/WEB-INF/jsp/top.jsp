@@ -20,7 +20,7 @@
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img id="hamburger-icon" src="img/hamburger_open.png">
+			<img id="hamburger-icon" src="<c:url value='/img/hamburger_open.png'/>">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
@@ -51,9 +51,9 @@
 		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
 
 		<div class="form-wrapper">
-			<button onclick="location.href='/F3/LoginServlet'" class="login_btn"
+			<button onclick="location.href='<c:url value='/LoginServlet' />'" class="login_btn"
 				name="login_btn">ログイン</button>
-			<button onclick="location.href='/F3/RegistServlet'" name="regist_btn"
+			<button onclick="location.href='<c:url value='/RegistServlet' />'" name="regist_btn"
 				class="regist_btn">新規登録</button>
 		</div>
 	</div>
