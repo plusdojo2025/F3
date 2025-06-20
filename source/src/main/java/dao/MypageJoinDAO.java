@@ -41,7 +41,7 @@ public class MypageJoinDAO {
 					throw new Exception("データベース接続に失敗しました。");
 				}
 
-				st = conn.prepareStatement("SELECT U.user_id,point,D.degree_name,U.user_name,R.region_id,R.region_name,U.mail,I.icon_name,I.icon_id from ((((users U JOIN degree D ON U.degree_id = D.degree_id) JOIN icon I ON U.icon_id = I.icon_id) JOIN region R ON U.region_id=R.region_id)JOIN scorepoint S ON U.user_id=S.user_id) WHERE U.user_id = ?;");
+				st = conn.prepareStatement("SELECT U.user_id,point,D.degree_name,U.user_name,R.region_id,R.region_name,U.mail,I.icon_name,I.icon_id from ((((users U JOIN degree D ON U.degree_id = D.degree_id) JOIN icon I ON U.icon_id = I.icon_id) JOIN region R ON U.region_id=R.region_id)JOIN scorePoint S ON U.user_id=S.user_id) WHERE U.user_id = ?;");
 				st.setInt(1,id);
 				rs = st.executeQuery();
 				//データ格納
@@ -119,7 +119,7 @@ public class MypageJoinDAO {
 	
 	
 	//保持アイコン一覧取得メソッド-----要修正
-	private static final String SELECT_ICONS = "SELECT C.icon_id,C.icon_name FROM icon C JOIN iconstatus L ON C.icon_id=L.icon_id WHERE L.user_id=?";
+	private static final String SELECT_ICONS = "SELECT C.icon_id,C.icon_name FROM icon C JOIN iconStatus L ON C.icon_id=L.icon_id WHERE L.user_id=?";
 	
 	public List<Icon> getIcons(int id){
 		List<Icon> icon = new ArrayList<>();
