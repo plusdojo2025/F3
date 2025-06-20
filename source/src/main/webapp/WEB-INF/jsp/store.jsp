@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ストア</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<c:url value='css/common.css'/>">
     <link rel="stylesheet" href="<c:url value='css/store.css'/>">
     <script defer src="<c:url value='/js/store.js' />"></script>

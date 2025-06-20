@@ -10,13 +10,13 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width-device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ポイポイ</title>
 <link rel="stylesheet" href="<c:url value='/css/common.css' />">
 <link rel="stylesheet" href="<c:url value='/css/help.css' />">
 <script src="<c:url value='/js/help.js' />"></script>
 <script src="<c:url value='/js/common.js' />"></script>
-<div class="bg_pattern Paper"></div>
+<!-- <div class="bg_pattern Paper"></div>-->
 </head>
 <body>
 	<!-- ヘッダーここから -->
