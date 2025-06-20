@@ -32,7 +32,7 @@
 	        <li class="nav__item"><a href="<c:url value='/MypageServlet' />" class="nav__link" name="mypege_link">マイページ</a></li>
 	        <li class="nav__item"><a href="<c:url value='/CalendarServlet' />" class="nav__link" name="calender_link">カレンダー</a></li>
 	        <li class="nav__item"><a href="<c:url value='/StoreServlet' />" class="nav__link" name="store_link">ストア</a></li>
-	        <li class="nav__item"><a href="<c:url value='/HeplServlet' />" class="nav__link" name="help_link">ヘルプ</a></li>
+	        <li class="nav__item"><a href="<c:url value='/HelpServlet' />" class="nav__link" name="help_link">ヘルプ</a></li>
 	        <li class="nav__item"><a href="<c:url value='/LogoutServlet' />" class="nav__link" name="logout_btn">ログアウト</a></li>
             </ul>
         </nav>
