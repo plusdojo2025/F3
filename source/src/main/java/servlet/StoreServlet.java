@@ -69,7 +69,7 @@ public class StoreServlet extends HttpServlet {
     	int sessionId = (Integer) obj;
         System.out.println("user_id="+sessionId);
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/F3/LoginServlet");
+			response.sendRedirect(contextPath + "/LoginServlet");
 			return;
 		}
 
