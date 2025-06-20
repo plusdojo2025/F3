@@ -32,6 +32,11 @@ public class HelpServlet extends HttpServlet {
     	Object obj = session.getAttribute("id");
     	int userId = (Integer) obj;
         System.out.println("user_id="+userId);
+        
+        if(session == null || session.getAttribute("user")==null) {
+        	response.sendRedirect("LoginServlet");
+        	return;
+        }
 		
 		HelpJoinDAO hDAO = new HelpJoinDAO();
 		List<Region> region = hDAO.getGarbageLink(userId);
