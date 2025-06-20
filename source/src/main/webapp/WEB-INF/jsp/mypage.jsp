@@ -108,13 +108,13 @@
 <!-- ユーザー名 -->
 <div class="Form-Item">
 <p class="Form-Item-Label">ユーザー名</p>
-<input type="text" name="name_input" class="Form-Item-Input" value="${e.user_name}" required><br>
+<input type="text" name="name_input" class="Form-Item-Input" id="nameInput" value="${e.user_name}" required><br>
 </div>
 
 <!-- 地域 -->
 <div class="Form-Item">
 	<p class="Form-Item-Label">居住地域</p>
-		<select  id="regionSelect" name="region_input" class="Form-Item-Input">
+		<select  id="regionSelect" name="region_input"  class="Form-Item-Input">
 					<option value="${e.region_id}" selected hidden>${e.region_name}</option>
 				<% for (Region region : regions) { %>
 					<option value="<%= region.getRegion_id() %>"><%= region.getRegion_name() %></option>
@@ -124,7 +124,7 @@
 <!-- メール -->
 <div class="Form-Item">
 	<p class="Form-Item-Label">メールアドレス</p>
-	<input type="email" name="mail_input" class="Form-Item-Input" value="${e.mail}" required>
+	<input type="text" name="mail_input"class="Form-Item-Input" id="emailInput" value="${e.mail}" required>
 </div>
 
 <input type="submit" name="update_btn" class="update_btn" value="更新">
