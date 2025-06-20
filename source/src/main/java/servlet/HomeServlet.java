@@ -48,6 +48,7 @@ public class HomeServlet extends HttpServlet {
     	HomeJoin homejoin = null;
 		try {
 			homejoin = dao.homeGet(userId, today);
+			System.out.println("homejoinのtypes="+homejoin.getTypes());
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
