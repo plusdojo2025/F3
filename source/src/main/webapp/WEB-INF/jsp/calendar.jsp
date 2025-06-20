@@ -9,6 +9,7 @@
     <title>ごみカレンダー</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+    
 </head>
 
 <body>
@@ -17,25 +18,37 @@
     <!-- ↓ カレンダー全体を中央に配置するためのラッパー -->
     <div class="main-wrapper">
         <div class="calendar-container">
-            <div>
+            <div class="calendar-header">
                 <c:choose>
                     <c:when test="${code == '1'}">
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
-                        <a href="<c:url value='/CalendarServlet?code=1' />">前</a>
+                        <form action="CalendarServlet" method="get">
+                        <input type="hidden" name="code" value="">
+                        <button>前</button>
+                        </form>
                     </c:when>
                     <c:when test="${code == '2'}">
-                        <a href="<c:url value='/CalendarServlet?code=2' />">次</a>
+                    	<form action="CalendarServlet" method="get">
+                        <input type="hidden" name="code" value="">
+                        <button>次</button>
+                        </form>
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
                     </c:when>
                     <c:otherwise>
-                        <a href="CalendarServlet?code=1">前</a>
+                    	<form action="CalendarServlet" method="get">
+                        <input type="hidden" name="code" value="1">
+                        <button>前</button>
+                        </form>
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
-                        <a href="CalendarServlet?code=2">次</a>
+                        <form action="CalendarServlet" method="get">
+                        <input type="hidden" name="code" value="2">
+                        <button>次</button>
+                        </form>
                     </c:otherwise>
                 </c:choose>
             </div>
 
-            <table>
+            <table border="1">
                 <tr>
                     <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
                 </tr>
