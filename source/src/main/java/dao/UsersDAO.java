@@ -42,7 +42,7 @@ public class UsersDAO {
 				throw new Exception("データベース接続に失敗しました。");
 			}
 
-			st = conn.prepareStatement("SELECT * FROM USERS");
+			st = conn.prepareStatement("SELECT * FROM users");
 			rs = st.executeQuery();
 
 			while (rs.next()) {
