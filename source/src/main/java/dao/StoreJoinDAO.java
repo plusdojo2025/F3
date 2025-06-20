@@ -27,14 +27,14 @@ public class StoreJoinDAO {
 					"root", "password");
 
 			//保持アイコンに追加するSQL
-			String sql = "INSERT INTO iconstatus (user_id, icon_id) VALUES (?, ?);";
+			String sql = "INSERT INTO iconStatus (user_id, icon_id) VALUES (?, ?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);//保持アイコンに追加するSQL
 			//ポイントを減算するSQL
-			String sql2 = "UPDATE scorepoint SET point = point - ? WHERE user_id = ?;";
+			String sql2 = "UPDATE scorePoint SET point = point - ? WHERE user_id = ?;";
 			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 			//ポイントがマイナスになる場合実行しないようにする
-			 String checkSql = "SELECT point FROM scorepoint WHERE user_id = ?;";
+			 String checkSql = "SELECT point FROM scorePoint WHERE user_id = ?;";
 		     PreparedStatement checkStmt = conn.prepareStatement(checkSql);
 		     checkStmt.setInt(1, List.getUser_id());
 		     System.out.println(checkStmt.executeQuery());
@@ -80,7 +80,7 @@ public class StoreJoinDAO {
 	public int getpoint(StoreJoin List) {
 		Connection conn = null;
         int points = 0;
-        String sql = "SELECT point FROM scorepoint WHERE user_id = ?;";
+        String sql = "SELECT point FROM scorePoint WHERE user_id = ?;";
 
         try  {
         	// JDBCドライバを読み込む
@@ -121,7 +121,7 @@ public class StoreJoinDAO {
 		public List<IconStatus> getIcons(int id){
 			List<IconStatus> iconid = new ArrayList<>();
 			Connection conn = null;
-			String sql = "SELECT user_id, icon_id FROM iconstatus WHERE user_id=?";
+			String sql = "SELECT user_id, icon_id FROM iconStatus WHERE user_id=?";
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 
