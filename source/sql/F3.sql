@@ -17,7 +17,7 @@ CREATE TABLE users (
 	mail VARCHAR(100),
 	PRIMARY KEY (user_id),
 	UNIQUE (mail)
-);	
+);
 
 
 /*calendar*/
@@ -25,7 +25,7 @@ CREATE TABLE calendar (
 	user_id INT,
 	current DATE,
 	PRIMARY KEY (user_id, current)
-);	
+);
 
 
 /*スコアポイント*/
@@ -35,7 +35,7 @@ CREATE TABLE scorePoint (
 	score INT DEFAULT 0,
 	point INT DEFAULT 0,
 	PRIMARY KEY (user_id)
-);	
+);
 
 
 /*iconStatus*/
@@ -44,7 +44,7 @@ CREATE TABLE iconStatus (
 	user_id INT,
 	icon_id INT,
 	PRIMARY KEY (user_id, icon_id)
-);	
+);
 
 
 /*garbage_type*/
@@ -54,7 +54,7 @@ CREATE TABLE garbage_type (
 	region_date DATE,
 	types VARCHAR(255),
 	PRIMARY KEY (region_id, region_date, types)
-);	
+);
 
 
 /*region*/
@@ -63,7 +63,7 @@ CREATE TABLE region (
 	region_name VARCHAR(100) NOT NULL,
 	link VARCHAR(255),
 	PRIMARY KEY (region_id)
-);	
+);
 
 
 /*icon*/
@@ -74,7 +74,7 @@ CREATE TABLE icon (
 	icon_name VARCHAR(255) NOT NULL,
 	price INT NOT NULL,
 	PRIMARY KEY (icon_id)
-);	
+);
 
 
 /*degree*/
@@ -83,7 +83,7 @@ CREATE TABLE degree (
 	degree_id INT AUTO_INCREMENT,
 	degree_name VARCHAR(30),
 	PRIMARY KEY (degree_id)
-);	
+);
 
 
 
