@@ -34,7 +34,9 @@
     <div class="rectangle"></div>
 <div class="rectangle2">
         <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
-        <div id="weekday" id ="week"></div></div>
+        <div id="weekday" id ="week"></div>
+        <p id="today">20日<p>
+        </div>
     </div>
 
     <div class="card"><%--② --%>
