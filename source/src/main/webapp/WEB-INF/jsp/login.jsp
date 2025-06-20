@@ -23,7 +23,7 @@
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
-			<img src="<c:url value='/img/logo.png' />">
+			<img src="<c:url value='img/hamburger_open' />">
 		</button>
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
@@ -54,8 +54,7 @@
 		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
 
 		<div class="form-wrapper">
-			<form class="Form" name="loginForm" method="POST"
-				action="action="<c:url value='/LoginServlet' /> onsubmit="return validateForm()">
+			<form class="Form" name="loginForm" method="POST" action="<c:url value='/LoginServlet' />" onsubmit="return validateForm()">
 				<div class="Form-Item">
 					<p class="Form-Item-Label">メールアドレス</p>
 					<input type="text" name="email_input" id="email"
