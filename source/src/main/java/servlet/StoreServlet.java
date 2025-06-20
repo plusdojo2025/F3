@@ -62,6 +62,7 @@ public class StoreServlet extends HttpServlet {
   //ページ遷移・画面表示終わり
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+    	String contextPath = request.getContextPath();
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
     	HttpSession session = request.getSession();
     	Object obj = session.getAttribute("id");
@@ -84,7 +85,7 @@ public class StoreServlet extends HttpServlet {
 		StoreJoinDAO sjDAO = new StoreJoinDAO();
 		sjDAO.update(new StoreJoin(sessionId, icon_id,"",price,0)); 
 
-		response.sendRedirect("StoreServlet");
+		response.sendRedirect(contextPath + "/StoreServlet");
 
 	}
 }

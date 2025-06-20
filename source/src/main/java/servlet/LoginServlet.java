@@ -50,7 +50,8 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
 			System.out.println(uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/F3/HomeServlet");
+			String contextPath = request.getContextPath();
+			response.sendRedirect(contextPath+"/HomeServlet");
 			System.out.println("ログイン成功");
 		} else { // ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
