@@ -1,5 +1,5 @@
 /*もともとF3がある場合*/
-drop table F3;
+drop database F3;
 /*DB作成*/
 CREATE DATABASE F3;
 USE F3;
@@ -90,6 +90,16 @@ CREATE TABLE degree (
 
 
 /*基礎データ*/
+
+/*users*/
+INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VALUES
+ (1,1,1,'dojouser1','#SEplus2025SEplus','dojouser1@plusdojo.jp'),
+ (2,1,1,'dojouser2','#SEplus2025SEplus','dojouser2@plusdojo.jp'),
+ (3,1,1,'dojouser3','#SEplus2025SEplus','dojouser3@plusdojo.jp'),
+ (4,1,1,'dojouser4','#SEplus2025SEplus','dojouser4@plusdojo.jp'),
+ (5,1,5,'dojouser5','#SEplus2025SEplus','dojouser5@plusdojo.jp');
+
+
 
 /*地域名・ごみデータ*/
 /*仙台　青葉区*/
