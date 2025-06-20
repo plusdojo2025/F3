@@ -108,6 +108,7 @@ body {
 .rectangle2 {
 	width: 288px;
 	height: 288px;
+	background-color:red;
 	position: absolute;
 	left: 306px;
 	top: 406px;

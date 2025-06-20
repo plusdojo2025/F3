@@ -22,18 +22,27 @@ const weekdayElement = document.getElementById('weekday');
 weekdayElement.textContent = todayInfo.name;
 weekdayElement.classList.add(todayInfo.class);
 
-const weekBack = [
-	{ name: '日', class: 'sunday_back' },
-	{ name: '月', class: 'monday_back' },
-	{ name: '火', class: 'tuesday_back' },
-	{ name: '水', class: 'wednesday_back' },
-	{ name: '木', class: 'thursday_back' },
-	{ name: '金', class: 'friday_back' },
-	{ name: '土', class: 'saturday_back' }
+const dayColors = [
+	"crimson",     // 日曜日
+	"deepskyblue", // 月曜日
+	"limegreen",   // 火曜日
+	"orange",      // 水曜日
+	"rebeccapurple", // 木曜日
+	"goldenrod",   // 金曜日
+	"saddlebrown"  // 土曜日
 ];
 
 
-const backInfo = weekDays[today];
+const today_back = new Date().getDay(); // 0〜6（日曜〜土曜）
+const rect = document.querySelector(".rectangle2");
+rect.style.backgroundColor = dayColors[today_back];
 
-const weekBackElement = document.getElementById('weekback');
-weekBackElement.classList.add(todayInfo.class);
+
+document.getElementById("today").innerHTML = showtoday();
+function showtoday() {
+	const now = new Date();
+	const month = now.getMonth() + 1;
+	const date = now.getDate();
+	const showtoday = month + "月" + date + "日";
+	return showtoday;
+}
