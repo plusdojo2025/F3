@@ -40,11 +40,11 @@
 <!-- JavaScriptで1970-01-01かどうかチェックしてモーダル表示 -->
 <c:set var="currentDate" value="${home.current}" />
 <script>
-const currentDate = "${home.current}";
+  const currentDate = "${home.current}";
 </script>
 
-
 <script src="js/home.js"></script>
+
 
 
 <!-- モーダル構造 -->
