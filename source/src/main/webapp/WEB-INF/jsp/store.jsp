@@ -49,7 +49,9 @@
             <div class="store_item">
               <!-- 遷移先を記入 -->
               <c:forEach var="e" items="${IconList}" >
-				<% 
+              <c:choose>
+				<c:when test="${e.icon_id != 1}">
+<% 
 				boolean isAvailable = true;
 				boolean isA = true;
 				%>
@@ -102,6 +104,9 @@
 
                     </form>
                 </div>
+				</c:when>
+			  </c:choose>
+				
                 </c:forEach>
             </div>
         </div>
