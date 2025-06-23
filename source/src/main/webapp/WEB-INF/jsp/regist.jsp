@@ -12,6 +12,18 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ポイポイ</title>
+<c:if test="${result eq 'true'}">
+<script>
+    alert("登録成功しました！");
+    window.location.href = "<c:url value='/LoginServlet' />";
+</script>
+</c:if>
+<c:if test="${result eq 'false'}">
+<script>
+    alert("登録に失敗しました。/nおそらく既に存在しているメールアドレスです。");
+    window.location.href = "<c:url value='/RegistServlet' />";
+</script>
+</c:if>
 <link rel="stylesheet" href="<c:url value='/css/common.css' />">
 <link rel="stylesheet" href="<c:url value='/css/regist.css' />">
 <script src="<c:url value='/js/regist.js' />"></script>

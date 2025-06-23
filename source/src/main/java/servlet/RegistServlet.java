@@ -27,7 +27,8 @@ public class RegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+//		//セッション削除
+//		session.invalidate();
 		UsersDAO uDao = new UsersDAO();
         List<Region> regions = uDao.getRegions();
 
@@ -54,17 +55,22 @@ public class RegistServlet extends HttpServlet {
 		// ログイン処理を行う
 		UsersDAO uDao = new UsersDAO();
 		if (uDao.createAccount(new Users(0, region_id, 1, 1, user_name, password, mail))) { 
-			// ログイン成功
+			// 登録成功
 			System.out.println("登録成功");
+			request.setAttribute("result","true");
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp");
+			dispatcher.forward(request, response);
 			//request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/F3/LoginServlet"));
 		} else { // 登録失敗
 			System.out.println("登録失敗");
+			request.setAttribute("result","false");
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp");
+			dispatcher.forward(request, response);
 			//request.setAttribute("result", new Result("登録失敗！", "レコードを登録できませんでした。", "/F3/LoginServlet"));
 		}
 
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }

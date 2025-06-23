@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setDateHeader("Expires", 0); // Proxies.
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +24,7 @@
 <c:if test="${success eq 'true'}">
   <script>
     alert('ログイン成功しました。');
-    window.location.href = 'HomeServlet'; 
+    window.location.href = "<c:url value='/HomeServlet' />"; 
   </script>
 </c:if>
 <c:if test="${success eq 'false'}">
