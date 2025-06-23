@@ -76,13 +76,15 @@ public class UsersDAO {
 	        }
 
 	        String sql = """
-	        		UPDATE users
-	        		SET degree_id = 
-	        		CASE
-	        		WHEN degree_id < 11 THEN degree_id + 1
-	        		ELSE 11
+	        		UPDATE users u
+	        		JOIN scorePoint s ON u.user_id = s.user_id
+	        		SET u.degree_id = 
+	        			CASE
+	        			WHEN s.score / 10 + 1 < 11 THEN s.score / 10 + 1
+	        			ELSE 11
 	        		END
-	        		WHERE user_id = ?;
+	        		WHERE u.user_id = ?;
+
 	        		""";
 	        st = conn.prepareStatement(sql);
 	        st.setInt(1, user_id);
