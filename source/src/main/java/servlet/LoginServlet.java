@@ -26,6 +26,15 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+//		//セッション削除
+//		session.invalidate();
+		String success = (String) session.getAttribute("success");
+		if (success != null) {
+		    request.setAttribute("success", success);
+		    session.removeAttribute("success");
+		}
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
@@ -43,23 +52,23 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("pw_input");
 
 		// ログイン処理を行う
+		String contextPath = request.getContextPath();
+		HttpSession session = request.getSession();
 		UsersDAO uDao = new UsersDAO();
 		if (uDao.isLoginOK(new Users(0, 0, 0, 0, "", password, mail))) { // ログイン成功
 			// セッションスコープにIDを格納する
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("id", uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
 			System.out.println(uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
 			// メニューサーブレットにリダイレクトする
-			String contextPath = request.getContextPath();
 			System.out.println("ログイン成功");
-			response.sendRedirect(contextPath+"/HomeServlet");
+			session.setAttribute("success", "true");
+			response.sendRedirect(contextPath+"/LoginServlet");//結果にいきたいな
 			
 		} else { // ログイン失敗
-			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			System.out.println("ログイン失敗");
-			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-			dispatcher.forward(request, response);
+			session.setAttribute("success", "false");
+			response.sendRedirect(contextPath+"/LoginServlet");
 		}
 	}
 }
