@@ -22,7 +22,7 @@ public class StoreJoinDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -92,7 +92,7 @@ public class StoreJoinDAO {
 			}
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 				"root", "password");
              PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class StoreJoinDAO {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/F3?"
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f3?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 						"root", "password");
 				
