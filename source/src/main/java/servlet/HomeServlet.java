@@ -99,7 +99,7 @@ public class HomeServlet extends HttpServlet {
     	HomeJoinDAO dao = new HomeJoinDAO();
     	boolean check = dao.insertCal(userId, today, score, point);    	
 
-    	if((score%10)==9) {
+    	if(score<110&&(score%10)==9) {
         	UsersDAO dao1 = new UsersDAO();
         	boolean inseDeg = dao1.UpDegree(userId);
         	if(inseDeg) {
