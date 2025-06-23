@@ -15,39 +15,22 @@
 
 </head>
 <body>
+<c:if test="${success eq 'true'}">
+  <script>
+    alert('ログイン成功しました。');
+    window.location.href = 'HomeServlet'; 
+  </script>
+</c:if>
+<c:if test="${success eq 'false'}">
+  <script>
+    alert('メールアドレス、もしくはパスワードが違います。');
+  </script>
+</c:if>
+
 	<!-- ヘッダーここから -->
 	<div class="logo">
-		<a href="<c:url value='/HomeServlet' />"><img
-			src="img/logo.png"></a>
-	</div>
-	<div class="header">
-		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
-			aria-controls="nav-menu" aria-expanded="false">
-			<img src="<c:url value='/img/hamburger_open.png' />">
-		</button>
-
-		<nav id="nav-menu" class="nav" aria-hidden="true">
-			<ul class="nav__list">
-				<li class="nav__item"><a
-					href="<c:url value='/HomeServlet' />" class="nav__link"
-					name="home_link">ホーム</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/MypageServlet' />" class="nav__link"
-					name="mypege_link">マイページ</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/CalendarServlet'/>"
-					class="nav__link" name="calender_link">カレンダー</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/StoreServlet'/>" class="nav__link"
-					name="store_link">ストア</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/HelpServlet'/>" class="nav__link"
-					name="help_link">へルプ</a></li>
-				<li class="nav__item"><a
-					href="<c:url value='/LogoutServlet'/>" class="nav__link"
-					name="logout_btn">ログアウト</a></li>
-			</ul>
-		</nav>
+		<a href="<c:url value='/TopServlet' />"><img
+			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 	
 	<div class="flame">

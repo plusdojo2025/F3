@@ -33,7 +33,7 @@ function exceed30Name() {
 	let name = document.getElementById("name_input").value;
 
 	if ([...name].length() > 30) {
-		alart("ユーザー名は30文字以下です。");
+		alert("ユーザー名は30文字以下です。");
 	}
 }
 
@@ -64,33 +64,50 @@ function validateForm() {
 	let rePassword = document.forms["registForm"]["pw_re_input"].value;
 	let name = document.forms["registForm"]["name_input"].value;
 	let regionId = document.forms["registForm"]["region_input"].value;
-	document.registForm.pw_input.style.background = "pink";
+	//document.registForm.pw_input.style.background = "pink";
+	
+	const nameRegex = /^[\w!@#\$%\^&\*\(\)\-=\+_\[\]\{\},\.]{1,30}$/;
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	
+	function containsZenkaku(str) {
+    	return /[^\u0020-\u007E]/.test(str);
+ 	 }
+ 	 
+	const errors = [];
 	if (name === "") {
-		alert("ユーザー名を入力してください。");
-		return false;
-	}
-	if (30 < name.length) {
-		alert("ユーザー名は30文字以下です。");
-		return false;
+		errors.push("ユーザー名を入力してください。");
 	}
 	if (email === "") {
-		alert("メールアドレスを入力してください。");
-		return false;
+		errors.push("メールアドレスを入力してください。");
 	}
 	if (password === "") {
-		alert("パスワードを入力してください。");
-		return false;
+		errors.push("パスワードを入力してください。");
 	}
 	if (password.length < 8) {
-		alert("パスワードは8文字以上必要です。");
-		return false;
+		errors.push("パスワードは8文字以上必要です。");
 	}
 	if (password !== rePassword) {
-		alert("パスワード入力欄とパスワード再入力欄に同じ文字列が入力されていません。もしくはどちらか一方の入力欄が未入力となっております。");
-		return false;
+		errors.push("パスワード入力欄とパスワード再入力欄に同じ文字列が入力されていません。もしくはどちらか一方の入力欄が未入力となっております。");
 	}
 	if (regionId === "0") {
-		alert("居住地域を入力してください。");
-		return false;
+		errors.push("居住地域を入力してください。");
 	}
+	if (!nameRegex.test(name)) {
+    	errors.push("・ユーザー名は全半角英数字と記号のみ、30文字以内で入力してください。");
+  	}
+  	if (!emailRegex.test(email)) {
+    	errors.push("・正しいメールアドレスの形式で入力してください。");
+  	} else {
+    	const domain = email.split('@')[1];
+    	if (domain && containsZenkaku(domain)) {
+     	 	errors.push("・メールアドレスの @ 以降に全角文字は使用できません（半角英数字で入力してください）。");
+    	}
+  	}
+  	//最終チェック
+	if (errors.length > 0) {
+    	alert("以下の内容を確認してください：\n" + errors.join("\n"));
+    	e.preventDefault();
+    	return false;
+    }
+    return true;
 }
