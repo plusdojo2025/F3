@@ -34,7 +34,9 @@ public class LoginServlet extends HttpServlet {
 		if (success != null) {
 		    request.setAttribute("success", success);
 		    session.removeAttribute("success");
-		}
+		} else {
+	        request.setAttribute("success", "none");
+	    }
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
@@ -63,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 			// メニューサーブレットにリダイレクトする
 			System.out.println("ログイン成功");
 			session.setAttribute("success", "true");
-			response.sendRedirect(contextPath+"/LoginServlet");//結果にいきたいな
+			response.sendRedirect(contextPath+"/LoginServlet");
 			
 		} else { // ログイン失敗
 			System.out.println("ログイン失敗");
