@@ -36,8 +36,15 @@
     </div></div>
 
     <div class="rounded-rectangle"><div class="card"><%--③ --%>
-		<c:set var="nextScore" value="${10 - (home.score % 10)}" />
-		<p>次のランクまで、あと${nextScore}pt</p>
+    	<c:choose>
+    		<c:when test="${home.score <110}">
+				<c:set var="nextScore" value="${10 - (home.score % 10)}" />
+				<p>次のランクまで、あと${nextScore}pt</p>
+			</c:when>
+			<c:otherwise>
+				<p>現在最高ランクです。</p>
+			</c:otherwise>
+		</c:choose>
     </div></div>
 <!-- JavaScriptで1970-01-01かどうかチェックしてモーダル表示 -->
 <c:set var="currentDate" value="${home.current}" />
