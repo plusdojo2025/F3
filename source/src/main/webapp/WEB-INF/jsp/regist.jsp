@@ -63,7 +63,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 				</div>
 				<div class="Form-Item">
 					<p class="Form-Item-Label">メールアドレス</p>
-					<input type="email" name="mail_input" class="Form-Item-Input"
+					<input type="text" name="mail_input" class="Form-Item-Input"
 						onKeyup="valiCheck()">
 				</div>
 				<input type="submit" name="insert_btn" class="insert_btn" value="登録">

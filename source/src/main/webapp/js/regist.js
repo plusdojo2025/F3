@@ -59,11 +59,11 @@ function valiCheck() {
 }
 
 function validateForm() {
-    let email = document.forms["registForm"]["mail_input"].value;
-    let password = document.forms["registForm"]["pw_input"].value;
-    let rePassword = document.forms["registForm"]["pw_re_input"].value;
-    let name = document.forms["registForm"]["name_input"].value;
-    let regionId = document.forms["registForm"]["region_input"].value;
+    let email = document.forms["registForm"]["mail_input"].value.trim();
+    let password = document.forms["registForm"]["pw_input"].value.trim();
+    let rePassword = document.forms["registForm"]["pw_re_input"].value.trim();
+    let name = document.forms["registForm"]["name_input"].value.trim();
+    let regionId = document.forms["registForm"]["region_input"].value.trim();
 
     const nameRegex = /^[\w!@#\$%\^&\*\(\)\-=\+_\[\]\{\},\.]{1,30}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,13 +79,13 @@ function validateForm() {
     document.getElementById("pw_re_input").style.background = "white";
 
     if (name === "") {
-        errors.push("ユーザー名を入力してください。");
+        errors.push("・ユーザー名を入力してください。");
     } else if (!nameRegex.test(name)) {
         errors.push("・ユーザー名は全半角英数字と記号のみ、30文字以内で入力してください。");
     }
 
     if (email === "") {
-        errors.push("メールアドレスを入力してください。");
+        errors.push("・メールアドレスを入力してください。");
     } else if (!emailRegex.test(email)) {
         errors.push("・正しいメールアドレスの形式で入力してください。");
     } else {
