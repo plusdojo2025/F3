@@ -22,11 +22,6 @@
 <%@ include file="/common.jsp" %>
 <div class="flame">
 <img src="${pageContext.request.contextPath}/img/home_flame.png" ></div>
-
-<a href="CalendarServlet"></a>
-<a href="HomeServlet"></a>
-
-
     <div class="" id="garbage_type"><%--① --%>
     <div class="rectangle"></div>
 <div class="rectangle2">
