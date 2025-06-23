@@ -36,6 +36,11 @@ CREATE TABLE scorePoint (
 	point INT DEFAULT 0,
 	PRIMARY KEY (user_id)
 );
+INSERT INTO scorePoint VALUES(1, 9, 10000);
+INSERT INTO scorePoint VALUES(2, 9, 10000);
+INSERT INTO scorePoint VALUES(3, 9, 10000);
+INSERT INTO scorePoint VALUES(4, 9, 10000);
+INSERT INTO scorePoint VALUES(5, 9, 10000);
 
 
 /*iconStatus*/
@@ -45,6 +50,11 @@ CREATE TABLE iconStatus (
 	icon_id INT,
 	PRIMARY KEY (user_id, icon_id)
 );
+INSERT INTO iconStatus VALUES(1, 1);
+INSERT INTO iconStatus VALUES(2, 1);
+INSERT INTO iconStatus VALUES(3, 1);
+INSERT INTO iconStatus VALUES(4, 1);
+INSERT INTO iconStatus VALUES(5, 1);
 
 
 /*garbage_type*/

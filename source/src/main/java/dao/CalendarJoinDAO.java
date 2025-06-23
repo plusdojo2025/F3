@@ -23,7 +23,7 @@ public class CalendarJoinDAO {
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 	        conn = DriverManager.getConnection(
-	            "jdbc:mysql://localhost:3306/F3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+	            "jdbc:mysql://localhost:3306/f3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
 	            "root", "password");
 
 	        // region_id を取得
