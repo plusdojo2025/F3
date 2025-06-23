@@ -2,7 +2,7 @@ h6 {
 	color: blue;
 }
 
-.flame {
+    .flame {
 	position: relative;
 	width: 100%;
 	max-width: 1200px;
@@ -12,6 +12,7 @@ h6 {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	background-image: url(${pageContext.request.contextPath}/img/home_flame.png);
 }
 
 .flame-img {

@@ -22,10 +22,7 @@
 <%@ include file="/common.jsp" %>
 <div class="flame">
 <img src="${pageContext.request.contextPath}/img/home_flame.png" ></div>
-<h6>ホーム画面</h6>
 
-<p>チェック済み日：${home.current}</p>
-<p>${hour}</p>
 <a href="CalendarServlet"></a>
 <a href="HomeServlet"></a>
 

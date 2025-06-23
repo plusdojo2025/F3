@@ -45,7 +45,7 @@ public class HomeJoinDAO {
 	            SELECT degree_name
 	            FROM degree
 	            WHERE degree_id = (
-	                SELECT region_id FROM users WHERE user_id = ?
+	                SELECT degree_id FROM users WHERE user_id = ?
 	            );
 	        """;
 	        st = conn.prepareStatement(sql2);
