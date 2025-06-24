@@ -29,7 +29,8 @@
 .rectangle {
   width: 100%;
   background-color: #fafafb;
-  clip-path: inherit;
+  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
+		100%);
   padding: 40px 20px;
   position: relative;
   border: 2px solid #555;
@@ -42,7 +43,7 @@
 .rectangle-label {
   position: absolute;
   top: -25px;
-  left: 10px;
+  left: -20px;
   background-color: hsl(219, 78%, 46%);
   border: 3px solid #080808;
   color: white;
@@ -69,6 +70,7 @@
 .help-button {
   width: 100%;
   max-width: 400px;
+  min-width: 400px;
   padding: 12px;
   font-size: 24px;
   font-weight: bold;
@@ -78,6 +80,7 @@
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
+  white-space: nowrap;
 }
 
 /* ボタンの色（それぞれ） */
@@ -151,6 +154,7 @@
   border-radius: 6px;
   align-self: center;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* ポップアップ背景 */
@@ -179,19 +183,19 @@
 /* 閉じるボタン */
 .popup-close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
+  top: 30px;
+  right: 40px;
+  font-size: 30px;
   cursor: pointer;
 }
 
 /* ポップアップ画像 */
 .popup-image {
-  max-width: 50vw;
+  max-width: 60vw;
   height: auto;
   display: block;
   margin: 0 auto;
-  max-height: 40vh;
+  max-height: 50vh;
 }
 
 /* レスポンシブ対応 */
