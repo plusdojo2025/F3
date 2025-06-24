@@ -57,11 +57,12 @@ public class LoginServlet extends HttpServlet {
 		String contextPath = request.getContextPath();
 		HttpSession session = request.getSession();
 		UsersDAO uDao = new UsersDAO();
+		
 		if (uDao.isLoginOK(new Users(0, 0, 0, 0, "", password, mail))) { // ログイン成功
 			// セッションスコープにIDを格納する
-			
-			session.setAttribute("id", uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
-			System.out.println(uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail)));
+			int userid = uDao.getUserId(new Users(0, 0, 0, 0, "", password, mail));
+			session.setAttribute("id", userid);
+			System.out.println(userid);
 			// メニューサーブレットにリダイレクトする
 			System.out.println("ログイン成功");
 			session.setAttribute("success", "true");
