@@ -20,7 +20,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 </c:if>
 <c:if test="${result eq 'false'}">
 <script>
-    alert("登録に失敗しました。/nおそらく既に存在しているメールアドレスです。");
+    alert("登録に失敗しました。おそらく既に存在しているメールアドレスです。");
     window.location.href = "<c:url value='/RegistServlet' />";
 </script>
 </c:if>

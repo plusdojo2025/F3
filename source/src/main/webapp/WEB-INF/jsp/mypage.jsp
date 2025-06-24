@@ -26,12 +26,12 @@ List<Icon> icons = (List<Icon>) request.getAttribute("icon");
 	<!-- 更新の成功/失敗のアラート -->
 	<c:if test="${success == 'true'}">
 		<script>
-			alert('更新が完了しました');
+			alert('更新が完了しました。');
 		</script>
 	</c:if>
 	<c:if test="${success == 'false'}">
 		<script>
-			alert('更新に失敗しました');
+			alert('更新に失敗しました。おそらく既に存在しているメールアドレスです。');
 		</script>
 	</c:if>
 
