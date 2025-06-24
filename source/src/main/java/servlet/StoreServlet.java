@@ -29,7 +29,7 @@ public class StoreServlet extends HttpServlet {
     	HttpSession session = request.getSession();
 		String contextPath = request.getContextPath();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect(contextPath + "/LoginServlet");
+			response.sendRedirect(contextPath + "/TopServlet");
 			return;
 		}
 		//sessionIdにセッションIDを代入
