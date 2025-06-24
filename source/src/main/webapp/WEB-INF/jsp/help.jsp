@@ -27,20 +27,19 @@
 
 		<nav id="nav-menu" class="nav" aria-hidden="true">
 			<ul class="nav__list">
-				<li class="nav__item"><a href="<c:url value='/HomeServlet' />" class="nav__link" name="home_link">ホーム</a></li>
-				<li class="nav__item"><a href="<c:url value='/MypageServlet' />" class="nav__link" name="mypege_link">マイページ</a></li>
-				<li class="nav__item"><a href="<c:url value='/CalendarServlet'/>" class="nav__link" name="calender_link">カレンダー</a></li>
-				<li class="nav__item"><a href="<c:url value='/StoreServlet'/>" class="nav__link" name="store_link">ストア</a></li>
-				<li class="nav__item"><a href="<c:url value='/HelpServlet'/>" class="nav__link" name="help_link">ヘルプ</a></li>
-				<li class="nav__item"><a href="<c:url value='/LogoutServlet'/>" class="nav__link" name="logout_btn">ログアウト</a></li>
+				<li class="nav__item"><a href="<c:url value='/HomeServlet' />" class="nav__link">ホーム</a></li>
+				<li class="nav__item"><a href="<c:url value='/MypageServlet' />" class="nav__link">マイページ</a></li>
+				<li class="nav__item"><a href="<c:url value='/CalendarServlet'/>" class="nav__link">カレンダー</a></li>
+				<li class="nav__item"><a href="<c:url value='/StoreServlet'/>" class="nav__link">ストア</a></li>
+				<li class="nav__item"><a href="<c:url value='/HelpServlet'/>" class="nav__link">ヘルプ</a></li>
+				<li class="nav__item"><a href="<c:url value='/LogoutServlet'/>" class="nav__link">ログアウト</a></li>
 			</ul>
 		</nav>
 	</div>
 
 	<!-- メイン -->
 	<div class="flame">
-		<div class="rectangle-label">ヘルプ</div> <!-- ← ラベルを最上部に移動 -->
-
+		<div class="rectangle-label">ヘルプ</div>
 		<div class="rectangle-big">
 			<div class="rectangle">
 				<div class="form-wrapper">
@@ -49,14 +48,6 @@
 					</a>
 					<input type="submit" name="pointinfo" class="pointinfo help-button" value="ポイントについて">
 					<input type="submit" name="subject" class="subject help-button" value="お問い合わせ">
-
-					<!-- モーダルポップアップ -->
-					<div id="popup" class="popup">
-						<div class="popup-content">
-							<span class="popup-close" id="popup-close">&times;</span>
-							<img src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
-						</div>
-					</div>
 
 					<!-- 入力欄 -->
 					<form class="Form">
@@ -72,6 +63,14 @@
 					</form>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	
+	<div id="popup" class="popup">
+		<div class="popup-content">
+			<span class="popup-close" id="popup-close">&times;</span>
+			<img src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
 		</div>
 	</div>
 </body>

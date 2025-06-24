@@ -1,15 +1,14 @@
-
 /* 枠 */
 .flame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 40px auto;
-  width: 100%;
-  max-width: 700px;
-  position: relative;
-  z-index: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 40px auto;
+	width: 100%;
+	max-width: 700px;
+	position: relative;
+	z-index: 0;
 }
 
 .flame-img {
@@ -98,53 +97,53 @@
 }
 
 .rectangle-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateY(-50%);
-  background-color: hsl(219, 78%, 46%);
-  color: white;
-  padding: 5px 12px;
-  font-size: 27px;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  border-radius: 4px 4px 0 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateY(-50%);
+	background-color: hsl(219, 78%, 46%);
+	color: white;
+	padding: 5px 12px;
+	font-size: 27px;
+	font-weight: bold;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	z-index: 10;
+	border-radius: 4px 4px 0 0;
 }
 
 .rectangle-big {
-  width: 680px;
-  height: 680px;
-  background-color: #323234;
-  clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
-  padding: 5px;
-  box-sizing: border-box;
-  position: relative;
+	width: 680px;
+	height: 680px;
+	background-color: #323234;
+	clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
+		100%);
+	padding: 5px;
+	box-sizing: border-box;
+	position: relative;
 }
 
 .rectangle {
-  width: 100%;
-  height: 100%;
-  background-color: #fafafb;
-  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
-		100%);
-  position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #fafafb;
+	clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%,
+		0% 100%);
+	position: relative;
 }
 
 /* モバイル対応 */
 @media screen and (max-width: 600px) {
-
-.flame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 40px auto;
-  width: 100%;
-  max-width: 390px;
-  position: relative;
-  z-index: 0;
-}
+	.flame {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 40px auto;
+		width: 100%;
+		max-width: 390px;
+		position: relative;
+		z-index: 0;
+	}
 	.Form-Item {
 		flex-direction: column;
 		align-items: stretch;
@@ -168,21 +167,21 @@
 		color: #fff;
 	}
 	.rectangle-big {
-  width: 100%;
- height: 720px;
-  background-color: #323234;
-  clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
-  padding: 5px;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.rectangle {
-  width: 100%;
-  height: 100%;
-  background-color: #fafafb;
-  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
-		100%);
-  position: relative;
-}
+		width: 100%;
+		height: 720px;
+		background-color: #323234;
+		clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
+			100%);
+		padding: 5px;
+		box-sizing: border-box;
+		position: relative;
+	}
+	.rectangle {
+		width: 100%;
+		height: 100%;
+		background-color: #fafafb;
+		clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%,
+			0% 100%);
+		position: relative;
+	}
 }

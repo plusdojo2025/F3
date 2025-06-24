@@ -38,7 +38,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 	<div class="flame">
-	 <div class="rectangle-label">新規登録</div> <!-- ← ラベルを追加 -->
+	<div class="rectangle-label">新規登録</div> <!-- ← ラベルを追加 -->
 	<div class="rectangle-big">
 	<div class="rectangle">
 
