@@ -66,7 +66,8 @@ function validateForm() {
     let regionId = document.forms["registForm"]["region_input"].value.trim();
 
     const nameRegex = /^[\w!@#\$%\^&\*\(\)\-=\+_\[\]\{\},\.]{1,30}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
     function containsZenkaku(str) {
         return /[^\u0020-\u007E]/.test(str);
@@ -88,11 +89,8 @@ function validateForm() {
         errors.push("・メールアドレスを入力してください。");
     } else if (!emailRegex.test(email)) {
         errors.push("・正しいメールアドレスの形式で入力してください。");
-    } else {
-        const domain = email.split('@')[1];
-        if (domain && containsZenkaku(domain)) {
-            errors.push("・メールアドレスの @ 以降に全角文字は使用できません（半角英数字で入力してください）。");
-        }
+    } else if (containsZenkaku(email)) {
+        errors.push("・メールアドレスには全角文字は使用できません（半角英数字で入力してください）。");
     }
 
     if (password === "") {
@@ -100,7 +98,9 @@ function validateForm() {
     } else if (password.length < 8) {
         errors.push("・パスワードは8文字以上必要です。");
         document.getElementById("pw_input").style.background = "pink";
-    }
+    }else if(containsZenkaku(password)){
+		errors.push("・パスワードには全角文字は使用できません（半角英数字で入力してください）。");
+	}
 
     if (password !== rePassword) {
         errors.push("・パスワード入力欄とパスワード再入力欄が一致しません。");

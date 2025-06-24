@@ -43,7 +43,7 @@
 .rectangle-label {
   position: absolute;
   top: -25px;
-  left: -20px;
+  left: -5px;
   background-color: hsl(219, 78%, 46%);
   border: 3px solid #080808;
   color: white;
@@ -161,12 +161,14 @@
 .popup {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999; /* フレームより上 */
 }
 
 /* ポップアップ本体 */
@@ -178,43 +180,49 @@
   max-width: 90vw;
   max-height: 80vh;
   overflow: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* 閉じるボタン */
 .popup-close {
   position: absolute;
   top: 30px;
-  right: 40px;
+  right: 35px;
   font-size: 30px;
+  font-weight: bold;
+  color: #333;
   cursor: pointer;
 }
 
 /* ポップアップ画像 */
 .popup-image {
-  max-width: 60vw;
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
-  max-height: 50vh;
+  max-height: 60vh;
 }
 
-/* レスポンシブ対応 */
 @media screen and (max-width: 600px) {
   .rectangle-big {
     width: 95%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* スマホでも右上を欠けさせる */
+    clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
   }
 
   .rectangle {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* 内枠も外枠に合わせてclip */
+    clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0% 100%);
     padding: 20px;
   }
 
   .rectangle-label {
+    f.rectangle-label {
     font-size: 18px;
     padding: 4px 8px;
     top: -20px;
-    left: 12px;
+    left: 4px; 
+  }
   }
 
   .help-button {
@@ -230,8 +238,20 @@
     font-size: 16px;
   }
 
+
+
+  .popup-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .popup-close {
+    font-size: 20px;
+    top: 8px;
+    right: 12px;
+  }
+
   .popup-image {
-    max-width: 90vw;
     max-height: 40vh;
   }
 }
