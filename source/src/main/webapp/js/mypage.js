@@ -79,7 +79,8 @@ document.getElementById('registForm').addEventListener('submit', function(e) {
   // メールアドレスのチェック
   const emailInput = document.getElementById('emailInput');
   const email = emailInput.value.trim();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
   // 全角文字チェック関数（ASCII以外を含むか）
   function containsZenkaku(str) {
@@ -90,12 +91,9 @@ document.getElementById('registForm').addEventListener('submit', function(e) {
     errors.push("・メールアドレスは必須です");
   } else if (!emailRegex.test(email)) {
     errors.push("・正しいメールアドレスの形式で入力してください");
-  } else {
-    const domain = email.split('@')[1];
-    if (domain && containsZenkaku(domain)) {
-      errors.push("・メールアドレスの @ 以降に全角文字は使用できません（半角英数字で入力してください）");
-    }
-  }
+  } else if(containsZenkaku(email)){
+		errors.push("・メールアドレスには全角文字は使用できません（半角英数字で入力してください）。");
+	}
 
   // エラーがあれば送信を中止
   if (errors.length > 0) {
