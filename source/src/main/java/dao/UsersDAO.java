@@ -214,6 +214,7 @@ public class UsersDAO {
 		boolean result = false;
 		boolean create_user_result = false;
 		boolean create_sp_result = false;
+		boolean create_is_result = false;
 
 		try {
 			// JDBCドライバを読み込む
@@ -294,6 +295,25 @@ public class UsersDAO {
 			if (pStmt.executeUpdate() == 1) {
 				create_sp_result = true;
 			}
+			//アイコンステータス初期化
+			//SQL文の用意
+			String iSql = "INSERT INTO iconStatus VALUES(?,1)";
+			PreparedStatement iStmt = conn.prepareStatement(iSql);
+			
+			
+			if (users.getUser_id() != 0) {
+				pStmt.setInt(1, 0);
+				System.out.println("正");
+			} else {
+				pStmt.setInt(1, user_id);
+				System.out.println("誤");
+			}
+
+			if (iStmt.executeUpdate() == 1) {
+				create_is_result = true;
+			}
+			
+			
 			conn.commit();
 		} catch (SQLException e) {
 			try {
@@ -320,7 +340,7 @@ public class UsersDAO {
 		}
 
 		// 結果を返す
-		if (create_user_result && create_sp_result) {
+		if (create_user_result && create_sp_result && create_is_result ) {
 			result = true;
 		}
 		return result;
