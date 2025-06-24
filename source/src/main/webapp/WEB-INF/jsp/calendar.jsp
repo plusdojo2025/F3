@@ -24,25 +24,25 @@
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
                         <form action="CalendarServlet" method="get">
                         <input type="hidden" name="code" value="">
-                        <button>前</button>
+                        <button>先月</button>
                         </form>
                     </c:when>
                     <c:when test="${code == '2'}">
                     	<form action="CalendarServlet" method="get">
                         <input type="hidden" name="code" value="">
-                        <button>次</button>
+                        <button>翌月</button>
                         </form>
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
                     </c:when>
                     <c:otherwise>
                     	<form action="CalendarServlet" method="get">
                         <input type="hidden" name="code" value="1">
-                        <button>前</button>
+                        <button>先月</button>
                         </form>
                         <h2>📅 ${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
                         <form action="CalendarServlet" method="get">
                         <input type="hidden" name="code" value="2">
-                        <button>次</button>
+                        <button>翌月</button>
                         </form>
                     </c:otherwise>
                 </c:choose>
