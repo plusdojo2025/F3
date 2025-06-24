@@ -60,6 +60,10 @@
 	font-weight: bold;
 	text-decoration: none;
 }
+.regist-btn:hover {
+  background-color: #1976d2;
+  transform: translateY(-2px);
+}
 
 .rectangle-big {
 	width: 680px;
