@@ -21,21 +21,24 @@
 <body>
 <%@ include file="/common.jsp" %>
 <div class="flame">
-<img src="${pageContext.request.contextPath}/img/home_flame.png" ></div>
-    <div class="" id="garbage_type"><%--① --%>
-    <div class="rectangle"></div>
-<div class="rectangle2">
+<div class="rectangle-label">ヘルプ</div>
+		<div class="rectangle-big">
+			<div class="rectangle">
+				
+	<div class="left_box">
+    <div class="rectangle_first"></div><%--① --%>
+		<div class="rectangle2">
         <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
         <div id="weekday" id ="week"></div>
         <p id="today">20日<p>
         </div>
     </div>
 
-    <div class="card"><%--② --%>
-        <div class="circle"><p>現在のランクは<br><span class="highlight2">${home.degree_name}</span></p>
-    </div></div>
+	<div class="right_box">
 
-    <div class="rounded-rectangle"><div class="card"><%--③ --%>
+        <div class="circle"><p>現在のランクは<br><span class="highlight2">${home.degree_name}</span></p><%--② --%>
+    </div>
+    <div class="rounded-rectangle"><%--③ --%>
     	<c:choose>
     		<c:when test="${home.score <110}">
 				<c:set var="nextScore" value="${10 - (home.score % 10)}" />
@@ -45,7 +48,13 @@
 				<p>現在最高ランクです。</p>
 			</c:otherwise>
 		</c:choose>
-    </div></div>
+   	</div></div>
+   	
+   	
+   	
+   	</div>
+   	</div>
+	</div>
 <!-- JavaScriptで1970-01-01かどうかチェックしてモーダル表示 -->
 <c:set var="currentDate" value="${home.current}" />
 <script>
