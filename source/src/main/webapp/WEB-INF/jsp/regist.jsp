@@ -39,7 +39,8 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 	</div>
 	
 	<div class="flame">
-		<img src="<c:url value='/img/flame_regist.png'/>" class="flame-img" />
+	<div class="rectangle">
+	<div class="rectangle2">
 
 		<div class="form-wrapper">
 			<form class="Form" id="registForm" name="registForm" method="POST"
@@ -63,7 +64,7 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 						id="pw_re_input" onKeyup="valiCheck()">
 				</div>
 				<!-- ここはプルダウンの選択肢に -->
-				<div class="Form-Item">
+				<div class="Form-Item" class="Pull-Down">
 					<p class="Form-Item-Label">居住地域</p>
 					<select id="region_input" name="region_input"
 						class="Form-Item-Input">
@@ -81,6 +82,8 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 				<input type="submit" name="insert_btn" class="insert_btn" value="登録">
 				<p id="error_msg" class="font-red"></p>
 			</form>
+			</div>
+			</div>
 		</div>
 	</div>
 </body>
