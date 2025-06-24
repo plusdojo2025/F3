@@ -278,19 +278,20 @@ public class UsersDAO {
 
 			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
 			rs.next();
-			int user_id = rs.getInt("user_id");
+			int user_id = 0;
+			user_id = rs.getInt("user_id");
 			System.out.println("user_id : " + user_id);
 
 			String pSql = "INSERT INTO scorePoint (user_id) VALUES (?)";
 			PreparedStatement pStmt = conn.prepareStatement(pSql);
-
-			if (users.getUser_id() != 0) {
-				pStmt.setInt(1, 0);
-				System.out.println("ue");
-			} else {
+			if(user_id!=0) {
 				pStmt.setInt(1, user_id);
-				System.out.println("sita");
+			}else {
+				pStmt.setInt(1,0);
 			}
+			
+			
+			
 
 			if (pStmt.executeUpdate() == 1) {
 				create_sp_result = true;
@@ -301,11 +302,11 @@ public class UsersDAO {
 			PreparedStatement iStmt = conn.prepareStatement(iSql);
 			
 			
-			if (users.getUser_id() != 0) {
-				pStmt.setInt(1, 0);
+			if (user_id != 0) {
+				iStmt.setInt(1, user_id);
 				System.out.println("正");
 			} else {
-				pStmt.setInt(1, user_id);
+				iStmt.setInt(1, 0);
 				System.out.println("誤");
 			}
 
@@ -371,25 +372,27 @@ public class UsersDAO {
 	}
 	
 	private String createHashPass(String password) {
-		String hashPass = null;
-		byte[] cipher_byte;
-		for (int i = 0; i < 10; i++) {
-			MessageDigest md;
-			try {
-				md = MessageDigest.getInstance("SHA-256");
-			md.update(password.getBytes());
-			cipher_byte = md.digest();
-			StringBuilder sb = new StringBuilder(2 * cipher_byte.length);
-			for (byte b : cipher_byte) {
-				sb.append(String.format("%02x", b & 0xff));
-			}
-			hashPass = sb.toString();
-			return hashPass;
-			} catch (NoSuchAlgorithmException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
-		}
-		return hashPass;
+	    String hashPass = null;
+	    try {
+	        MessageDigest md = MessageDigest.getInstance("SHA-256");
+	        byte[] cipher_byte = md.digest(password.getBytes());
+
+	        // 1000回ストレッチング
+	        for (int i = 0; i < 1000; i++) {
+	            md.reset();
+	            cipher_byte = md.digest(cipher_byte);
+	        }
+
+	        // バイト配列を16進文字列に変換
+	        StringBuilder sb = new StringBuilder(2 * cipher_byte.length);
+	        for (byte b : cipher_byte) {
+	            sb.append(String.format("%02x", b & 0xff));
+	        }
+	        hashPass = sb.toString();
+	    } catch (NoSuchAlgorithmException e) {
+	        e.printStackTrace();
+	    }
+	    return hashPass;
 	}
+
 }
