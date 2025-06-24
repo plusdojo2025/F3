@@ -36,7 +36,8 @@ public class CalendarServlet extends HttpServlet {
         System.out.println("user_id="+userId);
     	
         if(session == null || session.getAttribute("id")==null) {
-        	response.sendRedirect("LoginServlet");
+        	String contextPath = request.getContextPath();
+    		response.sendRedirect(contextPath + "/TopServlet");
         	return;
         }
         
