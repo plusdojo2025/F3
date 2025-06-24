@@ -1,97 +1,99 @@
 body {
-
 	width: 100%;
 	height: 700px;
-
 }
 /* 枠 */
 .flame {
-  position: relative;
-  width: 100%;
-  max-width: 700px;
-  height: 700px;
-  margin: 0 auto;
+	position: relative;
+	width: 100%;
+	max-width: 700px;
+	height: 700px;
+	margin: 0 auto;
 }
 
 .flame-img {
-  width: 100%;          
-  height: auto;
-  display: block;
-  margin: 0 auto;          
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
 
 .form-wrapper {
-  position: absolute;
-  top: 20%;
-  left: 8%;
-  width: 85%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	top: 20%;
+	left: 8%;
+	width: 85%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /* 入力欄*/
 .Form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .Form-Item {
-  display: flex;
-  align-items: center;
-  width: 95%;
+	display: flex;
+	align-items: center;
+	width: 95%;
 }
 
 .Form-Item-Label {
-  width: 25%;
-  min-width: 80px;
-  font-size: 15px;
-  background-color: hsl(219, 78%, 46%);
-  color: white;
-  padding: 3px;
-  border-radius: 6px;
-  text-align: center;
-  font-weight: bold;
+	width: 25%;
+	height: 45px;
+	min-width: 80px;
+	font-size: 15px;
+	background-color: hsl(219, 78%, 46%);
+	color: white;
+	padding: 3px;
+	border-radius: 6px;
+	text-align: center;
+	font-weight: bold;
+	min-width: 80px;
 }
 
 .Form-Item-Input {
-  flex: 1;
-  margin-left: 5px;
-  padding: 4px;
-  font-size: 20px;
-  border: 2px solid #080808;
-  border-radius: 8px;
-  background-color: #ffffff;
-  height:35px;
+	min-width: 10%;
+	flex: 1;
+	margin-left: 5px;
+	padding: 4px;
+	font-size: 20px;
+	border: 2px solid #080808;
+	border-radius: 8px;
+	background-color: #ffffff;
+	height: 35px;
+	flex: 1;
 }
 
-.Pull-Down{
+.Pull-Down {
 	flex: 1;
-  margin-left: 5px;
-  padding: 4px;
-  font-size: 20px;
-  border: 2px solid #080808;
-  border-radius: 8px;
-  background-color: #ffffff;
-  height:35px;
+	margin-left: 5px;
+	padding: 4px;
+	font-size: 20px;
+	border: 2px solid #080808;
+	border-radius: 8px;
+	background-color: #ffffff;
+	height: 35px;
 }
 
 /* ボタン */
 .insert_btn {
-  margin-top: 20px;
-  align-self: center;
-  padding: 5px 25px;
-  font-size: 45px;
-  background-color: hsl(322, 77%, 63%);
-  color: #fff;
-  border: 3px solid #080808;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+	margin-top: 20px;
+	align-self: center;
+	padding: 5px 25px;
+	font-size: 45px;
+	background-color: hsl(322, 77%, 63%);
+	color: #fff;
+	border: 3px solid #080808;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
 }
 
 .rectangle {
@@ -103,47 +105,76 @@ body {
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
-
 	clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
 		100%);
 	align-items: center;
 }
 
 .rectangle2 {
-	width: calc(100% - 10px); 
-	height: calc(100% - 10px); 
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
 	background-color: #fafafb;
 	position: absolute;
 	left: 50%;
 	margin: 10 auto;
-
 	transform: translateX(-50%);
-	clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
-		100%);
+	clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%,
+		0% 100%);
 }
 
 /* モバイル対応 */
 @media screen and (max-width: 600px) {
-  .Form-Item {
-    flex-direction: column;
-    align-items: stretch;
-  }
+	body {
 
-  .Form-Item-Label {
-    width: 100%;
-    text-align: left;
-    margin-bottom: 5px;
-  }
+	width: 95%;
+	align-items:center;
+	height: 700px;
 
-  .Form-Item-Input {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .insert_btn {
-    width: 100%;
-    font-size: 16px;
-  }
 }
-
- 
+	.Form-Item {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.Form-Item-Label {
+		width: 100%;
+		text-align: left;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.Form-Item-Input {
+		max-width: 100%;
+		margin-left: 0;
+	}
+	.insert_btn {
+		width: 100%;
+		margin-top: 5px;
+		align-self: center;
+		font-size: 24px;
+		background-color: hsl(322, 77%, 63%);
+		color: #fff;
+	}
+	.rectangle {
+		width: 90%;
+		height: 100%;
+		background-color: #323234;
+		position: relative;
+		max-width: 600px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
+			100%);
+		align-items: center;
+	}
+	.rectangle2 {
+		width: calc(100% - 10px);
+		height: calc(100% - 10px);
+		background-color: #fafafb;
+		position: absolute;
+		left: 50%;
+		margin: 10 auto;
+		transform: translateX(-50%);
+		clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%,
+			0% 100%);
+	}
+}
