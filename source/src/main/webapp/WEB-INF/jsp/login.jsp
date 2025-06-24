@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -22,43 +22,46 @@ response.setDateHeader("Expires", 0); // Proxies.
 </head>
 <body>
 
-<c:if test="${success eq 'true'}">
-  <script>
-    alert('ログイン成功しました。');
-    window.location.href = "<c:url value='/HomeServlet' />"; 
-  </script>
-</c:if>
-<c:if test="${success eq 'false'}">
-  <script>
-    alert('メールアドレス、もしくはパスワードが違います。');
-  </script>
-</c:if>
+	<c:if test="${success eq 'true'}">
+		<script>
+			alert('ログイン成功しました。');
+			window.location.href = "<c:url value='/HomeServlet' />";
+		</script>
+	</c:if>
+	<c:if test="${success eq 'false'}">
+		<script>
+			alert('メールアドレス、もしくはパスワードが違います。');
+		</script>
+	</c:if>
 
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="<c:url value='/TopServlet' />"><img
 			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
-	
-	<div class="flame"><img src="${pageContext.request.contextPath}/img/flame.png" >
-
-
-
-		<div class="form-wrapper">
-			<form class="Form" name="loginForm" method="POST" action="<c:url value='/LoginServlet' />" onsubmit="return validateForm()">
-				<div class="Form-Item">
-					<p class="Form-Item-Label">メールアドレス</p>
-					<input type="text" name="email_input" id="email"
-						class="Form-Item-Input">
+	<div class="flame">
+		<div class="rectangle-label">新規登録</div>
+		<!-- ← ラベルを追加 -->
+		<div class="rectangle-big">
+			<div class="rectangle">
+				<div class="form-wrapper">
+					<form class="Form" name="loginForm" method="POST"
+						action="<c:url value='/LoginServlet' />"
+						onsubmit="return validateForm()">
+						<div class="Form-Item">
+							<p class="Form-Item-Label">メールアドレス</p>
+							<input type="text" name="email_input" id="email"
+								class="Form-Item-Input">
+						</div>
+						<div class="Form-Item">
+							<p class="Form-Item-Label">パスワード</p>
+							<input type="password" name="pw_input" id="password"
+								class="Form-Item-Input">
+						</div>
+						<input type="submit" name="login" class="login" value="ログイン">
+					</form>
 				</div>
-				<div class="Form-Item">
-					<p class="Form-Item-Label">パスワード</p>
-					<input type="password" name="pw_input" id="password"
-						class="Form-Item-Input">
-				</div>
-				<input type="submit" name="login" class="login" value="ログイン">
-			</form>
-		
+			</div>
 		</div>
 	</div>
 </body>
