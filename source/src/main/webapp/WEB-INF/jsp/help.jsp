@@ -54,7 +54,7 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 			<div class="rectangle">
 				<div class="rectangle-label">ヘルプ</div>
 				<div class="form-wrapper">
-					<a href=${region[0].link}$><input type="submit" name="link" class="link help-button" value="ゴミの出し方について"></a>
+					<a href=${region}><input type="submit" name="link" class="link help-button" value="ゴミの出し方について"></a>
 					<input type="submit" name="pointinfo" class="pointinfo help-button" value="ポイントについて">
 					<input type="submit" name="subject" class="subject help-button" value="お問い合わせ">
 

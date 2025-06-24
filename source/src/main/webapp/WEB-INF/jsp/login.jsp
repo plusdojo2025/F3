@@ -21,6 +21,7 @@ response.setDateHeader("Expires", 0); // Proxies.
 
 </head>
 <body>
+
 <c:if test="${success eq 'true'}">
   <script>
     alert('ログイン成功しました。');
@@ -39,8 +40,9 @@ response.setDateHeader("Expires", 0); // Proxies.
 			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 	
-	<div class="flame">
-		<img src="<c:url value='/img/flame.png'/>" class="flame-img" />
+	<div class="flame"><img src="${pageContext.request.contextPath}/img/flame.png" >
+
+
 
 		<div class="form-wrapper">
 			<form class="Form" name="loginForm" method="POST" action="<c:url value='/LoginServlet' />" onsubmit="return validateForm()">
@@ -56,6 +58,7 @@ response.setDateHeader("Expires", 0); // Proxies.
 				</div>
 				<input type="submit" name="login" class="login" value="ログイン">
 			</form>
+		
 		</div>
 	</div>
 </body>
