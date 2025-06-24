@@ -9,6 +9,7 @@
   max-width: 700px;
   position: relative;
   z-index: 0;
+  overflow: visible;
 }
 
 /* 外枠 */
@@ -37,11 +38,11 @@
   box-sizing: border-box;
 }
 
-/* ラベル（.rectangleの左上に固定） */
+/* ラベル（外にはみ出す） */
 .rectangle-label {
   position: absolute;
-  top: 10px;
-  left: 20px;
+  top: -25px;
+  left: 10px;
   background-color: hsl(219, 78%, 46%);
   border: 3px solid #080808;
   color: white;
@@ -51,6 +52,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 10;
   border-radius: 4px 4px 0 0;
+  white-space: nowrap;
 }
 
 /* ボタン群ラップ */
@@ -169,6 +171,9 @@
   padding: 20px;
   border-radius: 8px;
   position: relative;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
 }
 
 /* 閉じるボタン */
@@ -182,8 +187,11 @@
 
 /* ポップアップ画像 */
 .popup-image {
-  max-width: 100%;
+  max-width: 50vw;
   height: auto;
+  display: block;
+  margin: 0 auto;
+  max-height: 40vh;
 }
 
 /* レスポンシブ対応 */
@@ -201,7 +209,7 @@
   .rectangle-label {
     font-size: 18px;
     padding: 4px 8px;
-    top: 6px;
+    top: -20px;
     left: 12px;
   }
 
@@ -216,5 +224,10 @@
 
   .submit_btn {
     font-size: 16px;
+  }
+
+  .popup-image {
+    max-width: 90vw;
+    max-height: 40vh;
   }
 }
