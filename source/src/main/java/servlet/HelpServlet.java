@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.HelpJoinDAO;
-import dto.Region;
+import dto.HelpJoin;
 
 /**
  * Servlet implementation class HelpServlet
@@ -40,8 +39,11 @@ public class HelpServlet extends HttpServlet {
         }
 		
 		HelpJoinDAO hDAO = new HelpJoinDAO();
-		List<Region> region = hDAO.getGarbageLink(userId);
-		request.setAttribute("region", region);
+		HelpJoin region = new HelpJoin();
+		region = hDAO.getGarbageLink(userId);
+		System.out.println("servlet check");
+		String help_link = region.getLink();
+		request.setAttribute("region", help_link);
 		System.out.println(region);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/help.jsp");

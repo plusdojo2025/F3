@@ -68,6 +68,7 @@ public class HomeServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	String contextPath = request.getContextPath();
     	//セッションを取得
     	HttpSession session = request.getSession();
     	Object obj = session.getAttribute("id");
@@ -100,7 +101,7 @@ public class HomeServlet extends HttpServlet {
     	HomeJoinDAO dao = new HomeJoinDAO();
     	boolean check = dao.insertCal(userId, today, score, point);    	
 
-    	if(score<110&&(score%10)==9) {
+    	if(score<109&&(score%10)==9) {
         	UsersDAO dao1 = new UsersDAO();
         	boolean inseDeg = dao1.UpDegree(userId);
         	if(inseDeg) {
@@ -110,7 +111,7 @@ public class HomeServlet extends HttpServlet {
     	
     	if(check) {
     	    System.out.println("カレンダー登録成功！");
-    	    response.sendRedirect("HomeServlet");  // ←これで doGet() に自然遷移
+    	    response.sendRedirect(contextPath +"/HomeServlet");  // ←これで doGet() に自然遷移
     	}
     	} catch(Exception e) {
     		e.printStackTrace();
