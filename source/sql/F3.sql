@@ -95,15 +95,15 @@ CREATE TABLE degree (
 
 /*users*/
 INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VALUES
- (1,1,1,'dojouser1','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser1@plusdojo.jp'),
- (2,1,1,'dojouser2','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser2@plusdojo.jp'),
- (3,1,1,'dojouser3','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser3@plusdojo.jp'),
- (4,1,1,'dojouser4','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser4@plusdojo.jp'),
- (5,1,1,'dojouser5','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser5@plusdojo.jp');
+ (1,1,1,'dojouser1','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser1@plusdojo.jp'),
+ (2,1,1,'dojouser2','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser2@plusdojo.jp'),
+ (3,1,1,'dojouser3','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser3@plusdojo.jp'),
+ (4,1,1,'dojouser4','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser4@plusdojo.jp'),
+ (5,1,1,'dojouser5','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser5@plusdojo.jp'),
  /*テスト用データ*/
- (5,1,11,'dojouser100','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser100@plusdojo.jp');
- (5,1,10,'dojouser99','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser99@plusdojo.jp');
- (5,1,6,'dojouser59','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser59@plusdojo.jp');
+ (5,1,11,'dojouser100','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser100@plusdojo.jp'),
+ (5,1,10,'dojouser99','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser99@plusdojo.jp'),
+ (5,1,6,'dojouser59','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser59@plusdojo.jp');
  
 
 /*地域名・ごみデータ*/

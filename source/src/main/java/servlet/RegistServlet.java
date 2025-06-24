@@ -51,7 +51,7 @@ public class RegistServlet extends HttpServlet {
 		String password = request.getParameter("pw_input");
 		String rePassword = request.getParameter("pw_re_input");
 		String mail = request.getParameter("mail_input");
-		System.out.println(region_id + user_name + password + rePassword + mail);
+		System.out.println(region_id +" "+ user_name +" "+ password +" "+ rePassword +" "+ mail);
 		// ログイン処理を行う
 		UsersDAO uDao = new UsersDAO();
 		if (uDao.createAccount(new Users(0, region_id, 1, 1, user_name, password, mail))) { 
