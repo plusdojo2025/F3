@@ -64,11 +64,11 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 						id="pw_re_input" onKeyup="valiCheck()">
 				</div>
 				<!-- ここはプルダウンの選択肢に -->
-				<div class="Form-Item" class="Pull-Down">
+				<div class="Form-Item">
 					<p class="Form-Item-Label">居住地域</p>
 					<select id="region_input" name="region_input"
 						class="Form-Item-Input">
-						<option value=0 selected>選択してください</option>
+						<option value=0 class="Pull-Down" selected>選択してください</option>
 						<c:forEach var="region" items="${regions}">
 							<option value="${region.region_id}">${region.region_name}</option>
 						</c:forEach>

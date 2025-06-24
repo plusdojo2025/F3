@@ -1,185 +1,237 @@
-
+/* flame全体 */
 .flame {
-  position: relative;
-  width: 100%;
-  max-width: 660px;
-  margin: 0 auto;
-}
-
-
-.flame-img {
-  width: 100%;
-  height: 500px; /* 初期高さ（必要に応じて調整） */
-  transition: height 0.5s ease;
-  display: block;
-  margin: 0 auto;
-}
-
-.flame-img.expanded {
-  height: 670px; /* フォーム展開時の高さ */
-}
-
-.form-wrapper {
-  position: absolute;
-  top: 15%;
-  left: 8%;
-  width: 85%;
-  height: 80%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
 }
-/* 
-伸びるアニメーション */
+
+/* 外枠 */
+.rectangle-big {
+  width: 680px;
+  background-color: #323234;
+  clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
+  padding: 5px;
+  position: relative;
+  box-sizing: border-box;
+  border: 3px solid #333;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* 内枠 */
+.rectangle {
+  width: 100%;
+  background-color: #fafafb;
+  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
+		100%);
+  padding: 40px 20px;
+  position: relative;
+  border: 2px solid #555;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* ラベル（外にはみ出す） */
+.rectangle-label {
+  position: absolute;
+  top: -25px;
+  left: -20px;
+  background-color: hsl(219, 78%, 46%);
+  border: 3px solid #080808;
+  color: white;
+  padding: 5px 12px;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 4px 4px 0 0;
+  white-space: nowrap;
+}
+
+/* ボタン群ラップ */
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* ボタン共通スタイル */
+.help-button {
+  width: 100%;
+  max-width: 400px;
+  min-width: 400px;
+  padding: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  border: 3px solid #080808;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+/* ボタンの色（それぞれ） */
+.link {
+  background-color: #e91e63;
+}
+
+.pointinfo {
+  background-color: #2196f3;
+}
+
+.subject {
+  background-color: #f44336;
+}
+
+/* 問い合わせフォーム全体 */
 .Form {
   width: 100%;
   max-width: 500px;
   box-sizing: border-box;
-  display: none; 
+  display: none;
   flex-direction: column;
-  gap: 10px;
-  transition: all 0.3s ease; 
+  gap: 15px;
   margin-top: 30px;
 }
 
+/* フォームの1項目 */
 .Form-Item {
   display: flex;
-  align-items: center; /* ✅ 入力欄とラベルを中央揃えに */
-  width: 95%;
-  margin-bottom: 5px; /* 適度な間隔 */
+  flex-direction: column;
+  width: 100%;
 }
 
 .Form-Item-Label {
-  width: 15%;
-  min-width: 80px;
-  font-size: 15px;
-  background-color: hsl(219, 78%, 46%);
-  color: white;
-  padding: 6px 4px;
-  border-radius: 6px;
-  text-align: center;
+  display: inline-block;
   font-weight: bold;
-  margin-right: 10px;
-  box-sizing: border-box;
-  line-height: 1.2;
-}
-
-.Form-Item-Input {
-  flex: 1;
-  padding: 6px;
-  font-size: 16px;
-  border: 2px solid #080808;
-  border-radius: 8px;
-  background-color: #ffffff;
-  height: 35px;
-  box-sizing: border-box;
-}
-
-.Form-Item-Input2 {
-  flex: 1;
-  padding: 6px;
-  font-size: 16px;
-  border: 2px solid #080808;
-  border-radius: 8px;
-  background-color: #ffffff;
-  height: 100px;
-  box-sizing: border-box;
-  resize: vertical;
-  overflow-wrap: break-word;
-}
-
-/* ボタン */
-.help-button {
-  width: 100%;                  /* 任意で調整 */
-  max-width: 400px;            /* 任意で上限も指定 */
-  margin-top: 20px;
-  align-self: center;
-  padding: 5px 25px;
-  font-size: 35px;
-  color: #fff;
+  font-size: 14px;
+  background-color: #129ff1;
+  color: white;
   border: 3px solid #080808;
-  border-radius: 16px;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  align-self: flex-start;
+}
+
+/* テキスト入力 */
+.Form-Item-Input,
+.Form-Item-Input2 {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 3px solid #080808;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* テキストエリア */
+.Form-Item-Input2 {
+  height: 100px;
+  resize: vertical;
+}
+
+/* 送信ボタン */
+.submit_btn {
+  padding: 10px 25px;
+  font-size: 25px;
+  background-color: #12f1b9;
+  color: white;
+  border: 3px solid #080808;
+  border-radius: 6px;
+  align-self: center;
   cursor: pointer;
   font-weight: bold;
-  text-align: center;
-}
-.link {
-  background-color: hsl(308, 90%, 51%);
-}
-.pointinfo {
-  background-color: hsl(202, 84%, 51%);
-}
-.subject {
-  background-color: hsl(7, 76%, 54%);
 }
 
-/* モバイル対応 */
-@media screen and (max-width: 600px) {
-
-  .login_btn {
-    width: 100%;
-    font-size: 16px;
-  }
-  .regist_btn {
-    width: 100%;
-    font-size: 16px;
-  }
-}
-
- /* ポップアップの背景 */
+/* ポップアップ背景 */
 .popup {
-  display: none; /* 初期は非表示 */
+  display: none;
   position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); /* 半透明背景 */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 /* ポップアップ本体 */
 .popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
   position: relative;
-  background: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 80%;
-  max-height: 80%;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  text-align: center;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: auto;
 }
 
 /* 閉じるボタン */
 .popup-close {
   position: absolute;
-  top: 14px;
-  right: 22px;
+  top: 30px;
+  right: 40px;
   font-size: 30px;
-  font-weight: bold;
-  color: #333;
   cursor: pointer;
 }
 
-/* 画像サイズ調整 */
+/* ポップアップ画像 */
 .popup-image {
-  max-width: 100%;
+  max-width: 60vw;
   height: auto;
+  display: block;
+  margin: 0 auto;
+  max-height: 50vh;
 }
 
-/* 送信ボタン */
-.submit_btn {
-  margin-top: 3px;
-  align-self: center;
-  padding: 5px 20px;
-  font-size: 14px;
-  background-color: hsl(166, 87%, 47%);
-  color: #fff;
-  border: 2px solid #080808;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+/* レスポンシブ対応 */
+@media screen and (max-width: 600px) {
+  .rectangle-big {
+    width: 95%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .rectangle {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    padding: 20px;
+  }
+
+  .rectangle-label {
+    font-size: 18px;
+    padding: 4px 8px;
+    top: -20px;
+    left: 12px;
+  }
+
+  .help-button {
+    font-size: 18px;
+  }
+
+  .Form-Item-Input,
+  .Form-Item-Input2 {
+    font-size: 14px;
+  }
+
+  .submit_btn {
+    font-size: 16px;
+  }
+
+  .popup-image {
+    max-width: 90vw;
+    max-height: 40vh;
+  }
 }
