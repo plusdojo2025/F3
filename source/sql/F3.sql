@@ -100,8 +100,11 @@ INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VAL
  (3,1,1,'dojouser3','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser3@plusdojo.jp'),
  (4,1,1,'dojouser4','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser4@plusdojo.jp'),
  (5,1,1,'dojouser5','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser5@plusdojo.jp');
-
-
+ /*テスト用データ*/
+ (5,1,11,'dojouser100','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser100@plusdojo.jp');
+ (5,1,10,'dojouser99','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser99@plusdojo.jp');
+ (5,1,6,'dojouser59','5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14','dojouser59@plusdojo.jp');
+ 
 
 /*地域名・ごみデータ*/
 /*仙台　青葉区*/
@@ -608,24 +611,27 @@ INSERT INTO icon (icon_id,icon_name,price) VALUES
 
 
 INSERT INTO degree(degree_name) VALUES 
-('ごみ出しビギナー'),
-('エコの芽生え'),
-('ごみ出しノービス'),
-('町の清掃員'),
-('エコライフ推進員'),
-('ごみのエキスパート'),
-('分別の達人'),
-('ごみゼロ提督'),
-('エコレジェンド'),
-('ゴミ出し仙人'),
-('ゴミ出し神');
+('ごみ出しビギナー'),/*0~9 id_1*/
+('エコの芽生え'),/*10~19 id_2*/
+('ごみ出しノービス'),/*20~29 id_3*/
+('町の清掃員'),/*30~39 id_4*/
+('エコライフ推進員'),/*40~49 id_5*/
+('ごみのエキスパート'),/*50~59 id_6*/
+('分別の達人'),/*60~69 id_7*/
+('ごみゼロ提督'),/*70~79 id_8*/
+('エコレジェンド'),/*80~89 id_9*/
+('ゴミ出し仙人'),/*90~99 id_10*/
+('ゴミ出し神');/*100~ id_11*/
 
 /*所持アイコン*/
-INSERT INTO iconStatus VALUES(1, 1),(2, 1),(3, 1),(4, 1),(5, 1);
+INSERT INTO iconStatus VALUES(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),(8, 1);
 
 /*スコアポイント*/
 INSERT INTO scorePoint VALUES(1, 9, 10000),
 							 (2, 9, 10000),
 							 (3, 9, 10000),
 							 (4, 9, 10000),
-							 (5, 9, 10000);
+							 (5, 9, 10000),
+							 (6, 100, 500),
+							 (7, 99, 500),
+							 (8, 59, 500);
