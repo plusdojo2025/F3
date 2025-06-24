@@ -16,16 +16,13 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 <link rel="stylesheet" href="<c:url value='/css/help.css' />">
 <script src="<c:url value='/js/help.js' />"></script>
 <script src="<c:url value='/js/common.js' />"></script>
-<!-- <div class="bg_pattern Paper"></div>-->
 </head>
 <body>
 	<!-- ヘッダーここから -->
 	<div class="logo">
-		<a href="<c:url value='/HomeServlet' />"><img
-			src="<c:url value='/img/logo.png'/>"></a>
+		<a href="<c:url value='/HomeServlet' />"><img src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
-	<!-- index.html -->
 	<div class="header">
 		<button class="hamburger" name="humberger_menu" aria-label="メニュー"
 			aria-controls="nav-menu" aria-expanded="false">
@@ -53,34 +50,37 @@ List<Region> region = (List<Region>) request.getAttribute("region");
 	</div>
 
 	<div class="flame">
-		<img src="<c:url value='/img/flame_help.png'/>" class="flame-img" />
-		<div class="form-wrapper">
-			<a href=${region[0].link}$><input type="submit" name="link" class="link help-button" value="ゴミの出し方について"></a>
-				<input
-				type="submit" name="pointinfo" class="pointinfo help-button"
-				value="ポイントについて"> <input type="submit" name="subject"
-				class="subject help-button" value="お問い合わせ">
-			<!-- モーダルポップアップ -->
-			<div id="popup" class="popup">
-				<div class="popup-content">
-					<span class="popup-close" id="popup-close">&times;</span> <img
-						src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
+		<div class="rectangle-big">
+			<div class="rectangle">
+				<div class="rectangle-label">ヘルプ</div>
+				<div class="form-wrapper">
+					<a href=${region[0].link}$><input type="submit" name="link" class="link help-button" value="ゴミの出し方について"></a>
+					<input type="submit" name="pointinfo" class="pointinfo help-button" value="ポイントについて">
+					<input type="submit" name="subject" class="subject help-button" value="お問い合わせ">
+
+					<!-- モーダルポップアップ -->
+					<div id="popup" class="popup">
+						<div class="popup-content">
+							<span class="popup-close" id="popup-close">&times;</span>
+							<img src="<c:url value='/img/point_info.png'/>" alt="ポイント情報" class="popup-image">
+						</div>
+					</div>
+
+					<!-- 入力欄 -->
+					<form class="Form">
+						<div class="Form-Item">
+							<p class="Form-Item-Label">件名</p>
+							<input type="text" name="title" class="Form-Item-Input">
+						</div>
+						<div class="Form-Item">
+							<p class="Form-Item-Label">内容</p>
+							<textarea name="inquiry" class="Form-Item-Input2"></textarea>
+						</div>
+						<input type="submit" name="sendinquiry" class="submit_btn" value="送信">
+					</form>
 				</div>
 			</div>
-			<!-- 入力欄 -->
-			<form class="Form">
-				<div class="Form-Item">
-					<p class="Form-Item-Label">件名</p>
-					<input type="text" name="title" class="Form-Item-Input">
-				</div>
-				<div class="Form-Item">
-					<p class="Form-Item-Label">内容</p>
-					<textarea name="inquiry" class="Form-Item-Input2"></textarea>
-				</div>
-				<input type="submit" name="sendinquiry" class="submit_btn"
-					value="送信">
-			</form>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>
