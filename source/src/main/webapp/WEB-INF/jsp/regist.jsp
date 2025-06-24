@@ -37,10 +37,10 @@ List<Region> regions = (List<Region>) request.getAttribute("regions");
 		<a href="<c:url value='/TopServlet' />"><img
 			src="<c:url value='/img/logo.png'/>"></a>
 	</div>
-	
 	<div class="flame">
+	 <div class="rectangle-label">新規登録</div> <!-- ← ラベルを追加 -->
+	<div class="rectangle-big">
 	<div class="rectangle">
-	<div class="rectangle2">
 
 		<div class="form-wrapper">
 			<form class="Form" id="registForm" name="registForm" method="POST"

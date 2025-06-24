@@ -13,16 +13,15 @@
 
 </head>
 <body>
-<div class="circle"></div>
 
 	<!-- ヘッダーここから -->
 	<div class="logo">
 		<a href="<c:url value='/TopServlet' />"><img src="<c:url value='/img/logo.png'/>"></a>
 	</div>
 
-	<div class="rectangle">
-	<div class="rectangle2">
 	<div class="flame">
+	<div class="rectangle-big">
+	<div class="rectangle">
 
 		<div class="form-wrapper">
 

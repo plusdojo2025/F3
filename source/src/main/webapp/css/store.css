@@ -38,7 +38,8 @@
 .rectangle {
   width: 100%;
   background-color: #fafafb;
-  clip-path: inherit;
+  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
+		100%);
   padding: 40px 20px;
   box-sizing: border-box;
   position: relative;
