@@ -48,7 +48,7 @@
 .point-box {
   position: absolute;
   top: -30px;
-  right: -20px;
+  right: 15px; 
   width: 150px;
   text-align: center;
   pointer-events: none;
@@ -69,7 +69,7 @@
   color: #000;
   font-weight: bold;
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .store_item {
@@ -134,12 +134,13 @@
 @media screen and (max-width: 600px) {
   .rectangle-big {
     width: 90%;
-    clip-path: none;
+    clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
     padding: 10px;
   }
 
   .rectangle {
-    clip-path: none;
+    clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
+		100%);
     padding: 10px;
   }
 
@@ -155,11 +156,11 @@
 
   .point-box {
     top: -25px;
-    right: 0;
+    right: 10px; 
     width: 120px;
   }
+}
 
   .point-text {
     font-size: 14px;
   }
-}

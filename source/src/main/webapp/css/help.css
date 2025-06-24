@@ -198,15 +198,16 @@
   max-height: 50vh;
 }
 
-/* レスポンシブ対応 */
 @media screen and (max-width: 600px) {
   .rectangle-big {
     width: 95%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* スマホでも右上を欠けさせる */
+    clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
   }
 
   .rectangle {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* 内枠も外枠に合わせてclip */
+    clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0% 100%);
     padding: 20px;
   }
 
