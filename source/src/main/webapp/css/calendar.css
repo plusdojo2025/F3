@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 40px auto;
+  margin: 10px auto 40px; 
   width: 100%;
   max-width: 700px;
   position: relative;
@@ -13,7 +13,7 @@
 }
 
 .rectangle-big {
-  width: 1000px;
+  width: 1050px;
   background-color: #323234;
   clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
   padding: 5px;
@@ -39,7 +39,7 @@
 .rectangle-label {
   position: absolute;
   top: -25px;
-  left: -5px;
+  left: -180px;
   background-color: hsl(219, 78%, 46%);
   border: 3px solid #080808;
   color: white;
@@ -64,10 +64,10 @@
 }
 
 .calendar-title {
-  background-color: #f5f5f5;
-  color: #0d47a1;
+  background-color: #7dec3d;
+  color: #ffffff;
   padding: 12px 20px;
-  border: 2px solid #2196f3;
+  border: 2px solid #1e2e1a;
   border-radius: 12px;
   font-size: 22px;
   font-weight: bold;
@@ -148,9 +148,11 @@ th {
 @media screen and (max-width: 600px) {
   .rectangle-big {
     width: 95%;
+    clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
   }
   .rectangle {
     padding: 20px;
+    clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0% 100%);
   }
   .rectangle-label {
     font-size: 18px;
