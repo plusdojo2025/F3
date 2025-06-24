@@ -20,29 +20,35 @@
 
 <body>
 <%@ include file="/common.jsp" %>
+
 <div class="flame">
-<div class="rectangle-label">ヘルプ</div>
+
+		<div class="rectangle-label">ホーム</div>
 		<div class="rectangle-big">
 			<div class="rectangle">
 				
 	<div class="left_box">
-    <div class="rectangle_first"></div><%--① --%>
+    <div class="rectangle_first"><%--① --%>
 		<div class="rectangle2">
         <p>次のごみ出しは<br><span class="highlight">${home.types}</span></p>
         <div id="weekday" id ="week"></div>
         <p id="today">20日<p>
         </div>
     </div>
-
+    </div>
 	<div class="right_box">
 
-        <div class="circle"><p>現在のランクは<br><span class="highlight2">${home.degree_name}</span></p><%--② --%>
-    </div>
+        <div class="circle"><div class="circle_child"><p>現在のランクは<br><span class="highlight2">${home.degree_name}</span></p><%--② --%>
+    </div></div>
     <div class="rounded-rectangle"><%--③ --%>
     	<c:choose>
     		<c:when test="${home.score <110}">
-				<c:set var="nextScore" value="${10 - (home.score % 10)}" />
-				<p>次のランクまで、あと${nextScore}pt</p>
+				<c:set var="scorePercent" value="${(home.score % 10) * 10}" />
+				<div class="rank-bar">
+			    <div class="rank-fill" style="width: ${scorePercent}%;"></div>
+				</div>
+<p>次のランクまで、あと <span class="highlight_point">${10 - (home.score % 10)}pt</span></p>
+
 			</c:when>
 			<c:otherwise>
 				<p>現在最高ランクです。</p>
