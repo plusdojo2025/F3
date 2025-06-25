@@ -95,17 +95,17 @@ CREATE TABLE degree (
 
 /*users*/
 INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VALUES
- (1,1,1,'dojouser1','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser1@plusdojo.jp'),
- (2,1,1,'dojouser2','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser2@plusdojo.jp'),
- (3,1,1,'dojouser3','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser3@plusdojo.jp'),
- (4,1,1,'dojouser4','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser4@plusdojo.jp'),
- (5,1,1,'dojouser5','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser5@plusdojo.jp'),
+ (1,1,1,'dojouser1','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser1@plusdojo.jp'),
+ (2,1,1,'dojouser2','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser2@plusdojo.jp'),
+ (3,1,1,'dojouser3','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser3@plusdojo.jp'),
+ (4,1,1,'dojouser4','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser4@plusdojo.jp'),
+ (5,1,1,'dojouser5','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser5@plusdojo.jp'),
  /*テスト用データ*/
- (5,1,11,'dojouser100','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser100@plusdojo.jp'),
- (5,1,10,'dojouser99','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser99@plusdojo.jp'),
- (5,1,6,'dojouser59','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser59@plusdojo.jp');
+ (5,1,11,'dojouser100','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser100@plusdojo.jp'),
+ (5,1,10,'dojouser99','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser99@plusdojo.jp'),
+ (5,1,6,'dojouser59','7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2','dojouser59@plusdojo.jp');
  
- INSERT INTO USERS(region_id, icon_id, degree_id, user_name, password, mail) VALUES(1, 1, 1, '井上直太朗', '145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23', 'dojouser6@plusdojo.jp');
+ INSERT INTO USERS(region_id, icon_id, degree_id, user_name, password, mail) VALUES(1, 1, 11, 'naotarou', '7d685234e5f7e1ea998e0488d143d8eba286cd60cd6029bf1dcab5b19f1c65d2', 'dojouser6@plusdojo.jp');
  INSERT INTO iconStatus VALUES(9, 1);
 
 /*地域名・ごみデータ*/
@@ -629,11 +629,12 @@ INSERT INTO degree(degree_name) VALUES
 INSERT INTO iconStatus VALUES(1, 1),(2, 1),(3, 1),(4, 1),(5, 1),(6, 1),(7, 1),(8, 1);
 
 /*スコアポイント*/
-INSERT INTO scorePoint VALUES(1, 9, 10000),
-							 (2, 9, 10000),
-							 (3, 9, 10000),
-							 (4, 9, 10000),
-							 (5, 9, 10000),
+INSERT INTO scorePoint VALUES(1, 9, 600),
+							 (2, 9, 600),
+							 (3, 9, 600),
+							 (4, 9, 600),
+							 (5, 9, 600),
 							 (6, 100, 500),
 							 (7, 99, 500),
-							 (8, 59, 500);
+							 (8, 59, 500),
+							 (9, 109, 500);

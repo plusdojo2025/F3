@@ -23,6 +23,32 @@
           <div class="calendar-container">
 
             <div class="calendar-header">
+            	<c:choose>
+                    <c:when test="${code == '1'}"><%--前月 --%>
+              <div class="calendar-title-wrapper">
+                <h2 class="calendar-title">${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
+              </div>
+              <div class="calendar-button-right">
+                <form action="CalendarServlet" method="get">
+                  <input type="hidden" name="code" value="">
+                  <button class="month-btn">翌月 &gt;&gt;</button>
+                </form>
+              </div>
+              </c:when>
+              
+                                  <c:when test="${code == '2'}">
+              <div class="calendar-button-left">
+                <form action="CalendarServlet" method="get">
+                  <input type="hidden" name="code" value="">
+                  <button class="month-btn">&lt;&lt; 先月</button>
+                </form>
+              </div>
+              <div class="calendar-title-wrapper">
+                <h2 class="calendar-title">${displayYear}年 ${displayMonth}月のごみ出し予定</h2>
+              </div>
+              </c:when>
+              
+               <c:otherwise>
               <div class="calendar-button-left">
                 <form action="CalendarServlet" method="get">
                   <input type="hidden" name="code" value="1">
@@ -38,6 +64,8 @@
                   <button class="month-btn">翌月 &gt;&gt;</button>
                 </form>
               </div>
+              </c:otherwise>
+              </c:choose>
             </div>
 
             <table border="1">

@@ -42,7 +42,7 @@
     </div></div>
     <div class="rounded-rectangle"><%--③ --%>
     	<c:choose>
-    		<c:when test="${home.score <110}">
+    		<c:when test="${home.score <100}">
 				<c:set var="scorePercent" value="${(home.score % 10) * 10}" />
 				<div class="rank-bar">
 			    <div class="rank-fill" style="width: ${scorePercent}%;"></div>
