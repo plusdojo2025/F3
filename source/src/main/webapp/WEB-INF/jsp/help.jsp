@@ -53,11 +53,11 @@
 					<form class="Form">
 						<div class="Form-Item">
 							<p class="Form-Item-Label">件名</p>
-							<input type="text" name="title" class="Form-Item-Input">
+							<input type="text" name="title" class="Form-Item-Input"required>
 						</div>
 						<div class="Form-Item">
 							<p class="Form-Item-Label">内容</p>
-							<textarea name="inquiry" class="Form-Item-Input2"></textarea>
+							<textarea name="inquiry" class="Form-Item-Input2"required></textarea>
 						</div>
 						<input type="submit" name="sendinquiry" class="submit_btn" value="送信">
 					</form>
