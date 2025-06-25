@@ -13,7 +13,7 @@
 
 /* 背景となる外枠 */
 .rectangle-big {
-  width: 680px;
+  width: 90%;
   height: 630px;
   background-color: #323234;
   clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
