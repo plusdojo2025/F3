@@ -44,4 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
- 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.getElementById('logout');
+  logoutBtn.addEventListener('click', function (event) {
+    event.preventDefault();  // 先に遷移を止める
+    const result = window.confirm('ログアウトしますか？');
+    if (result) {
+      window.alert('ログアウトしました');
+      window.location.href = 'LogoutServlet';
+    }
+  });
+});
