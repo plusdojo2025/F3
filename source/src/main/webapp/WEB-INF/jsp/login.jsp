@@ -24,7 +24,6 @@ response.setDateHeader("Expires", 0); // Proxies.
 
 	<c:if test="${success eq 'true'}">
 		<script>
-			alert('ログイン成功しました。');
 			window.location.href = "<c:url value='/HomeServlet' />";
 		</script>
 	</c:if>
