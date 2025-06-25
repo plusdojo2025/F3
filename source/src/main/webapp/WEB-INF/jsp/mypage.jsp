@@ -81,7 +81,7 @@ List<Icon> icons = (List<Icon>) request.getAttribute("icon");
 					class="nav__link" name="help_link">ヘルプ</a></li>
 				<li class="nav__item"><a
 					href="<c:url value='/LogoutServlet' />" class="nav__link"
-					name="logout_btn">ログアウト</a></li>
+					name="logout_btn" id="logout">ログアウト</a></li>
 			</ul>
 		</nav>
 	</div>

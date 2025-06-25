@@ -24,7 +24,7 @@
             <li class="nav__item"><a href="<c:url value='/CalendarServlet'/>" class="nav__link">カレンダー</a></li>
             <li class="nav__item"><a href="<c:url value='/StoreServlet'/>" class="nav__link">ストア</a></li>
             <li class="nav__item"><a href="<c:url value='/HelpServlet'/>" class="nav__link">ヘルプ</a></li>
-            <li class="nav__item"><a href="<c:url value='/LogoutServlet'/>" class="nav__link">ログアウト</a></li>
+            <li class="nav__item"><a href="<c:url value='/LogoutServlet'/>" class="nav__link" id="logout">ログアウト</a></li>
         </ul>
     </nav>
 </div>
