@@ -56,14 +56,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const logoutBtn = document.getElementById('logout');
-  logoutBtn.addEventListener('click', function (event) {
-    event.preventDefault();  
-    const result = window.confirm('ログアウトしますか？');
-    if (result) {
-      window.alert('ログアウトしました');
-      window.location.href = 'LogoutServlet';
-    }
-  });
-});
+
