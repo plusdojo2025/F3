@@ -24,15 +24,16 @@ public class HomeServlet extends HttpServlet {
         throws ServletException, IOException {
     	//セッションを取得
     	HttpSession session = request.getSession();
-    	Object obj = session.getAttribute("id");
-    	int userId = (Integer) obj;
-        System.out.println("user_id="+userId);
-        
-        if(session == null || session.getAttribute("id")==null) {
+    	if(session == null || session.getAttribute("id")==null) {
         	String contextPath = request.getContextPath();
     		response.sendRedirect(contextPath + "/TopServlet");
         	return;
         }
+    	Object obj = session.getAttribute("id");
+    	int userId = (Integer) obj;
+        System.out.println("user_id="+userId);
+        
+        
         
         //セッション送る
     	session.setAttribute("id", userId); // userId は int 型
