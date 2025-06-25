@@ -27,8 +27,7 @@ public class RegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		//セッション削除
-//		session.invalidate();
+
 		UsersDAO uDao = new UsersDAO();
         List<Region> regions = uDao.getRegions();
 

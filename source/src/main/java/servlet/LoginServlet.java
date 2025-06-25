@@ -28,8 +28,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-//		//セッション削除
-//		session.invalidate();
+		
 		String success = (String) session.getAttribute("success");
 		if (success != null) {
 		    request.setAttribute("success", success);
@@ -37,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 	        request.setAttribute("success", "none");
 	    }
+		
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
