@@ -105,6 +105,8 @@ INSERT INTO users (region_id, icon_id, degree_id, user_name, password, mail) VAL
  (5,1,10,'dojouser99','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser99@plusdojo.jp'),
  (5,1,6,'dojouser59','145677168ca11ea3bc383c32de0eb3ff62eb1b5c9e00409ccdc43fbf8e1b3e23','dojouser59@plusdojo.jp');
  
+ INSERT INTO USERS(region_id, icon_id, degree_id, user_name, password, mail) VALUES(1, 1, 1, '井上直太朗', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'dojouser6@plusdojo.jp');
+ INSERT INTO iconStatus VALUES(6, 1);
 
 /*地域名・ごみデータ*/
 /*仙台　青葉区*/
