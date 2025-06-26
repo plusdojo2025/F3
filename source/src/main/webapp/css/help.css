@@ -217,13 +217,12 @@
   }
 
   .rectangle-label {
-    f.rectangle-label {
     font-size: 18px;
     padding: 4px 8px;
     top: -20px;
     left: 4px; 
   }
-  }
+ 
 
   .help-button {
     font-size: 18px;
