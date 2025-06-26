@@ -46,15 +46,3 @@ function showtoday() {
 	const showtoday = month + "月" + date + "日";
 	return showtoday;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const logoutBtn = document.getElementById('logout');
-  logoutBtn.addEventListener('click', function (event) {
-    event.preventDefault();  
-    const result = window.confirm('ログアウトしますか？');
-    if (result) {
-      window.alert('ログアウトしました');
-      window.location.href = 'LogoutServlet';
-    }
-  });
-});
