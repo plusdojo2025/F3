@@ -76,7 +76,7 @@
 <div class="modal" id="checkModal">
   <div class="modal-content">
     <button class="close-button" onclick="document.getElementById('checkModal').style.display='none'">×</button>
-    <p>チェックしますか？</p>
+    <p>今日ゴミを出しましたか？</p>
     <form action="HomeServlet" method="post">
       <input type="hidden" name="check_id" value="1" />
       <input type="hidden" name="score" value="${home.score}" />
