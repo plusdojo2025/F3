@@ -86,17 +86,17 @@
   </div>
 </div>
 <script>
-'use strict';
-var btn = document.getElementById('logout');
-btn.addEventListener('click', function(event){
-	var result = window.confirm('ログアウトしますか？');
-	if(result){
-		window.alert("ログアウトしました");
-	}else{
-		event.preventDefault();
-	}
-	
-},false);
-</script>
+		'use strict';
+		var btn = document.getElementById('logout');
+		btn.addEventListener('click', function(event) {
+			var result = window.confirm('ログアウトしますか？');
+			if (result) {
+				window.location.href = 'LogoutServlet';
+			} else {
+				event.preventDefault();
+			}
+
+		}, false);
+	</script>
 </body>
 </html>
