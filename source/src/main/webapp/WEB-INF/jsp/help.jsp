@@ -85,14 +85,12 @@
 				class="popup-image" />
 		</div>
 	</div>
-<<<<<<< HEAD
 	<script>
 		'use strict';
 		var btn = document.getElementById('logout');
 		btn.addEventListener('click', function(event) {
 			var result = window.confirm('ログアウトしますか？');
 			if (result) {
-				window.alert("ログアウトしました");
 				window.location.href = 'LogoutServlet';
 			} else {
 				event.preventDefault();
@@ -100,20 +98,5 @@
 
 		}, false);
 	</script>
-=======
-<script>
-'use strict';
-var btn = document.getElementById('logout');
-btn.addEventListener('click', function(event){
-	var result = window.confirm('ログアウトしますか？');
-	if(result){
-		window.alert("ログアウトしました");
-	}else{
-		event.preventDefault();
-	}
-	
-},false);
-</script>
->>>>>>> a37bac8b2412df3a34024782a983bb061cbf5a4a
 </body>
 </html>
