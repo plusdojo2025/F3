@@ -29,8 +29,7 @@
 .rectangle {
   width: 100%;
   background-color: #fafafb;
-  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
-		100%);
+  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0% 100%);
   padding: 40px 20px;
   position: relative;
   border: 2px solid #555;
@@ -39,7 +38,7 @@
   box-sizing: border-box;
 }
 
-/* ラベル（外にはみ出す） */
+/* ラベル */
 .rectangle-label {
   position: absolute;
   top: -25px;
@@ -66,10 +65,10 @@
   margin-top: 20px;
 }
 
-/* ボタン共通スタイル */
+/* ボタン共通 */
 .help-button {
   width: 100%;
-  max-width: 270px; 
+  max-width: 270px;
   min-width: 270px;
   padding: 12px;
   font-size: 24px;
@@ -83,7 +82,7 @@
   white-space: nowrap;
 }
 
-/* ボタンの色（それぞれ） */
+/* ボタンの色 */
 .link {
   background-color: #e91e63;
 }
@@ -96,7 +95,7 @@
   background-color: #f44336;
 }
 
-/* 問い合わせフォーム全体 */
+/* 問い合わせフォーム */
 .Form {
   width: 100%;
   max-width: 500px;
@@ -107,7 +106,6 @@
   margin-top: 30px;
 }
 
-/* フォームの1項目 */
 .Form-Item {
   display: flex;
   flex-direction: column;
@@ -127,7 +125,6 @@
   align-self: flex-start;
 }
 
-/* テキスト入力 */
 .Form-Item-Input,
 .Form-Item-Input2 {
   padding: 10px;
@@ -138,13 +135,11 @@
   box-sizing: border-box;
 }
 
-/* テキストエリア */
 .Form-Item-Input2 {
   height: 100px;
   resize: vertical;
 }
 
-/* 送信ボタン */
 .submit_btn {
   padding: 10px 25px;
   font-size: 25px;
@@ -168,7 +163,7 @@
   background: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* フレームより上 */
+  z-index: 9999;
 }
 
 /* ポップアップ本体 */
@@ -181,17 +176,45 @@
   max-height: 80vh;
   overflow: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
 /* 閉じるボタン */
 .popup-close {
   position: absolute;
-  top: 30px;
-  right: 35px;
-  font-size: 30px;
-  font-weight: bold;
-  color: #333;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 10000;
   cursor: pointer;
+}
+
+.popup-close::before,
+.popup-close::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 1px;
+  transform-origin: center;
+  transition: background-color 0.3s;
+}
+
+.popup-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.popup-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.popup-close:hover::before,
+.popup-close:hover::after {
+  background-color: #f44336;
 }
 
 /* ポップアップ画像 */
@@ -203,14 +226,13 @@
   max-height: 60vh;
 }
 
+/* スマホ向け調整 */
 @media screen and (max-width: 600px) {
   .rectangle-big {
     width: 95%;
-    clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
   }
 
   .rectangle {
-    clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0% 100%);
     padding: 20px;
   }
 
@@ -218,9 +240,8 @@
     font-size: 18px;
     padding: 4px 8px;
     top: -20px;
-    left: 4px; 
+    left: 4px;
   }
- 
 
   .help-button {
     font-size: 18px;
@@ -235,17 +256,22 @@
     font-size: 16px;
   }
 
-
-
   .popup-content {
     width: 90%;
     padding: 15px;
   }
 
   .popup-close {
-    font-size: 20px;
-    top: 8px;
-    right: 12px;
+    width: 18px;
+    height: 18px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .popup-close::before,
+  .popup-close::after {
+    width: 12px;
+    height: 1.5px;
   }
 
   .popup-image {
