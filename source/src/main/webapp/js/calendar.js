@@ -26,10 +26,18 @@ modal.forEach(mo => {
 		mo.addEventListener("click", () => {
 			const target = event.target;
 			if (target.tagName === 'TD') {
+				let result = "";
 				const value = target.textContent.trim();
-				alert(value)
+				result = String(value).replace(/(	| |[0-9])/g, '');
+				for (let i = 0; i < 3; i++) {
+					result = result.replace('\n', '');
+				}
+				if(result === '') {
+					result = 'ゴミ出し予定はありません。';
+				}
+				alert(result);
 			}
 		});
-    }
+	}
 });
 
