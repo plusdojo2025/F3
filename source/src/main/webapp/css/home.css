@@ -1,65 +1,51 @@
-h6 {
-	color: blue;
-}
-
 .flame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 40px auto;
-  width: 100%;
-  max-width: 700px;
-  position: relative;
-  z-index: 0;
-  overflow: visible;
-}
-/* 外枠 */
-.rectangle-big {
-  width: 900px;
-  background-color: #323234;
-  clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0% 100%);
-  padding: 5px;
-  position: relative;
-  box-sizing: border-box;
-  border: 3px solid #333;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 40px auto;
+	width: 100%;
+	max-width: 1000px;
+	position: relative;
+	z-index: 0;
+	overflow: visible;
 }
 
-/* 内枠 */
-.rectangle {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  background-color: #fafafb;
-  clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%, 0%
+.rectangle-big {
+	width: 100%;
+	height: 680px;
+	background-color: #323234;
+	clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
 		100%);
-  padding: 40px 20px;
-  position: relative;
-  border: 2px solid #555;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  box-sizing: border-box;
+	padding: 5px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.rectangle {
+	width: 100%;
+	height: 100%;
+	background-color: #fafafb;
+	clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%,
+		0% 100%);
+	position: relative;
 }
 
 /* ラベル（外にはみ出す） */
 .rectangle-label {
-text-align: left;
-  position: absolute;
-  top: 0px;
-  left: -100px;
-  background-color: hsl(219, 78%, 46%);  /* ラベル（外にはみ出す） */
-  
-  color: white;
-  padding: 5px 12px;
-  font-size: 24px;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  border-radius: 4px 4px 0 0;
-  white-space: nowrap;
+	text-align: left;
+	position: absolute;
+	top: 0px;
+	left: -100px;
+	background-color: hsl(219, 78%, 46%); /* ラベル（外にはみ出す） */
+	color: white;
+	padding: 5px 12px;
+	font-size: 24px;
+	font-weight: bold;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	z-index: 10;
+	border-radius: 4px 4px 0 0;
+	white-space: nowrap;
 }
 
 .flame-img {
@@ -82,6 +68,11 @@ body {
 	font-weight: bold;
 	color: #F0F0F0;
 }
+.highlight2{
+	font-size: 20px;
+	font-weight: bold;
+	color: #323234;
+}
 
 .modal {
 	display: none;
@@ -98,8 +89,14 @@ body {
 	padding: 20px;
 	margin: 100px auto;
 	width: 300px;
+	height: 200px;
 	border-radius: 8px;
 	text-align: center;
+}
+.trash_icon{
+	margin:20px auto;
+	height:100px;
+	width:100px;
 }
 
 .close-button {
@@ -122,82 +119,87 @@ body {
 .modal-content {
 	position: relative;
 	/* ↑ ボタン配置のために必要 */
+	
 }
 
 /*トゥムル終わり*/
-
 .rectangle_first {
-	width: 300px;
-	height: 300px;
+	width: 370px;
+	height: 370px;
 	background-color: #323234;
 	position: absolute;
-	left: 10%;
+	left: 5%;
 	top: 25%;
-	padding:7px;
+	padding: 7px;
 	border-top-left-radius: 70px;
 	clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
 		100%);
 }
+
 .rectangle2 {
-	width: 288px;
-	height: 288px;
+	width: 370px;
+	height: 370px;
 	background-color: red;
 	position: absolute;
-	
 	border-top-left-radius: 64px;
 	clip-path: polygon(0% 0%, calc(100% - 67px) 0%, 100% 67px, 100% 100%, 0%
 		100%);
 }
+
 .circle {
 	position: absolute;
-	top : 25%;
-	right: 10%; 
+	top: 25%;
+	right: 10%;
 	width: 270px;
 	height: 270px;
 	background-color: lightgreen;
 	border-radius: 50%;
 	border: 5px solid #080808;
-	
-	display: flex;                 /* ← Flexboxを有効に */
-    justify-content: center;      /* ← 横方向中央 */
-    align-items: center;          /* ← 縦方向中央 */
+	display: flex; /* ← Flexboxを有効に */
+	justify-content: center; /* ← 横方向中央 */
+	align-items: center; /* ← 縦方向中央 */
 }
+
 .circle_child {
-	text-align:center;
+	text-align: center;
 	font-size: 18px;
 }
+
 .highlight_point {
 	font-size: 25px;
 	font-weight: bold;
 	color: goldenrod;
 }
+
 .rounded-rectangle {
-      position: absolute;
-      top: 70%; /* 円の下に配置（円のtop + 高さ + 余白） */
-      right: 5%;
-      width: 350px;
-      height: 80px;
-      border-radius: 15px;
-      background-color: lightblue;
-    }
+	position: absolute;
+	top: 70%; /* 円の下に配置（円のtop + 高さ + 余白） */
+	right: 5%;
+	width: 350px;
+	height: 80px;
+	border-radius: 15px;
+	border: solid 1px blue;
+	background-color: lightblue;
+}
+
 .rank-bar {
-  width: 200px;
-  height: 20px;
-  background: linear-gradient(to right, #c6f6c6 0%, #c6f6c6 0%, white 60%, white 100%);
-  border-radius: 10px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-  margin: 10px auto;
-  position: relative;
-  overflow: hidden;
+	width: 200px;
+	height: 20px;
+	background: linear-gradient(to right, #c6f6c6 0%, #c6f6c6 0%, white 60%, white 100%);
+	border-radius: 10px;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin: 10px auto;
+	position: relative;
+	border: solid 1px blue;
+	overflow: hidden;
 }
 
 .rank-fill {
-  height: 100%;
-  background: linear-gradient(to bottom, #c6f6c6, #c6f6c6);
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6);
-  transition: width 0.5s ease;
+	height: 100%;
+	background: linear-gradient(to bottom, #c6f6c6, #c6f6c6);
+	box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6);
+	transition: width 0.5s ease;
 }
-
 
 .sunday {
 	color: #F0F0F0;
@@ -234,24 +236,56 @@ body {
 	font-size: 100px;
 }
 
-
-@media (max-width: 768px) {
-  .flame {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .left_box,
-  .right_box {
-    flex: 1 1 100%;
-  }
-
-  .rectangle,
-  .rectangle2,
-  .circle,
-  .rounded-rectangle {
-    width: 90% !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
+@media screen and (max-width: 600px) {
+	.flame {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 0px auto;
+		width: 100%;
+		max-width: 100%;
+		position: relative;
+		z-index: 0;
+	}
+	.rectangle-big {
+		width: 100%;
+		height: 1000px;
+		background-color: #323234;
+		clip-path: polygon(0% 0%, calc(100% - 70px) 0%, 100% 70px, 100% 100%, 0%
+			100%);
+		padding: 5px;
+		box-sizing: border-box;
+		position: relative;
+	}
+	.rectangle {
+		width: 100%;
+		height: 100%;
+		background-color: #fafafb;
+		clip-path: polygon(0% 0%, calc(100% - 67.5px) 0%, 100% 67.5px, 100% 100%,
+			0% 100%);
+		position: relative;
+	}
+	.rectangle_first {
+	margin: 0px auto;
+		top: 5%;
+		width: 85%;
+		height: 300px;
+	}
+	.rectangle2 {
+		width: 95%;
+		height: 95%;
+	}
+	.circle {
+	display: flex;
+  align-items: center;
+	width: 240px;
+	height: 240px;
+		top: calc(5% + 370px);
+	}
+	.rounded-rectangle {
+	margin: 0px auto;
+	width: 90%;
+		top: calc(5% + 370px + 300px);
+	}
 }

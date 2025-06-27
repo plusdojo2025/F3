@@ -5,9 +5,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ホーム画面</title>
   <link rel="stylesheet" href="<c:url value='/css/common.css' />">
-  <link rel="stylesheet" href="<c:url value='/css/regist.css' />">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
   <style>
     img#trash_icon {
@@ -81,7 +81,7 @@
       <input type="hidden" name="check_id" value="1" />
       <input type="hidden" name="score" value="${home.score}" />
       <input type="hidden" name="point" value="${home.point}" />
-      <button type="submit"><img src="${pageContext.request.contextPath}/img/trash.png" id="trash_icon" alt="チェック"></button>
+      <button type="submit" class="trash_icon"><img src="${pageContext.request.contextPath}/img/trash.png" id="trash_icon" alt="チェック"></button>
     </form>
   </div>
 </div>
