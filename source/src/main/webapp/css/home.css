@@ -36,7 +36,7 @@
 	text-align: left;
 	position: absolute;
 	top: 0px;
-	left: -100px;
+	left: 00px;
 	background-color: hsl(219, 78%, 46%); /* ラベル（外にはみ出す） */
 	color: white;
 	padding: 5px 12px;
