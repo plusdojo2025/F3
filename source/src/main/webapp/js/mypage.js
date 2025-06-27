@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault(); 
     const result = window.confirm('ログアウトしますか？');
     if (result) {
-      window.alert('ログアウトしました');
       window.location.href = 'LogoutServlet';
     }
   });

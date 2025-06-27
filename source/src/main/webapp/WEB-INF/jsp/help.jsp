@@ -80,7 +80,6 @@ btn.addEventListener('click', function(event){
 	var result = window.confirm('ログアウトしますか？');
 	if(result){
 		window.alert("ログアウトしました");
-		window.location.href = 'LogoutServlet';
 	}else{
 		event.preventDefault();
 	}
